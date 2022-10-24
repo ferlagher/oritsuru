@@ -1,0 +1,42 @@
+import styled from 'styled-components'
+import { Svg } from './Svg';
+import { FlexContainer } from './FlexContaier';
+
+const LogoContainer = styled(FlexContainer)`
+    font-size: ${({size}) => size}; /* Easy child sizing using em's */
+`
+
+const Isotype = styled(Svg)`
+    height: 1em;
+    width: 1.8em;
+    fill: ${({theme, dark}) => dark ? theme.colors.nori : theme.colors.rice};
+`;
+
+const Logotype = styled.span`
+    font-family: 'Nuku Nuku';
+    font-size: 1em;
+    color: ${({theme}) => theme.colors.salmon};
+    ${({hideOnMobile}) => hideOnMobile && `
+        @media (max-width: 425px) {
+            display: none;
+        }
+    `}
+`;
+
+export const Logo = ({size = '1.3em', dark = false, full = false, hideOnMobile = false}) => {
+    return(
+        <LogoContainer size={size} gap='0.25em'>
+            <Isotype viewBox="0 0 52.295 32" dark={dark}>
+                <polygon points="26.021 12.755 40.694 26.217 20.115 18.588 26.021 12.755"/>
+                <polygon points="41.589 2.008 44.244 0.503 43.686 26.628 34.138 17.869 41.589 2.008"/>
+                <path d="M26.0567,1.636,34.81,12.3932l-2,4.2571-6.23-5.716a.86.86,0,0,0-1.1859.0218L20.6322,15.659l-2.487-2.5127Z"/>
+                <path d="M2.7133,0l16.695,16.8678-1.0737,1.06-4.19-1.5533a.8611.8611,0,0,0-.7839.0963l-3.1128,2.1277Z"/>
+                <polygon points="13.963 18.142 39.712 27.687 27.616 27.687 27.614 27.687 0 27.687 13.963 18.142"/>
+                <polygon points="12.488 29.407 23.067 29.407 14.211 32 12.488 29.407"/>
+                <polygon points="41.877 32 31.301 29.407 43.133 29.407 41.877 32"/>
+                <polygon points="45.864 5.226 45.95 1.218 52.295 8.229 45.864 5.226"/>
+            </Isotype>
+            <Logotype hideOnMobile={hideOnMobile}>ORITSURU{full && ' SUSHI'}</Logotype>
+        </LogoContainer>
+    );
+};

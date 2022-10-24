@@ -1,18 +1,16 @@
 import styled from "styled-components";
-import { colors } from "../theme";
 
-const StyledAnchor = styled.a`
-    color: ${colors.salmon};
+export const Anchor = styled.a`
+    color: currentColor;
+    transition: color 0.2s ease-in-out;
 
     &:link,
     &:visited {
-        color: ${colors.salmon};
+        color: currentColor;
         text-decoration: none;
     }
-`
 
-export const Anchor = ({href, children}) => {
-    return(
-        <StyledAnchor href={href}>{children}</StyledAnchor>
-    );
-};
+    &:hover {
+        color: ${({theme}) => theme.colors.salmon};
+    }
+`;

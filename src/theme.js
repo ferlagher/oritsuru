@@ -1,7 +1,9 @@
-export const colors = {
-    salmon: '#EF9246',
-    tuna: '#D07664',
-    avocado: '#B3BF56',
-    nori: '#282A25',
-    rice: '#FCFCFC',
+export const theme = {
+    colors: {
+        salmon: '#EF9246',
+        tuna: '#D07664',
+        avocado: '#B3BF56',
+        nori: '#2C2C2C',
+        rice: '#FCFCFC',
+    },
 };
