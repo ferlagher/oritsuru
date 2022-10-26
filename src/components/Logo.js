@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { Svg } from './Svg';
-import { FlexContainer } from './FlexContaier';
+import { Svg } from './base';
+import { FlexContainer } from './base';
 
 const LogoContainer = styled(FlexContainer)`
     font-size: ${({size}) => size}; /* Easy child sizing using em's */
@@ -23,7 +23,7 @@ const Logotype = styled.span`
     `}
 `;
 
-export const Logo = ({size = '1.3em', dark = false, full = false, hideOnMobile = false}) => {
+export default ({size = '1.3em', dark = false, full = false, hideOnMobile = false}) => {
     return(
         <LogoContainer size={size} gap='0.25em'>
             <Isotype viewBox="0 0 52.295 32" dark={dark}>

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import hero from '../assets/hero.jpg' //Photo by Giovanna Gomes on Unsplash
-import { FlexContainer } from "./FlexContaier";
-import { Logo } from "./Logo";
-import { Button } from "./Button";
+import { FlexContainer } from "./base";
+import { Button } from "./base";
+import Logo from "./Logo";
 
 const HeroContainer = styled(FlexContainer)`
     background: #666 url(${hero}) no-repeat fixed center center;
@@ -25,7 +25,7 @@ const P = styled.p`
 color: ${({theme}) => theme.colors.rice};
 `;
 
-export const Hero = () => {
+export default () => {
     return(
         <HeroContainer padding='clamp(10px, 3vw, 32px)' justify='flex-start'>
             <HeroContent direction='column' aling='flex-start' gap='1.5rem'>

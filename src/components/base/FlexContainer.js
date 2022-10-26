@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FlexContainer = styled.div`
+export default styled.div`
     display: flex;
     flex-direction: ${({direction = 'row'}) => direction};
     justify-content: ${({justify = 'center'}) => justify};

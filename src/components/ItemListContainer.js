@@ -1,7 +1,7 @@
-import { FlexContainer } from "./FlexContaier";
+import { FlexContainer } from "./base";
 
 
-export const ItemListContainer = ({greeting}) => {
+export default ({greeting}) => {
     return(
         <FlexContainer padding='0.5em'><b>{greeting}</b></FlexContainer>
     );

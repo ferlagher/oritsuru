@@ -1,13 +1,15 @@
-import { Hero } from './components/Hero';
-import { ItemListContainer } from './components/ItemListContainer';
-import { NavBar } from './components/NavBar';
+import { Hero, ItemListContainer, NavBar } from './components';
+import Footer from './components/Footer';
 
 function App() {
     return (
         <>
             <NavBar/>
-            <ItemListContainer greeting='Hola, caracola. 👋🏻🐚'/> {/* I dont get what's the point of this... */}
+            <main>
             <Hero/>
+            <ItemListContainer greeting='Hola, caracola. 👋🏻🐚'/> {/* I dont get what's the point of this... */}
+            </main>
+            <Footer/>
         </>
 )};
 

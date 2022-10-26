@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
-export const Button = styled.button`
+export default styled.button`
     font-family: 'Ubuntu', sans-serif;
     font-weight: 700;
-    color: ${({theme}) => theme.colors.rice};
-    background-color: ${({theme, color}) => theme.colors[color]};
-    border: ${({theme, color}) => theme.colors[color]};
-    border-radius: 0.25em;
+    font-size: 0.9rem;
+    color: ${({theme, color, border}) => border ? theme.colors[color] : theme.colors.rice};
+    background-color: ${({theme, color, border}) => border ? 'transparent' : theme.colors[color]};
+    border: 2px solid ${({theme, color }) => theme.colors[color]};
+    border-radius: 0.4em;
     box-shadow: 0 0 0.5rem #00000040;
     display: flex;
     direction: row;

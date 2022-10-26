@@ -14,11 +14,18 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
     }
 
-    body {
+    #root {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         min-height: 100vh;
         background-color: ${({theme}) => theme.colors.rice};
         font-family: 'Ubuntu', sans-serif;
         font-size: clamp(1rem, 3.5vw, 1.125rem);
         color: ${({theme}) => theme.colors.nori};
+    }
+
+    main {
+        flex-grow: 1;
     }
 `;
