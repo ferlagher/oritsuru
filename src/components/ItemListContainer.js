@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { FlexContainer } from "./base";
 
 export const ItemListContainer = ({children, greeting}) => {
