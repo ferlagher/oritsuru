@@ -1,14 +1,19 @@
+import nukuEot from './assets/fonts/nukunuku.eot';
+import nukuWoff2 from './assets/fonts/nukunuku.woff2';
+import nukuWoff from './assets/fonts/nukunuku.woff';
+import nukuTtF from './assets/fonts/nukunuku.ttf';
+import nukuSvg from './assets/fonts/nukunuku.svg';
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 @font-face {
     font-family: 'Nuku Nuku';
-    src: url('./assets/fonts/nukunuku.eot');
-    src: url('./assets/fonts/nukunuku.eot?#iefix') format('embedded-opentype'),
-        url('./assets/fonts/nukunuku.woff2') format('woff2'),
-        url('./assets/fonts/nukunuku.woff') format('woff'),
-        url('./assets/fonts/nukunuku.ttf') format('truetype'),
-        url('./assets/fonts/nukunuku.svg#nuku_nukuregular') format('svg');
+    src: url(nukuEot);
+    src: url(nukuEot + '?#iefix') format('embedded-opentype'),
+        url(nukuWoff2) format('woff2'),
+        url(nukuWoff) format('woff'),
+        url(nukuTtf) format('truetype'),
+        url(nukuSvg) format('svg');
     font-weight: normal;
     font-style: normal;
 }
