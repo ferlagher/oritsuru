@@ -1,6 +1,7 @@
-export { default as CartWidget } from './CartWidget';
-export { default as Footer } from './Footer';
-export { default as Hero } from './Hero';
-export { default as ItemListContainer } from './ItemListContainer';
-export { default as Logo } from './Logo';
-export { default as NavBar } from './NavBar';
+export { CartWidget } from './CartWidget';
+export { Footer } from './Footer';
+export { Hero } from './Hero';
+export { ItemListContainer } from './ItemListContainer';
+export { Logo } from './Logo';
+export { NavBar } from './NavBar';
+export { ItemCount } from './ItemCount';

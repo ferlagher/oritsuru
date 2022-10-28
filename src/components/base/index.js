@@ -1,4 +1,5 @@
-export { default as Badge } from './Badge';
-export { default as Button } from './Button';
-export { default as FlexContainer } from './FlexContainer';
-export { default as Svg } from './Svg';
+export { Button } from './Button';
+export { FlexContainer } from './FlexContainer';
+export { Svg } from './Svg';
+export { Badge } from './Badge';
+export { Ribbon } from './Ribbon';

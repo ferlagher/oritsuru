@@ -19,10 +19,10 @@ export const GlobalStyle = createGlobalStyle`
         flex-direction: column;
         justify-content: space-between;
         min-height: 100vh;
-        background-color: ${({theme}) => theme.colors.rice};
+        background-color: ${({theme}) => theme.base.bg};
         font-family: 'Ubuntu', sans-serif;
         font-size: clamp(1rem, 3.5vw, 1.125rem);
-        color: ${({theme}) => theme.colors.nori};
+        color: ${({theme}) => theme.base.nori};
     }
 
     main {

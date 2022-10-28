@@ -9,13 +9,13 @@ const LogoContainer = styled(FlexContainer)`
 const Isotype = styled(Svg)`
     height: 1em;
     width: 1.8em;
-    fill: ${({theme, dark}) => dark ? theme.colors.nori : theme.colors.rice};
+    fill: ${({theme, dark}) => dark ? theme.base.nori : theme.base.rice};
 `;
 
 const Logotype = styled.span`
     font-family: 'Nuku Nuku';
     font-size: 1em;
-    color: ${({theme}) => theme.colors.salmon};
+    color: ${({theme}) => theme.base.salmon};
     ${({hideOnMobile}) => hideOnMobile && `
         @media (max-width: 425px) {
             display: none;
@@ -23,7 +23,7 @@ const Logotype = styled.span`
     `}
 `;
 
-export default ({size = '1.3em', dark = false, full = false, hideOnMobile = false}) => {
+export const Logo = ({size = '1.3em', dark = false, full = false, hideOnMobile = false}) => {
     return(
         <LogoContainer size={size} gap='0.25em'>
             <Isotype viewBox="0 0 52.295 32" dark={dark}>
