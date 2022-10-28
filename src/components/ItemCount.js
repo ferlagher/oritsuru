@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { FlexContainer, Button, Svg, PlusIcon, MinusIcon } from "./base";
+import { FlexContainer, Button, PlusIcon, MinusIcon } from "./base";
 
 const CountBtn = styled(Button)`
     &:first-of-type {
