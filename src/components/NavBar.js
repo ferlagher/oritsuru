@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FlexContainer } from './base';
+import { FlexContainer, UserIcon } from './base';
 import { CartWidget } from './CartWidget';
 import { Logo } from './Logo';
 
@@ -8,28 +8,45 @@ const NavLink = styled.a`
     fill: ${({theme}) => theme.base.nori};
     border-radius: 0.25em;
     padding: 0.25em;
-    text-decoration: none;
-    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-
-    &:hover {
-        color: ${({theme}) => theme.base.salmon};
-        fill: ${({theme}) => theme.base.salmon};
+    position: relative;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        background-color: ${({theme}) => theme.light.salmon};
+        height: 2.5em;
+        width: 2.5em;
+        border-radius: 50%;
+        opacity: 0;
+        scale: 0;
+        transition: 0.2s ease-in-out;
     }
-`
+
+    &:hover::before {
+        opacity: 0.2;
+        scale: 1;
+    }
+`;
 
 export const NavBar = () => {
     return (
         <FlexContainer as='header' justify='space-between' gap='1em' padding='1rem'>
-            <NavLink href="/">
+            <a href="/">
                 <Logo dark hideOnMobile/>
-            </NavLink>
-            <FlexContainer justify='flex-end' gap='1em'>
-                <FlexContainer as='nav' justify='space-between' align='center' gap='0.75em'>
-                    <NavLink href='#'>Menú</NavLink>
-                    <NavLink href='#'>Sobre</NavLink>
-                    <NavLink href='#'>Contacto</NavLink>
-                </FlexContainer>
-                <CartWidget/>
+            </a>
+
+            <FlexContainer as='nav' justify='space-between' align='center' gap='1rem'>
+                <NavLink href='#'>Menú</NavLink>
+                <NavLink href='#'>Sobre</NavLink>
+                <NavLink href='#'>Contacto</NavLink>
+            </FlexContainer>
+
+            <FlexContainer justify='space-between' align='center' gap='1rem'>
+                <NavLink href='#'><UserIcon/></NavLink>
+                <NavLink href='#'><CartWidget/></NavLink>
             </FlexContainer>
         </FlexContainer>
     );

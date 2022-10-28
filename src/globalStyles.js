@@ -2,10 +2,13 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
     @font-face {
-    font-family: 'Nuku Nuku';
-    font-style: normal;
-    font-weight: normal;
-    src: url('./assets/fonts/nuku.woff') format('font-woff');
+        font-family: 'Nuku Nuku';
+        src: url('NukuNuku.eot');
+        src: url('NukuNuku.eot?#iefix') format('embedded-opentype'),
+            url('NukuNuku.woff2') format('woff2'),
+            url('NukuNuku.woff') format('woff'),
+            url('NukuNuku.ttf') format('truetype'),
+            url('NukuNuku.svg#NukuNuku') format('svg');
     }
 
     * {
@@ -27,5 +30,9 @@ export const GlobalStyle = createGlobalStyle`
 
     main {
         flex-grow: 1;
+    }
+
+    a {
+        text-decoration: none;
     }
 `;

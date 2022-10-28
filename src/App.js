@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Hero, ItemListContainer, NavBar, Footer, ItemCount } from './components';
-import { Badge, Ribbon } from './components/base';
+import { Badge, CartIcon, GithubIcon, HeartIcon, LinkedinIcon, Ribbon, UserIcon } from './components/base';
 
 const TestDiv = styled.div`
     height: 5rem;
@@ -25,6 +25,11 @@ function App() {
                 <Badge color='salmon' num={8}><TestDiv/></Badge>
                 <Badge color='tuna' num={999}><TestDiv/></Badge>
                 <Badge color='avocado' num={1}><TestDiv/></Badge>
+                <HeartIcon/>
+                <GithubIcon/>
+                <LinkedinIcon/>
+                <CartIcon/>
+                <UserIcon/>
             </ItemListContainer>
             </main>
             <Footer/>

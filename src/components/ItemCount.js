@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { FlexContainer, Button, Svg } from "./base";
+import { FlexContainer, Button, Svg, PlusIcon, MinusIcon } from "./base";
 
 const CountBtn = styled(Button)`
     &:first-of-type {
@@ -60,15 +60,13 @@ export const ItemCount = ({stock, color}) => {
     return(
         <FlexContainer align='stretch'>
             <CountBtn border onClick={decrease} color={color} disabled={count === 0} aria-label='Más'>
-            <Svg viewBox="0 0 512 512">
-            <rect height="64" width="384" x="64" y="224"/>
-                </Svg>
+                <MinusIcon/>
             </CountBtn>
+
             <Input type='text' onChange={handleChange} value={count} aria-label='Cantidad'/>
+
             <CountBtn border onClick={increase} color={color} disabled={count === stock} aria-label='Menos'>
-                <Svg viewBox="0 0 512 512">
-                <polygon points="448,224 288,224 288,64 224,64 224,224 64,224 64,288 224,288 224,448 288,448 288,288 448,288 "/>
-                </Svg>
+                <PlusIcon/>
             </CountBtn>
         </FlexContainer>
     );

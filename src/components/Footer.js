@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { FlexContainer } from "./base"
+import { CartIcon, GithubIcon, HeartIcon, LinkedinIcon, UserIcon } from './base';
 
 const Foot = styled(FlexContainer).attrs({as: 'footer'})`
     color: ${({theme}) => theme.base.rice};
@@ -9,7 +10,11 @@ const Foot = styled(FlexContainer).attrs({as: 'footer'})`
 export const Footer = () => {
     return(
         <Foot padding='1rem'>
-            Footer
+                <HeartIcon light/>
+                <GithubIcon light/>
+                <LinkedinIcon light/>
+                <CartIcon light/>
+                <UserIcon light/>
         </Foot>
     )
 }

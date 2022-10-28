@@ -1,12 +1,15 @@
 import styled from 'styled-components'
-import { Svg } from './base';
 import { FlexContainer } from './base';
 
 const LogoContainer = styled(FlexContainer)`
     font-size: ${({size}) => size}; /* Easy child sizing using em's */
 `
 
-const Isotype = styled(Svg)`
+const Isotype = styled.svg.attrs({ 
+    version: '1.1', 
+    xmlns: 'http://www.w3.org/2000/svg', 
+    xmlnsXlink: 'http://www.w3.org/1999/xlink',
+})`
     height: 1em;
     width: 1.8em;
     fill: ${({theme, dark}) => dark ? theme.base.nori : theme.base.rice};
