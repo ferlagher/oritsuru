@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
             url('NukuNuku.woff') format('woff'),
             url('NukuNuku.ttf') format('truetype'),
             url('NukuNuku.svg#NukuNuku') format('svg');
+        font-display: swap;
     }
 
     * {
