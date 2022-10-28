@@ -1,16 +1,17 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-    @font-face {
-        font-family: 'Nuku Nuku';
-        src: url('NukuNuku.eot');
-        src: url('NukuNuku.eot?#iefix') format('embedded-opentype'),
-            url('NukuNuku.woff2') format('woff2'),
-            url('NukuNuku.woff') format('woff'),
-            url('NukuNuku.ttf') format('truetype'),
-            url('NukuNuku.svg#NukuNuku') format('svg');
-        font-display: swap;
-    }
+@font-face {
+    font-family: 'Nuku Nuku';
+    src: url('./assets/fonts/nukunuku.eot');
+    src: url('./assets/fonts/nukunuku.eot?#iefix') format('embedded-opentype'),
+        url('./assets/fonts/nukunuku.woff2') format('woff2'),
+        url('./assets/fonts/nukunuku.woff') format('woff'),
+        url('./assets/fonts/nukunuku.ttf') format('truetype'),
+        url('./assets/fonts/nukunuku.svg#nuku_nukuregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 
     * {
         box-sizing: border-box;
