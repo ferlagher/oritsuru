@@ -1,8 +1,8 @@
-import nukuEot from './assets/fonts/nukunuku.eot';
-import nukuWoff2 from './assets/fonts/nukunuku.woff2';
-import nukuWoff from './assets/fonts/nukunuku.woff';
-import nukuTtf from './assets/fonts/nukunuku.ttf';
-import nukuSvg from './assets/fonts/nukunuku.svg';
+import nukuEot from 'src/assets/fonts/nukunuku.eot';
+import nukuWoff2 from 'src/assets/fonts/nukunuku.woff2';
+import nukuWoff from 'src/assets/fonts/nukunuku.woff';
+import nukuTtf from 'src/assets/fonts/nukunuku.ttf';
+import nukuSvg from 'src/assets/fonts/nukunuku.svg';
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
