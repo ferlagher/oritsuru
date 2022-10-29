@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Nuku-Nuku';
+    src: url('nukunuku.eot');
+    src: url('nukunuku.eot?#iefix') format('embedded-opentype'),
+        url('nukunuku.woff2') format('woff2'),
+        url('nukunuku.woff') format('woff'),
+        url('nukunuku.ttf') format('truetype'),
+        url('nukunuku.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
