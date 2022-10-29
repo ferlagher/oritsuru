@@ -3,4 +3,3 @@ export * from './FlexContainer';
 export * from './Badge';
 export * from './Ribbon';
 export * from './Icons';
-export * from './Switch';

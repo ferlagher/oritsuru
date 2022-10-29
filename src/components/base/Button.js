@@ -22,7 +22,7 @@ export const Button = styled.button`
     }
 
     &:hover {
-        color: var(--color-rice);
+        color: var(--color-rice-light);
         background-color: var(--color-${({color}) => color}${({border}) => !border && '-light'});
         border: 2px solid var(--color-${({color}) => color}${({border}) => !border && '-light'});
     }
@@ -31,6 +31,7 @@ export const Button = styled.button`
         color: var(--color-${({color, border}) => border ? color : 'rice'}-dark);
         background-color: var(--color-${({color, border}) => border ? 'transparent' : color + '-dark'});
         border: 2px solid var(--color-${({color}) => color}-dark);
+        scale: 0.95;
     }
 
     &:disabled {

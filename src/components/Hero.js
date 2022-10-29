@@ -14,7 +14,7 @@ const HeroContainer = styled(FlexContainer)`
 
 const HeroContent = styled(FlexContainer)`
     width: 50%;
-    min-width: 300px;
+    min-width: min(350px, 100vw);
     color: var(--color-rice);
 `;
 
@@ -22,7 +22,7 @@ export const Hero = () => {
     return(
         <HeroContainer padding='clamp(10px, 3vw, 32px)' justify='flex-start'>
             <HeroContent direction='column' align='flex-start' gap='1.5rem'>
-                <Logo size='clamp(2rem, 5vw, 3rem)' full/>
+                <Logo size='2.2rem' full/>
                 <h1>Título placeholder facherito 😎</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eleifend tristique quam, luctus condimentum nunc pulvinar eget. Suspendisse cursus ultricies hendrerit.</p>
                 <FlexContainer gap='1rem'>

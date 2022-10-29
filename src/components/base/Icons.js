@@ -5,9 +5,8 @@ const Icon = styled.svg.attrs({
     xmlns: 'http://www.w3.org/2000/svg', 
     xmlnsXlink: 'http://www.w3.org/1999/xlink',
 })`
-    height: 1.5rem;
-    width: 1.5rem;
-    transition: fill 0.2s ease-in-out;
+    height: 1.5em;
+    width: 1.5em;
     fill: currentColor;
     position: relative;
 `;
@@ -66,6 +65,30 @@ export const MinusIcon = () => {
     return(
         <Icon viewBox='0 0 512 512'>
             <rect height="64" width="384" x="64" y="224"/>
+        </Icon>
+    );
+};
+
+export const SunIcon = () => {
+    return(
+        <Icon viewBox='0 0 512 512'>
+            <rect height="92" width="44" x="234" y="26"/>
+            <rect height="92" width="44" x="234" y="394"/>
+            <rect height="44" transform="translate(24.07 309.89) rotate(-45)" width="92" x="340.11" y="103.89"/>
+            <rect height="44" transform="translate(-236.14 202.1) rotate(-45)" width="92" x="79.89" y="364.11"/>
+            <rect height="44" width="92" x="394" y="234"/>
+            <rect height="44" width="92" x="26" y="234"/>
+            <rect height="92" transform="translate(-159.93 386.11) rotate(-45)" width="44" x="364.11" y="340.11"/>
+            <rect height="92" transform="translate(-52.15 125.89) rotate(-45)" width="44" x="103.89" y="79.89"/>
+            <path d="M256,358A102,102,0,1,1,358,256,102.12,102.12,0,0,1,256,358Z"/>
+        </Icon>
+    );
+};
+
+export const MoonIcon = () => {
+    return(
+        <Icon viewBox='0 0 512 512'>
+            <path d="M152.62,126.77c0-33,4.85-66.35,17.23-94.77C87.54,67.83,32,151.89,32,247.38,32,375.85,136.15,480,264.62,480c95.49,0,179.55-55.54,215.38-137.85-28.42,12.38-61.8,17.23-94.77,17.23C256.76,359.38,152.62,255.24,152.62,126.77Z"/>
         </Icon>
     );
 };

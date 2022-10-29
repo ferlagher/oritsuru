@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { FlexContainer, Switch, UserIcon } from './base';
+import { FlexContainer, UserIcon } from './base';
 import { CartWidget } from './CartWidget';
+import { ThemeSwitch } from './ThemeSwitch';
 import { Logo } from './Logo';
 
 const NavLink = styled.a`
@@ -29,7 +30,7 @@ const NavLink = styled.a`
     }
 `;
 
-export const NavBar = ({toggle}) => {
+export const NavBar = ({toggle, check}) => {
     return (
         <FlexContainer as='header' justify='space-between' gap='1em' padding='1rem'>
             <a href="/">
@@ -43,7 +44,7 @@ export const NavBar = ({toggle}) => {
             </FlexContainer>
 
             <FlexContainer justify='space-between' align='center' gap='1rem'>
-                <Switch handler={toggle}/>
+                <ThemeSwitch handler={toggle} check={check}/>
                 <NavLink href='#'><UserIcon/></NavLink>
                 <NavLink href='#'><CartWidget/></NavLink>
             </FlexContainer>

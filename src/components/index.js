@@ -1,7 +1,9 @@
-export { CartWidget } from './CartWidget';
-export { Footer } from './Footer';
-export { Hero } from './Hero';
-export { ItemListContainer } from './ItemListContainer';
-export { Logo } from './Logo';
-export { NavBar } from './NavBar';
-export { ItemCount } from './ItemCount';
+export * from './GlobalStyle';
+export * from './CartWidget';
+export * from './Footer';
+export * from './Hero';
+export * from './ItemListContainer';
+export * from './Logo';
+export * from './NavBar';
+export * from './ItemCount';
+export { useThemeSwitch } from './ThemeSwitch';

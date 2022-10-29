@@ -19,7 +19,7 @@ const darkColors = {
 };
 
 const createTheme = (arr) => {
-    const theme = {};
+    let theme = '';
 
     for (const color in arr) {
         const [h, s, l] = arr[color];
@@ -27,11 +27,11 @@ const createTheme = (arr) => {
         const add = (n, m) => Math.min(n + m, 100);
         const subtract = (n, m) => Math.max(n - m, 0);
 
-        theme[color] = `hsl(${h}, ${s}%, ${l}%)`;
+        theme += `--color-${color}: hsl(${h}, ${s}%, ${l}%);`;
         
         if (color !== 'text' && color !== 'bg') {
-            theme[color + '-dark'] = `hsl(${h}, ${add(s, 5)}%, ${subtract(l, 10)}%)`;
-            theme[color + '-light'] = `hsl(${h}, ${subtract(s, 5)}%, ${add(l, 10)}%)`;
+            theme += `--color-${color}-dark: hsl(${h}, ${add(s, 5)}%, ${subtract(l, 10)}%);`;
+            theme += `--color-${color}-light: hsl(${h}, ${subtract(s, 5)}%, ${add(l, 10)}%);`;
         };
     };
 

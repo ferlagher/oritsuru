@@ -1,19 +1,10 @@
-import './assets/fonts/fontFace.css'
+import '../assets/fonts/fontFace.css'
 import { createGlobalStyle } from 'styled-components';
-
-const createCssColors = (theme) => {
-    let cssColors = ''
-
-    for (const color in theme) {
-        cssColors += `--color-${color}: ${theme[color]};`
-    };
-    return cssColors;
-}
-
+import { themes } from '../themes';
 
 export const GlobalStyle = createGlobalStyle`
     :root {
-        ${({theme}) => createCssColors(theme)}
+        ${({theme}) => themes[theme]}
         font-size: clamp(1rem, 3.5vw, 1.125rem);
     }
 
