@@ -1,17 +1,26 @@
 import styled from 'styled-components';
+import { GlobalStyle } from './GlobalStyles';
 import { Hero, ItemListContainer, NavBar, Footer, ItemCount } from './components';
 import { Badge, CartIcon, GithubIcon, HeartIcon, LinkedinIcon, Ribbon, UserIcon } from './components/base';
+import { useState } from 'react';
+import { themes } from './theme';
 
 const TestDiv = styled.div`
     height: 5rem;
     width: 5rem;
-    background-color: ${({theme}) => theme.light.nori};
+    background-color: var(--color-nori);
 `
 
 function App() {
+    const [theme, setTheme] = useState('light')
+    const toggleTheme = () => {
+        setTheme(currentTheme => currentTheme === 'light' ? 'dark' : 'light')
+    }
+
     return (
         <>
-            <NavBar/>
+            <GlobalStyle theme={themes[theme]}/>
+            <NavBar toggle={toggleTheme}/>
             <main>
             <Hero/>
             <ItemListContainer greeting='Probando, probando, 1, 2, 3... 🎤'>
@@ -34,6 +43,7 @@ function App() {
             </main>
             <Footer/>
         </>
-)};
+    );
+};
 
 export default App;

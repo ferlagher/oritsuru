@@ -12,24 +12,24 @@ const Isotype = styled.svg.attrs({
 })`
     height: 1em;
     width: 1.8em;
-    fill: ${({theme, dark}) => dark ? theme.base.nori : theme.base.rice};
+    fill: currentColor;
 `;
 
 const Logotype = styled.span`
     font-family: 'Nuku-Nuku', sans-serif;
     font-size: 1em;
-    color: ${({theme}) => theme.base.salmon};
+    color: var(--color-salmon);
     ${({hideOnMobile}) => hideOnMobile && `
-        @media (max-width: 425px) {
+        @media (max-width: 500px) {
             display: none;
         }
     `}
 `;
 
-export const Logo = ({size = '1.3em', dark = false, full = false, hideOnMobile = false}) => {
+export const Logo = ({size = '1.3em', full = false, hideOnMobile = false}) => {
     return(
         <LogoContainer size={size} gap='0.25em'>
-            <Isotype viewBox="0 0 52.295 32" dark={dark}>
+            <Isotype viewBox="0 0 52.295 32">
                 <polygon points="26.021 12.755 40.694 26.217 20.115 18.588 26.021 12.755"/>
                 <polygon points="41.589 2.008 44.244 0.503 43.686 26.628 34.138 17.869 41.589 2.008"/>
                 <path d="M26.0567,1.636,34.81,12.3932l-2,4.2571-6.23-5.716a.86.86,0,0,0-1.1859.0218L20.6322,15.659l-2.487-2.5127Z"/>

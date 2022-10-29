@@ -17,9 +17,9 @@ const RibbonContent = styled.span`
     text-align: center;
     min-width: 3em;
     padding: 0 1em;
-    color: ${({theme}) => theme.base.rice};
-    background-color: ${({theme, color}) => theme.base[color]};
-    border: 0.2em solid ${({theme, color}) => theme.base[color]};
+    color: var(--color-rice);
+    background-color: var(--color-${({color}) => color});
+    border: 0.2em solid var(--color-${({color}) => color});
     border-radius: 0.4em 0 0 0.4em;
     box-shadow: -0.2em 0.2em #00000020;
 
@@ -29,7 +29,7 @@ const RibbonContent = styled.span`
         bottom: -0.2em;
         right: -0.2em;
         border: 0.71em solid transparent;
-        border-bottom-color: ${({theme, color}) => theme.dark[color]};
+        border-bottom-color: var(--color-${({color}) => color}-dark);
         transform-origin: bottom right;
         transform: rotate(-45deg);
     }

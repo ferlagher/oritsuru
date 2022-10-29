@@ -16,11 +16,11 @@ const BadgeNumber = styled.span`
     font-size: 0.8rem;
     text-align: center;
     min-width: 1.5em;
-    color: ${({theme}) => theme.base.rice};
-    background-color: ${({theme, color}) => theme.base[color]};
+    color: var(--color-rice);
+    background-color: var(--color-${({color}) => color});
     border-radius: 10em;
-    border: 0.2em solid ${({theme, color}) => theme.base[color]};
-    outline: 0.15em solid currentColor;
+    border: 0.2em solid var(--color-${({color}) => color});
+    outline: 0.2em solid  var(--color-bg);
 `
 
 export const Badge = ({num, color, children}) => {

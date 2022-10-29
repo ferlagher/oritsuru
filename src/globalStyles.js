@@ -1,7 +1,22 @@
 import './assets/fonts/fontFace.css'
 import { createGlobalStyle } from 'styled-components';
 
+const createCssColors = (theme) => {
+    let cssColors = ''
+
+    for (const color in theme) {
+        cssColors += `--color-${color}: ${theme[color]};`
+    };
+    return cssColors;
+}
+
+
 export const GlobalStyle = createGlobalStyle`
+    :root {
+        ${({theme}) => createCssColors(theme)}
+        font-size: clamp(1rem, 3.5vw, 1.125rem);
+    }
+
     * {
         box-sizing: border-box;
         margin: 0;
@@ -13,10 +28,12 @@ export const GlobalStyle = createGlobalStyle`
         flex-direction: column;
         justify-content: space-between;
         min-height: 100vh;
-        background-color: ${({theme}) => theme.base.bg};
         font-family: 'Ubuntu', sans-serif;
-        font-size: clamp(1rem, 3.5vw, 1.125rem);
-        color: ${({theme}) => theme.base.nori};
+        color: var(--color-text);
+        fill: var(--color-text);
+        background-color: var(--color-bg);
+        transition-property: color, fill, background-color;
+        transition-duration: 0.2s;
     }
 
     main {
@@ -25,5 +42,6 @@ export const GlobalStyle = createGlobalStyle`
 
     a {
         text-decoration: none;
+        color: currentColor;
     }
 `;

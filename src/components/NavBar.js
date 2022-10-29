@@ -1,11 +1,9 @@
 import styled from 'styled-components';
-import { FlexContainer, UserIcon } from './base';
+import { FlexContainer, Switch, UserIcon } from './base';
 import { CartWidget } from './CartWidget';
 import { Logo } from './Logo';
 
 const NavLink = styled.a`
-    color: ${({theme}) => theme.base.nori};
-    fill: ${({theme}) => theme.base.nori};
     border-radius: 0.25em;
     padding: 0.25em;
     position: relative;
@@ -16,7 +14,7 @@ const NavLink = styled.a`
         top: 50%;
         left: 50%;
         translate: -50% -50%;
-        background-color: ${({theme}) => theme.light.salmon};
+        background-color: var(--color-salmon-light);
         height: 2.5em;
         width: 2.5em;
         border-radius: 50%;
@@ -31,11 +29,11 @@ const NavLink = styled.a`
     }
 `;
 
-export const NavBar = () => {
+export const NavBar = ({toggle}) => {
     return (
         <FlexContainer as='header' justify='space-between' gap='1em' padding='1rem'>
             <a href="/">
-                <Logo dark hideOnMobile/>
+                <Logo hideOnMobile/>
             </a>
 
             <FlexContainer as='nav' justify='space-between' align='center' gap='1rem'>
@@ -45,6 +43,7 @@ export const NavBar = () => {
             </FlexContainer>
 
             <FlexContainer justify='space-between' align='center' gap='1rem'>
+                <Switch handler={toggle}/>
                 <NavLink href='#'><UserIcon/></NavLink>
                 <NavLink href='#'><CartWidget/></NavLink>
             </FlexContainer>

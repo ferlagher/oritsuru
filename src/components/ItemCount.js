@@ -21,6 +21,7 @@ const Input = styled.input`
     font-family: 'Ubuntu', sans-serif;
     font-weight: 700;
     font-size: 1.125rem;
+    color: currentColor;
     background-color: #00000020;
     width: 3rem;
     text-align: center;
@@ -35,17 +36,17 @@ const useItemCounter = (initialValue, maxValue) => {
     const [count, setCount] = useState(initialValue);
 
     const increase = e => {
-        setCount(previousValue => previousValue >= maxValue ? previousValue : previousValue + 1);
+        setCount(previousValue => Math.min(previousValue + 1, maxValue));
     };
 
     const decrease = () => {
-        setCount(previousValue => previousValue <= 0 ? 0 : previousValue - 1);
+        setCount(previousValue => Math.max(previousValue - 1, 0));
     };
 
     const handleChange = e => {
         const digits = e.target.value.replace(/\D+/g, '');
         const currentValue = Number(digits);
-        const newValue =  currentValue > maxValue ? maxValue : currentValue;
+        const newValue = Math.min(currentValue, maxValue);
 
         setCount(newValue);
     };

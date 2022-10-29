@@ -1,5 +1,6 @@
-export { Button } from './Button';
-export { FlexContainer } from './FlexContainer';
-export { Badge } from './Badge';
-export { Ribbon } from './Ribbon';
+export * from './Button';
+export * from './FlexContainer';
+export * from './Badge';
+export * from './Ribbon';
 export * from './Icons';
+export * from './Switch';
