@@ -1,5 +1,5 @@
 
-import nukuEot from './assets/fonts/nukunuku.EOT';
+import nukuEot from './assets/fonts/nukunuku.eot';
 import nukuWoff2 from './assets/fonts/nukunuku.woff2';
 import nukuWoff from './assets/fonts/nukunuku.woff';
 import nukuTtf from './assets/fonts/nukunuku.ttf';
