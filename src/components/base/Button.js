@@ -23,8 +23,8 @@ export const Button = styled.button`
 
     &:hover {
         color: var(--color-rice);
-        background-color: var(--color-${({color}) => color}${({border}) => border && '-light'});
-        border: 2px solid var(--color-${({color}) => color}${({border}) => border && '-light'});
+        background-color: var(--color-${({color}) => color}${({border}) => !border && '-light'});
+        border: 2px solid var(--color-${({color}) => color}${({border}) => !border && '-light'});
     }
 
     &:active {
