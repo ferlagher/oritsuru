@@ -8,7 +8,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 @font-face {
-    font-family: 'Nuku Nuku';
+    font-family: 'Nuku-Nuku';
     src: url(${nukuEot});
     src: url(${nukuEot} + '?#iefix') format('embedded-opentype'),
         url(${nukuWoff2}) format('woff2'),

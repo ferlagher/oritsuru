@@ -16,7 +16,7 @@ const Isotype = styled.svg.attrs({
 `;
 
 const Logotype = styled.span`
-    font-family: 'Nuku Nuku';
+    font-family: 'Nuku-Nuku';
     font-size: 1em;
     color: ${({theme}) => theme.base.salmon};
     ${({hideOnMobile}) => hideOnMobile && `
