@@ -30,7 +30,11 @@ const Input = styled.input`
     &:focus {
         outline: none;
     }
-`
+
+    &:disabled {
+        opacity: 0.6;
+    }
+`;
 
 const useItemCounter = (initialValue, maxValue) => {
     const [count, setCount] = useState(initialValue);
@@ -64,7 +68,7 @@ export const ItemCount = ({stock, color}) => {
                 <MinusIcon/>
             </CountBtn>
 
-            <Input type='text' onChange={handleChange} value={count} aria-label='Cantidad'/>
+            <Input type='text' onChange={handleChange} value={count} disabled={stock === 0} aria-label='Cantidad'/>
 
             <CountBtn border onClick={increase} color={color} disabled={count === stock} aria-label='Menos'>
                 <PlusIcon/>
