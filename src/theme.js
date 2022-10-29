@@ -29,7 +29,7 @@ const createTheme = (arr) => {
 
         theme[color] = `hsl(${h}, ${s}%, ${l}%)`;
         
-        if (color != 'text' && color != 'bg') {
+        if (color !== 'text' && color !== 'bg') {
             theme[color + '-dark'] = `hsl(${h}, ${add(s, 5)}%, ${subtract(l, 10)}%)`;
             theme[color + '-light'] = `hsl(${h}, ${subtract(s, 5)}%, ${add(l, 10)}%)`;
         };
