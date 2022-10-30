@@ -12,8 +12,8 @@ const CountBtn = styled(Button)`
     }
 
     svg {
-        width: 1rem;
-        height: 1rem;
+        width: 1em;
+        height: 1em;
     }
 `
 
@@ -36,20 +36,24 @@ const Input = styled.input`
     }
 `;
 
-export const ItemCount = ({stock, color}) => {
+export const ItemCount = ({stock, color,  onAdd}) => {
     const [count, increase, decrease, handleChange] = useItemCount(stock);
 
     return(
-        <FlexContainer align='stretch'>
-            <CountBtn border onClick={decrease} color={color} disabled={count === 0} aria-label='Más'>
-                <MinusIcon/>
-            </CountBtn>
+        <FlexContainer gap='var(--space-sm)'>
+            <FlexContainer align='stretch'>
+                <CountBtn border color={color} onClick={decrease} disabled={count === 0} aria-label='Más'>
+                    <MinusIcon/>
+                </CountBtn>
 
-            <Input type='text' onChange={handleChange} value={count} disabled={stock === 0} aria-label='Cantidad'/>
+                <Input type='text' onChange={handleChange} value={count} disabled={stock === 0} aria-label='Cantidad'/>
 
-            <CountBtn border onClick={increase} color={color} disabled={count === stock} aria-label='Menos'>
-                <PlusIcon/>
-            </CountBtn>
+                <CountBtn border color={color} onClick={increase} disabled={count === stock} aria-label='Menos'>
+                    <PlusIcon/>
+                </CountBtn>
+            </FlexContainer>
+
+            <Button color={color} onClick={() => onAdd(count)} disabled={count === 0}>Agregar al carrito</Button>
         </FlexContainer>
     );
 };
