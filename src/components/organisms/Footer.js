@@ -11,14 +11,20 @@ const FooterContainer = styled(FlexContainer).attrs({
     background-color: var(--color-nori);
 `;
 
+const FooterContent = styled(FlexContainer)`
+    max-width: var(--max-width);
+`;
+
 export const Footer = () => {
     return(
-        <FooterContainer >
-                <HeartIcon light/>
-                <GithubIcon light/>
-                <LinkedinIcon light/>
-                <CartIcon light/>
-                <UserIcon light/>
+        <FooterContainer>
+            <FooterContent  >
+                    <HeartIcon light/>
+                    <GithubIcon light/>
+                    <LinkedinIcon light/>
+                    <CartIcon light/>
+                    <UserIcon light/>
+            </FooterContent >
         </FooterContainer>
     )
 }

@@ -6,6 +6,7 @@ import { Logo } from "../molecules/Logo";
 
 const HeroContainer = styled(FlexContainer).attrs({
 })`
+    width: 100%;
     background: #666 url(${hero}) no-repeat fixed center center;
     background-size: cover;
     background-blend-mode: multiply;
@@ -19,7 +20,7 @@ const HeroContent = styled(FlexContainer).attrs({
     align-items: flex-start;
     gap: var(--space-lg);
     width: 100%;
-    max-width: 1200px;
+    max-width: var(--max-width);
     min-width: min(350px, 100%);
     color: var(--color-rice);
 

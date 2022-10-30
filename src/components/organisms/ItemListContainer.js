@@ -11,9 +11,16 @@ const TestDiv = styled.div`
     background-color: var(--color-nori);
 `;
 
+const Container = styled(FlexContainer)`
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    max-width: var(--max-width);
+`;
+
 export const ItemListContainer = ({greeting}) => {
     return(
-        <FlexContainer direction='column' padding='var(--space-sm)' gap='var(--space-sm)'>
+        <Container>
             <h2>{greeting}</h2>
             <FlexContainer wrap='wrap' gap='var(--space-sm)'> {/* Testing stuff */}
                 <ItemCount stock={15} color='salmon'/>
@@ -31,6 +38,6 @@ export const ItemListContainer = ({greeting}) => {
                 <CartIcon/>
                 <UserIcon/>
             </FlexContainer>
-        </FlexContainer>
+        </Container>
     );
 };

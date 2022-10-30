@@ -10,6 +10,7 @@ const Header = styled(FlexContainer).attrs({
     position: fixed;
     top: 0;
     width: 100%;
+    padding: var(--space-sm);
     ${({isHidden}) => isHidden && 'transform: translateY(-100%);'}
     ${({isOpaque}) => {
         const opaqueStyles = `background-color: var(--color-bg);
@@ -27,13 +28,12 @@ const Header = styled(FlexContainer).attrs({
     transition-timing-function: ease-in-out;
 `;
 
-const NavContainer = styled(FlexContainer)`
+const HeaderContent = styled(FlexContainer)`
     width: 100%;
-    max-width: 1200px;
+    max-width: var(--max-width);
     justify-content: space-between;
     flex-wrap: wrap;
     gap: var(--space-sm);
-    padding: var(--space-sm);
 `;
 
 const Nav = styled(FlexContainer).attrs({
@@ -79,7 +79,7 @@ export const NavBar = ({toggle}) => {
     
     return (
         <Header isOpaque={isOpaque} isHidden={isHidden}>
-            <NavContainer>
+            <HeaderContent>
                 <a href='/'>
                     <Logo hideOnMobile/>
                 </a>
@@ -95,7 +95,7 @@ export const NavBar = ({toggle}) => {
                     <NavLink href='#'><CartWidget/></NavLink>
                     <NavLink href='#'><UserIcon/></NavLink>
                 </FlexContainer>
-            </NavContainer>
+            </HeaderContent>
         </Header>
     );
 };
