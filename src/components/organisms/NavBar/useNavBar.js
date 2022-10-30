@@ -8,7 +8,7 @@ export const useNavBar = () => {
 
     useEffect(() => {
         window.addEventListener("scroll", throttle(() => {
-            setOpaque(window.scrollY > 100);
+            setOpaque(window.scrollY > 80);
             setHidden(window.scrollY > y.current);
 
             y.current = window.scrollY;
