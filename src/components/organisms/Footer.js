@@ -18,13 +18,13 @@ const FooterContent = styled(FlexContainer)`
 export const Footer = () => {
     return(
         <FooterContainer>
-            <FooterContent  >
+            <FooterContent>
                     <HeartIcon light/>
                     <GithubIcon light/>
                     <LinkedinIcon light/>
                     <CartIcon light/>
                     <UserIcon light/>
-            </FooterContent >
+            </FooterContent>
         </FooterContainer>
     )
 }
