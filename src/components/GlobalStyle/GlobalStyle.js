@@ -4,8 +4,12 @@ import { themes } from './themes';
 
 export const GlobalStyle = createGlobalStyle`
     :root {
-        ${({theme}) => themes[theme]}
         font-size: clamp(1rem, 3.5vw, 1.125rem);
+
+        --space-sm: clamp(8px, 2.5vw, 16px);
+        --space-lg: clamp(16px, 3vw, 32px);
+        
+        ${({theme}) => themes[theme]}
     }
 
     * {
@@ -18,6 +22,7 @@ export const GlobalStyle = createGlobalStyle`
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        align-items: center;
         min-height: 100vh;
         font-family: 'Ubuntu', sans-serif;
         color: var(--color-text);

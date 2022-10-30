@@ -28,11 +28,8 @@ const createTheme = (arr) => {
         const subtract = (n, m) => Math.max(n - m, 0);
 
         theme += `--color-${color}: hsl(${h}, ${s}%, ${l}%);`;
-        
-        if (color !== 'text' && color !== 'bg') {
-            theme += `--color-${color}-dark: hsl(${h}, ${add(s, 5)}%, ${subtract(l, 10)}%);`;
-            theme += `--color-${color}-light: hsl(${h}, ${subtract(s, 5)}%, ${add(l, 10)}%);`;
-        };
+        theme += `--color-${color}-dark: hsl(${h}, ${add(s, 5)}%, ${subtract(l, 10)}%);`;
+        theme += `--color-${color}-light: hsl(${h}, ${subtract(s, 5)}%, ${add(l, 10)}%);`;
     };
 
     return theme;

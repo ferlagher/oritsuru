@@ -9,6 +9,7 @@ const SwitchContainer = styled.label`
     border: 2px solid currentColor;
     border-radius: 10rem;
     padding: 2px;
+    margin: 0.25em;
     cursor: pointer;
 
     svg {

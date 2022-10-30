@@ -13,9 +13,9 @@ const TestDiv = styled.div`
 
 export const ItemListContainer = ({greeting}) => {
     return(
-        <FlexContainer direction='column' padding='1em' gap='1rem'>
+        <FlexContainer direction='column' padding='var(--space-sm)' gap='var(--space-sm)'>
             <h2>{greeting}</h2>
-            <FlexContainer wrap='wrap' gap='1rem'> {/* Testing stuff */}
+            <FlexContainer wrap='wrap' gap='var(--space-sm)'> {/* Testing stuff */}
                 <ItemCount stock={15} color='salmon'/>
                 <ItemCount stock={0} color='tuna'/>
                 <ItemCount stock={5} color='avocado'/>

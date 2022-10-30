@@ -20,7 +20,7 @@ const Logotype = styled.span`
     font-size: 1em;
     color: var(--color-salmon);
     ${({hideOnMobile}) => hideOnMobile && `
-        @media (max-width: 580px) {
+        @media (max-width: 600px) {
             display: none;
         }
     `}
