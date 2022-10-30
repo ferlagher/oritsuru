@@ -1,6 +1,6 @@
-import '../assets/fonts/fontFace.css'
+import '../../assets/fonts/fontFace.css'
 import { createGlobalStyle } from 'styled-components';
-import { themes } from '../themes';
+import { themes } from './themes';
 
 export const GlobalStyle = createGlobalStyle`
     :root {

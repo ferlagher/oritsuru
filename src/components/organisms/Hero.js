@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import hero from '../assets/hero.jpg' //Photo by Giovanna Gomes on Unsplash
-import { FlexContainer } from "./base";
-import { Button } from "./base";
-import { Logo } from "./Logo";
+import hero from '../../assets/hero.jpg' //Photo by Giovanna Gomes on Unsplash
+import { FlexContainer } from "../atoms";
+import { Button } from "../atoms";
+import { Logo } from "../molecules/Logo";
 
 const HeroContainer = styled(FlexContainer)`
     background: #666 url(${hero}) no-repeat fixed center center;

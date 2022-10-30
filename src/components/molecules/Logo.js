@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { FlexContainer } from './base';
+import { FlexContainer } from '../atoms';
 
 const LogoContainer = styled(FlexContainer)`
     font-size: ${({size}) => size}; /* Easy child sizing using em's */

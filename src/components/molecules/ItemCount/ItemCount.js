@@ -1,6 +1,6 @@
-import { useState } from "react";
 import styled from "styled-components";
-import { FlexContainer, Button, PlusIcon, MinusIcon } from "./base";
+import { FlexContainer, Button, PlusIcon, MinusIcon } from "../../atoms";
+import { useItemCount } from "./useItemCount";
 
 const CountBtn = styled(Button)`
     &:first-of-type {
@@ -36,31 +36,8 @@ const Input = styled.input`
     }
 `;
 
-const useItemCounter = (initialValue, maxValue) => {
-    const [count, setCount] = useState(initialValue);
-
-    const increase = e => {
-        setCount(previousValue => Math.min(previousValue + 1, maxValue));
-    };
-
-    const decrease = () => {
-        setCount(previousValue => Math.max(previousValue - 1, 0));
-    };
-
-    const handleChange = e => {
-        const digits = e.target.value.replace(/\D+/g, '');
-        const currentValue = Number(digits);
-        const newValue = Math.min(currentValue, maxValue);
-
-        setCount(newValue);
-    };
-
-    return [count, increase, decrease, handleChange];
-};
-
 export const ItemCount = ({stock, color}) => {
-    const initialCount = stock ? 1 : 0;
-    const [count, increase, decrease, handleChange] = useItemCounter(initialCount, stock);
+    const [count, increase, decrease, handleChange] = useItemCount(stock);
 
     return(
         <FlexContainer align='stretch'>

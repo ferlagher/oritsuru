@@ -1,4 +1,4 @@
-import { Badge, CartIcon } from "./base";
+import { Badge, CartIcon } from "../atoms";
 
 export const CartWidget = () => {
     return(

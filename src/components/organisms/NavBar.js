@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import { FlexContainer, UserIcon } from './base';
-import { CartWidget } from './CartWidget';
-import { ThemeSwitch } from './ThemeSwitch';
-import { Logo } from './Logo';
+import { FlexContainer, UserIcon } from '../atoms';
+import { CartWidget } from '../molecules/CartWidget';
+import { Logo } from '../molecules/Logo';
 
 const NavLink = styled.a`
     border-radius: 0.25em;
@@ -30,7 +29,7 @@ const NavLink = styled.a`
     }
 `;
 
-export const NavBar = ({toggle, check}) => {
+export const NavBar = ({toggle}) => {
     return (
         <FlexContainer as='header' justify='space-between' gap='1em' padding='1rem'>
             <a href="/">
@@ -44,7 +43,7 @@ export const NavBar = ({toggle, check}) => {
             </FlexContainer>
 
             <FlexContainer justify='space-between' align='center' gap='1rem'>
-                <ThemeSwitch handler={toggle} check={check}/>
+                {toggle}
                 <NavLink href='#'><UserIcon/></NavLink>
                 <NavLink href='#'><CartWidget/></NavLink>
             </FlexContainer>

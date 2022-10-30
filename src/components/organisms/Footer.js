@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import { FlexContainer } from "./base"
-import { CartIcon, GithubIcon, HeartIcon, LinkedinIcon, UserIcon } from './base';
+import { FlexContainer } from "../atoms"
+import { CartIcon, GithubIcon, HeartIcon, LinkedinIcon, UserIcon } from '../atoms';
 
 const Foot = styled(FlexContainer).attrs({as: 'footer'})`
     color: var(--color-rice);
