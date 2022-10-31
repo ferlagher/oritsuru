@@ -4,12 +4,13 @@ export const Button = styled.button`
     font-family: 'Ubuntu', sans-serif;
     font-weight: 700;
     font-size: 0.9rem;
+    line-height: 1em;
     color: var(--color-${({color, border}) => border ? color : 'rice'});
     background-color: var(--color-${({color, border}) => border ? 'transparent' : color});
     border: 2px solid var(--color-${({color}) => color});
     border-radius: 0.4em;
+    box-shadow: var(--shadow-sm);
     display: flex;
-    direction: row;
     justify-content: center;
     align-items: center;
     gap: 0.5em;

@@ -36,24 +36,33 @@ const Input = styled.input`
     }
 `;
 
+const Span = styled.span`
+    font-size: 0.7em;
+    margin-bottom: 0.5em;
+    opacity: 0.7;
+`
+
 export const ItemCount = ({stock, color,  onAdd}) => {
     const [count, increase, decrease, handleChange] = useItemCount(stock);
 
     return(
-        <FlexContainer gap='var(--space-sm)'>
-            <FlexContainer align='stretch'>
-                <CountBtn border color={color} onClick={decrease} disabled={count === 0} aria-label='Más'>
-                    <MinusIcon/>
-                </CountBtn>
+        <FlexContainer direction='column' align='stretch'>
+            <Span>Disponible: {stock}</Span>
+            <FlexContainer justify='space-between' gap='var(--space-sm)'>
+                <FlexContainer align='stretch'>
+                    <CountBtn border color={color} onClick={decrease} disabled={count === 0} aria-label='Más'>
+                        <MinusIcon/>
+                    </CountBtn>
 
-                <Input type='text' onChange={handleChange} value={count} disabled={stock === 0} aria-label='Cantidad'/>
+                    <Input type='text' onChange={handleChange} value={count} disabled={stock === 0} aria-label='Cantidad'/>
 
-                <CountBtn border color={color} onClick={increase} disabled={count === stock} aria-label='Menos'>
-                    <PlusIcon/>
-                </CountBtn>
+                    <CountBtn border color={color} onClick={increase} disabled={count === stock} aria-label='Menos'>
+                        <PlusIcon/>
+                    </CountBtn>
+                </FlexContainer>
+
+                <Button color={color} onClick={() => onAdd(count)} disabled={count === 0}>Agregar al carrito</Button>
             </FlexContainer>
-
-            <Button color={color} onClick={() => onAdd(count)} disabled={count === 0}>Agregar al carrito</Button>
         </FlexContainer>
     );
 };

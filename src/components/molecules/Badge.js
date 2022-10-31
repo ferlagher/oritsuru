@@ -1,10 +1,9 @@
 import styled from "styled-components";
+import { FlexContainer } from "../atoms";
 
-const BadgeContainer = styled.div`
+const BadgeContainer = styled(FlexContainer)`
     position: relative;
     display: inline-flex;
-    height: fit-content;
-    width: fit-content;
 `
 
 const BadgeNumber = styled.span`
@@ -15,12 +14,13 @@ const BadgeNumber = styled.span`
     font-weight: 700;
     font-size: 0.8rem;
     text-align: center;
-    min-width: 1.5em;
+    line-height: 1em;
+    min-width: 1.4em;
     color: var(--color-rice);
     background-color: var(--color-${({color}) => color});
     border-radius: 10em;
     border: 0.2em solid var(--color-${({color}) => color});
-    outline: 0.2em solid  var(--color-bg);
+    box-shadow: var(--shadow-sm);
 `
 
 export const Badge = ({num, color, children}) => {

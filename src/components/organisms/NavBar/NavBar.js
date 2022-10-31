@@ -13,12 +13,16 @@ const Header = styled(FlexContainer).attrs({
     padding: var(--space-sm);
     ${({isHidden}) => isHidden && 'transform: translateY(-100%);'}
     ${({isOpaque}) => {
-        const opaqueStyles = `background-color: var(--color-bg);
-                              border-bottom: 2px solid var(--color-bg-light);
-                              box-shadow: -0.2em 0.2em 0.5em #00000030;`
+        const opaqueStyles = `
+            background-color: var(--color-bg);
+            border-bottom: 2px solid var(--color-bg-light);
+            box-shadow: var(--shadow-lg);
+        `;
 
-        const translucentStyles = `color: var(--color-rice);
-                                   background-color: transparent;`
+        const translucentStyles = `
+            color: var(--color-rice);
+            background-color: transparent;
+        `;
 
         return isOpaque ? opaqueStyles : translucentStyles;
     }}
@@ -52,6 +56,7 @@ const Nav = styled(FlexContainer).attrs({
 const NavLink = styled.a`
     padding: 0.25em;
     position: relative;
+    line-height: 1em;
     
     &::before {
         content: '';

@@ -11,7 +11,7 @@ const HeroContainer = styled(FlexContainer).attrs({
     background-size: cover;
     background-blend-mode: multiply;
     box-shadow: inset 0 0 1rem #00000080;
-    padding: 7em var(--space-lg);
+    padding: 6em var(--space-lg);
 `;
 
 const HeroContent = styled(FlexContainer).attrs({

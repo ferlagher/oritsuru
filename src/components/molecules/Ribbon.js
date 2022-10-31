@@ -3,15 +3,12 @@ import styled from "styled-components";
 const RibbonContainer = styled.div`
     position: relative;
     display: inline-flex;
-    height: fit-content;
-    width: fit-content;
-`
+`;
 
 const RibbonContent = styled.span`
     position: absolute;
-    top: 0;
-    right: 0;
-    translate: 1em 1.5em;
+    top: 0.5em;
+    right: -1em;
     font-weight: 700;
     font-size: 0.8rem;
     text-align: center;
@@ -21,7 +18,7 @@ const RibbonContent = styled.span`
     background-color: var(--color-${({color}) => color});
     border: 0.2em solid var(--color-${({color}) => color});
     border-radius: 0.4em 0 0 0.4em;
-    box-shadow: -0.2em 0.2em #00000020;
+    box-shadow: var(--shadow-sm);
 
     &::before {
         content: '';
@@ -33,13 +30,13 @@ const RibbonContent = styled.span`
         transform-origin: bottom right;
         transform: rotate(-45deg);
     }
-`
+`;
 
-export const Ribbon = ({text, color, children}) => {
+export const Ribbon = ({text, color, children, as}) => {
     return(
-        <RibbonContainer>
+        <RibbonContainer as={as}>
             {children}
             {text && <RibbonContent color={color}>{text}</RibbonContent>}
         </RibbonContainer>
-    )
-}
+    );
+};

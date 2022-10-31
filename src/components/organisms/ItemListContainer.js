@@ -1,15 +1,11 @@
+import styled from 'styled-components';
 import { FlexContainer } from "../atoms";
 
 //Testing stuff
-import styled from 'styled-components';
-import { Badge, CartIcon, GithubIcon, HeartIcon, LinkedinIcon, Ribbon, UserIcon } from '../atoms';
-import { ItemCount } from '../molecules'
-
-const TestDiv = styled.div`
-    height: 5rem;
-    width: 5rem;
-    background-color: var(--color-nori);
-`;
+import { Item, ItemDetail } from "../molecules";
+import { ItemList } from "./ItemList";
+import { testItems } from "../molecules/Item/testItems";
+import { useRef } from "react";
 
 const Container = styled(FlexContainer)`
     flex-direction: column;
@@ -19,24 +15,20 @@ const Container = styled(FlexContainer)`
 `;
 
 export const ItemListContainer = ({greeting}) => {
+    const favs = useRef(JSON.parse(localStorage.getItem('favs')) ?? []);
+
+    const itemList = testItems.map(item => <Item item={item} key={item.id} favs={favs}/>)
+    const itemDetailList = testItems.map(item => <ItemDetail item={item} key={item.id} favs={favs}/>)
+
     return(
         <Container>
             <h2>{greeting}</h2>
-            <FlexContainer wrap='wrap' gap='var(--space-sm)'> {/* Testing stuff */}
-                <ItemCount stock={15} color='salmon'/>
-                <ItemCount stock={0} color='tuna'/>
-                <ItemCount stock={5} color='avocado'/>
-                <Ribbon color='salmon' text='textolaaaaaaaaargo'><TestDiv/></Ribbon>
-                <Ribbon color='tuna' text='🍣'><TestDiv/></Ribbon>
-                <Ribbon color='avocado' text='Salto de línea'><TestDiv/></Ribbon>
-                <Badge color='salmon' num={8}><TestDiv/></Badge>
-                <Badge color='tuna' num={999}><TestDiv/></Badge>
-                <Badge color='avocado' num={1}><TestDiv/></Badge>
-                <HeartIcon/>
-                <GithubIcon/>
-                <LinkedinIcon/>
-                <CartIcon/>
-                <UserIcon/>
+            <ItemList>
+                {itemList}
+                {itemList}
+            </ItemList>
+            <FlexContainer wrap='wrap' gap='var(--space-sm)'>
+                {itemDetailList}
             </FlexContainer>
         </Container>
     );
