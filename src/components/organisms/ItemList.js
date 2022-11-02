@@ -7,5 +7,4 @@ export const ItemList = styled(FlexContainer).attrs({
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
-    gap: var(--space-sm);
 `;

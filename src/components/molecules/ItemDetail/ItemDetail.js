@@ -3,6 +3,7 @@ import { FlexContainer } from "../../atoms";
 import { FavButton } from "../FavButton/FavButton";
 import { ItemCount } from "../ItemCount/ItemCount";
 import { Ribbon } from '../Ribbon';
+import bg from '../../../assets/pattern.svg'
 
 const ItemContainer = styled(FlexContainer)`
     flex-direction: column;
@@ -28,6 +29,10 @@ padding: var(--space-sm);
 border-radius: 0.5em 0.5em 0 0;
 overflow: hidden;
 background-color: var(--color-bg-light);
+background-image: url(${bg});
+background-size: 5rem auto;
+background-position: right;
+background-repeat: repeat-y;
 `;
 
 const ItemPrice = styled.b`
@@ -40,7 +45,7 @@ export const ItemDetail = ({item, favs}) => {
     return(
         <Ribbon text={item.isVeggie && 'Veggie'} color='avocado'>
             <ItemContainer>
-                <ItemImg src={item.image}/>
+                <ItemImg src={item.image} alt={item.title}/>
 
                 <DetailsContainer>
                     <FlexContainer justify='space-between'>

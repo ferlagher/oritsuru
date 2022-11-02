@@ -20,7 +20,6 @@ const Header = styled(FlexContainer).attrs({
         `;
 
         const translucentStyles = `
-            color: var(--color-rice);
             background-color: transparent;
         `;
 

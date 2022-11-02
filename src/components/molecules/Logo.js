@@ -19,6 +19,9 @@ const Logotype = styled.span`
     font-family: 'Nuku-Nuku', sans-serif;
     font-size: 1em;
     color: var(--color-salmon);
+    background: linear-gradient(90deg, #ed8840, #eb8141, #e87b42, #e67543, #e36f44, #e16a45, #de6547, #dc6048, #d95b49, #d6574a, #d4534c, #d14f4d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     ${({hideOnMobile}) => hideOnMobile && `
         @media (max-width: 600px) {
             display: none;

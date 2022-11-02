@@ -1,28 +1,26 @@
 import styled from "styled-components";
-import hero from '../../assets/hero.jpg' //Photo by Giovanna Gomes on Unsplash
-import { FlexContainer } from "../atoms";
-import { Button } from "../atoms";
-import { Logo } from "../molecules/Logo";
+import { Button, FlexContainer } from "../../atoms";
+import { Logo } from "../../molecules";
+import { Parallax } from "./Parallax";
 
 const HeroContainer = styled(FlexContainer).attrs({
 })`
+    justify-content: space-between;
+    flex-wrap: wrap-reverse;
     width: 100%;
-    background: #666 url(${hero}) no-repeat fixed center center;
-    background-size: cover;
-    background-blend-mode: multiply;
-    box-shadow: inset 0 0 1rem #00000080;
-    padding: 6em var(--space-lg);
-`;
+    max-width: var(--max-width);
+    padding-top: 4em;
+    `;
 
 const HeroContent = styled(FlexContainer).attrs({
 })`
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-lg);
-    width: 100%;
-    max-width: var(--max-width);
+    width: 50%;
     min-width: min(350px, 100%);
-    color: var(--color-rice);
+    padding: var(--space-lg);
+    flex: auto;
 
     p {
         max-width: 500px;
@@ -34,13 +32,14 @@ export const Hero = () => {
         <HeroContainer>
             <HeroContent>
                 <Logo size='2.2rem' full/>
-                <h1>Título placeholder facherito 😎</h1>
+                <h1>Título facherito 😎</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eleifend tristique quam, luctus condimentum nunc pulvinar eget. Suspendisse cursus ultricies hendrerit.</p>
                 <FlexContainer gap='var(--space-sm)'>
                 <Button color='salmon'>Menú Completo</Button>
                 <Button color='avocado'>Menú Veggie</Button>
                 </FlexContainer>
             </HeroContent>
+            <Parallax/>
         </HeroContainer>
     );
 };
