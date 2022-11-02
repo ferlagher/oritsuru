@@ -6,14 +6,14 @@ export const useNavBar = () => {
     const [isHidden, setHidden] = useState(false);
     const y = useRef(window.scrollY);
 
-    const handleScroll = throttle(() => {
-        setOpaque(window.scrollY > 150);
-        setHidden(window.scrollY > y.current);
-
-        y.current = window.scrollY;
-    }, 250);
-
     useEffect(() => {
+        const handleScroll = throttle(() => {
+            setOpaque(window.scrollY > 150);
+            setHidden(window.scrollY > y.current);
+    
+            y.current = window.scrollY;
+        }, 250);
+    
         window.addEventListener('scroll', handleScroll);
 
         return () => window.removeEventListener('scroll', handleScroll);
