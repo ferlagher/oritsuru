@@ -5,27 +5,18 @@ import { CartWidget } from '../../molecules/CartWidget';
 import { Logo } from '../../molecules/Logo';
 import { useNavBar } from './useNavBar';
 
-const Header = styled(FlexContainer).attrs({
+const Header = styled(FlexContainer).attrs(({isHidden, isOpaque}) =>({
     as: 'header',
-})`
+
+    style: {
+        backgroundColor: isOpaque ? 'var(--color-bg-light)' : 'transparent',
+        transform: `translateY(${isHidden ? '-100%' : '0%'})`,
+    }
+}))`
     position: fixed;
     top: 0;
     width: 100%;
     padding: var(--space-sm);
-    ${({isHidden}) => isHidden && 'transform: translateY(-100%);'}
-    ${({isOpaque}) => {
-        const opaqueStyles = `
-            background-color: var(--color-bg);
-            border-bottom: 2px solid var(--color-bg-light);
-            box-shadow: var(--shadow-lg);
-        `;
-
-        const translucentStyles = `
-            background-color: transparent;
-        `;
-
-        return isOpaque ? opaqueStyles : translucentStyles;
-    }}
     z-index: 99;
     transition: background-color, transform;
     transition-duration: 0.2s, 0.5s;
@@ -98,9 +89,9 @@ export const NavBar = ({toggle}) => {
                 </Link>
 
                 <Nav>
-                    <StyledNavLink activeClassName='active' to='/itemlist'>Menú</StyledNavLink>
-                    <StyledNavLink activeClassName='active' to='/'>Sobre</StyledNavLink>
-                    <StyledNavLink activeClassName='active' to='/'>Contacto</StyledNavLink>
+                    <StyledNavLink activeclassname='active' to='/itemlist'>Menú</StyledNavLink>
+                    <StyledNavLink activeclassname='active' to='/'>Sobre</StyledNavLink>
+                    <StyledNavLink activeclassname='active' to='/'>Contacto</StyledNavLink>
                 </Nav>
 
                 <FlexContainer justify='space-between' align='center' gap='var(--space-sm)'>

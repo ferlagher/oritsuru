@@ -11,8 +11,8 @@ export const useParallax = () => {
             const newX = (((e.clientX / window.innerWidth) - 0.5) * 100);
             const newY = (((e.clientY / window.innerHeight) - 0.5) * 100);
 
-            setX(newX);
-            setY(newY);
+            newX && setX(newX);
+            newX && setY(newY);
         }, 50);
 
         window.addEventListener('mousemove', handleParallax);

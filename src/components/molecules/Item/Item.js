@@ -1,36 +1,37 @@
 import styled from "styled-components";
 import { FlexContainer } from "../../atoms";
-import { FavButton } from "../FavButton/FavButton";
+import { FavToggle } from "../FavToggle/FavToggle";
 import { Ribbon } from '../Ribbon';
 
-const ItemContainer = styled(FlexContainer)`
+const ItemContainer = styled(FlexContainer).attrs({
+    as: 'li',
+})`
+    align-items: stretch;
+    width: min(20rem, 100%);
     height: 5em;
-    width: 100%;
-    background-color: var(--color-bg);
-    border-top: 1px solid var(--color-bg-light);
-    border-bottom: 1px solid var(--color-bg-dark);
-    `;
+`;
 
 const ItemImg = styled.img`
     height: 100%;
     width: auto;
+    border-radius: 0.4em;
 `;
 
 export const Item = ({item, favs}) => {
     return(
-        <Ribbon as='li' text={item.isVeggie && 'Veggie'} color='avocado'>
-            <ItemContainer>
+        <ItemContainer>
+            <Ribbon text={item.isVeggie && 'Veggie'} color='avocado'>
                 <ItemImg src={item.image} alt={item.title}/>
+            </Ribbon>
 
-                <FlexContainer justify='space-between' flex='auto' gap='var(--space-sm)' padding='var(--space-sm)'>
-                    <FlexContainer direction='column' align='flex-start'>
-                        <h3>{item.title}</h3>
-                        <b>${item.price}</b>
+                <FlexContainer justify='space-between' align='stretch' flex='auto' gap='var(--space-sm)' padding='var(--space-sm)'>
+                    <FlexContainer direction='column' justify='space-between' align='flex-start'>
+                        <h4>{item.title}</h4>
+                        <p>${item.price}</p>
                     </FlexContainer>
 
-                    <FavButton id={item.id} favs={favs}/>
+                    <FavToggle id={item.id} favs={favs}/>
                 </FlexContainer>
-            </ItemContainer>
-        </Ribbon>
+        </ItemContainer>
     );
 };

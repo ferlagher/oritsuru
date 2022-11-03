@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { FlexContainer } from "../../atoms";
-import { FavButton } from "../FavButton/FavButton";
+import { FavToggle } from "../FavToggle/FavToggle";
 import { ItemCount } from "../ItemCount/ItemCount";
 import { Ribbon } from '../Ribbon';
 import bg from '../../../assets/pattern.svg'
@@ -50,7 +50,7 @@ export const ItemDetail = ({item, favs}) => {
                 <DetailsContainer>
                     <FlexContainer justify='space-between'>
                         <h3>{item.title}</h3>
-                        <FavButton id={item.id} favs={favs}/>
+                        <FavToggle id={item.id} favs={favs}/>
                     </FlexContainer>
                     <p>{item.description}</p>
                     <ItemPrice>${item.price}</ItemPrice>

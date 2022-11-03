@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export const useFavButton = (id, favs) => {
+export const useFavToggle = (id, favs) => {
     const isInStorage = favs.current.includes(id);
     const [isFav, setFav] = useState(isInStorage);
 

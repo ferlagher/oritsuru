@@ -30,7 +30,9 @@ const SwitchContainer = styled.label`
     }
 `;
 
-const Checkbox = styled.input.attrs({type: 'checkbox'})`
+const Checkbox = styled.input.attrs({
+    type: 'checkbox'
+})`
     position: absolute;
     width: 0;
     opacity: 0;

@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GlobalStyle, ThemeSwitch, useThemeSwitch } from './components/GlobalStyle';
-import { NavBar, Footer } from './components/organisms';
+import { NavBar } from './components/organisms';
 import { Home, Menu } from './pages';
 
 
@@ -19,7 +19,6 @@ function App() {
                     <Route exact path='/itemlist' element={<Menu/>}/>
                 </Routes>
             </main>
-            <Footer/>
         </Router>
     );
 };

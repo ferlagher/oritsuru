@@ -8,9 +8,11 @@ const HeroContainer = styled(FlexContainer).attrs({
 })`
     justify-content: space-between;
     flex-wrap: wrap-reverse;
+    height: 100vh;
     width: 100%;
     max-width: var(--max-width);
     flex: auto;
+    margin-top: -5em;
     `;
 
 const HeroContent = styled(FlexContainer).attrs({
