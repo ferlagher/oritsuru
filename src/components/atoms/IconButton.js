@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const IconButton = styled.button`
     font-size: 1em;
     line-height: 1em;
+    color: currentColor;
     background-color: transparent;
     border: none;
     display: flex;

@@ -14,33 +14,39 @@ const ParalaxContainer = styled.div`
     flex: auto;
     `;
 
-const Layer = styled.img.attrs(({speed, y}) => ({
+const Layer = styled.img.attrs(({x, y, speed}) => ({
     style: {
-        transform: `translateY(${(-y * speed)}px)`,
+        transform: `translate(${-x * speed}%, ${-y * speed}%)`,
     },
 }))`
     position: absolute;
     object-fit: cover;
-    filter: ${({blur, saturation}) => `blur(${blur}px) saturate(${saturation})`};
+    height: auto;
+    width: 100%;
+
+    &:nth-of-type(-n+3) {
+        filter: blur(2px) saturate(0.8);
+    }
+
+    &:nth-of-type(4) {
+        filter: blur(1px) saturate(0.9);
+    }
 
     &:last-of-type {
         position: initial;
     }
-
-    height: auto;
-    width: 100%;
 `;
 
 export const Parallax = () => {
-    const y = useParallax();
+    const [x, y] = useParallax();
 
     return(
         <ParalaxContainer>
-            <Layer y={y} blur={2} saturation={0.6} speed={0.1} src={hero5}/>
-            <Layer y={y} blur={2} saturation={0.7} speed={0.13} src={hero4}/>
-            <Layer y={y} blur={2} saturation={0.8} speed={0.15} src={hero3}/>
-            <Layer y={y} blur={1} saturation={0.9} speed={0.20} src={hero2}/>
-            <Layer y={y} blur={0} saturation={1} speed={0.27} src={hero1}/>
+            <Layer x={x} y={y} speed={0.05} src={hero5}/>
+            <Layer x={x} y={y} speed={0.07} src={hero4}/>
+            <Layer x={x} y={y} speed={0.11} src={hero3}/>
+            <Layer x={x} y={y} speed={0.14} src={hero2}/>
+            <Layer x={x} y={y} speed={0.17} src={hero1}/>
         </ParalaxContainer>
     )
 }

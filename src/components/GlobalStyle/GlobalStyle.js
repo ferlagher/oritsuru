@@ -37,6 +37,7 @@ export const GlobalStyle = createGlobalStyle`
         flex-direction: column;
         justify-content: space-between;
         align-items: stretch;
+        overflow: hidden;
         min-height: 100vh;
         font-family: 'Ubuntu', sans-serif;
         color: var(--color-text);

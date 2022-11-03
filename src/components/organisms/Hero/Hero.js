@@ -10,6 +10,7 @@ const HeroContainer = styled(FlexContainer).attrs({
     flex-wrap: wrap-reverse;
     width: 100%;
     max-width: var(--max-width);
+    flex: auto;
     `;
 
 const HeroContent = styled(FlexContainer).attrs({
@@ -21,6 +22,7 @@ const HeroContent = styled(FlexContainer).attrs({
     min-width: min(350px, 100%);
     padding: var(--space-lg);
     flex: auto;
+    z-index: 2;
 
     p {
         max-width: 500px;
