@@ -42,11 +42,11 @@ export const Parallax = () => {
 
     return(
         <ParalaxContainer>
-            <Layer x={x} y={y} speed={0.05} src={hero5}/>
-            <Layer x={x} y={y} speed={0.07} src={hero4}/>
-            <Layer x={x} y={y} speed={0.11} src={hero3}/>
-            <Layer x={x} y={y} speed={0.14} src={hero2}/>
-            <Layer x={x} y={y} speed={0.17} src={hero1}/>
+            <Layer x={x} y={y} speed={0.02} src={hero5}/>
+            <Layer x={x} y={y} speed={0.03} src={hero4}/>
+            <Layer x={x} y={y} speed={0.04} src={hero3}/>
+            <Layer x={x} y={y} speed={0.06} src={hero2}/>
+            <Layer x={x} y={y} speed={0.08} src={hero1}/>
         </ParalaxContainer>
     )
 }
