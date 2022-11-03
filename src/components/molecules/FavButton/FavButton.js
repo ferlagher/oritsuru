@@ -1,12 +1,9 @@
 import styled from "styled-components";
-import { Button, HeartIcon } from "../../atoms";
+import { IconButton, HeartIcon } from "../../atoms";
 import { useFavButton } from "./useFavButton";
 
-const Btn = styled(Button)`
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-    margin: -0.75em;
+const Btn = styled(IconButton)`
+    font-size: 1rem;
 
     svg {
         fill: ${({isFav}) => isFav ? 'var(--color-tuna)' : 'transparent'};

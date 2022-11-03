@@ -1,5 +1,6 @@
+import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { FlexContainer, UserIcon } from '../../atoms';
+import { FlexContainer, IconButton, UserIcon } from '../../atoms';
 import { CartWidget } from '../../molecules/CartWidget';
 import { Logo } from '../../molecules/Logo';
 import { useNavBar } from './useNavBar';
@@ -52,7 +53,10 @@ const Nav = styled(FlexContainer).attrs({
     }
 `;
 
-const NavLink = styled.a`
+const StyledNavLink = styled(NavLink)`
+    color: transparent;
+    background: linear-gradient(90deg, #ed8840, #eb8141, #e87b42, #e67543, #e36f44, #e16a45, #de6547, #dc6048, #d95b49, #d6574a, #d4534c, #d14f4d);
+    -webkit-background-clip: text;
     padding: 0.25em;
     position: relative;
     line-height: 1em;
@@ -76,6 +80,11 @@ const NavLink = styled.a`
         opacity: 0.2;
         scale: 1;
     }
+
+    &.active {
+        color: currentColor;
+        opacity: 0.7;
+    }
 `;
 
 export const NavBar = ({toggle}) => {
@@ -84,20 +93,20 @@ export const NavBar = ({toggle}) => {
     return (
         <Header isOpaque={isOpaque} isHidden={isHidden}>
             <HeaderContent>
-                <a href='/'>
+                <Link to='/'>
                     <Logo hideOnMobile/>
-                </a>
+                </Link>
 
                 <Nav>
-                    <NavLink href='#'>Menú</NavLink>
-                    <NavLink href='#'>Sobre</NavLink>
-                    <NavLink href='#'>Contacto</NavLink>
+                    <StyledNavLink activeClassName='active' to='/itemlist'>Menú</StyledNavLink>
+                    <StyledNavLink activeClassName='active' to='/'>Sobre</StyledNavLink>
+                    <StyledNavLink activeClassName='active' to='/'>Contacto</StyledNavLink>
                 </Nav>
 
                 <FlexContainer justify='space-between' align='center' gap='var(--space-sm)'>
                     {toggle}
-                    <NavLink href='#'><CartWidget/></NavLink>
-                    <NavLink href='#'><UserIcon/></NavLink>
+                    <IconButton href='#'><CartWidget/></IconButton>
+                    <IconButton href='#'><UserIcon/></IconButton>
                 </FlexContainer>
             </HeaderContent>
         </Header>

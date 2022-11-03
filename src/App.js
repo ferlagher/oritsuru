@@ -1,21 +1,26 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GlobalStyle, ThemeSwitch, useThemeSwitch } from './components/GlobalStyle';
-import { Hero, ItemListContainer, NavBar, Footer } from './components/organisms';
+import { NavBar, Footer } from './components/organisms';
+import { Home, Menu } from './pages';
+
 
 function App() {
     const [theme, check, toggleTheme] = useThemeSwitch()
 
     return (
-        <>
+        <Router>
             <GlobalStyle theme={theme}/>
             <NavBar toggle={
                 <ThemeSwitch handler={toggleTheme} check={check}/>
             }/>
             <main>
-                <Hero/>
-                <ItemListContainer greeting='Probando, probando, 1, 2, 3... 🎤'/>
+                <Routes>
+                    <Route index element={<Home/>}/>
+                    <Route exact path='/itemlist' element={<Menu/>}/>
+                </Routes>
             </main>
             <Footer/>
-        </>
+        </Router>
     );
 };
 

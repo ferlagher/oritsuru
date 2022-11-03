@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import { Button, FlexContainer } from "../../atoms";
 import { Logo } from "../../molecules";
@@ -9,7 +10,6 @@ const HeroContainer = styled(FlexContainer).attrs({
     flex-wrap: wrap-reverse;
     width: 100%;
     max-width: var(--max-width);
-    padding-top: 4em;
     `;
 
 const HeroContent = styled(FlexContainer).attrs({
@@ -35,8 +35,8 @@ export const Hero = () => {
                 <h1>Título facherito 😎</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eleifend tristique quam, luctus condimentum nunc pulvinar eget. Suspendisse cursus ultricies hendrerit.</p>
                 <FlexContainer gap='var(--space-sm)'>
-                <Button color='salmon'>Menú Completo</Button>
-                <Button color='avocado'>Menú Veggie</Button>
+                <Button as={Link} to='/itemlist' color='salmon'>Menú Completo</Button>
+                <Button as={Link} to='/itemlist' color='avocado'>Menú Veggie</Button>
                 </FlexContainer>
             </HeroContent>
             <Parallax/>
