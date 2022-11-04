@@ -1,8 +1,10 @@
-import { ItemListContainer, Footer } from "../components/organisms";
+import { ItemListContainer, Footer } from "../layout";
 
 export const Menu = () => {
     return(<>
-        <ItemListContainer greeting='Probando, probando, 1, 2, 3... 🎤'/>
+        <main>
+            <ItemListContainer/>
+        </main>
         <Footer/>
     </>)
 };

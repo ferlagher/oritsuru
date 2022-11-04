@@ -1,7 +1,9 @@
-import { Hero } from "../components/organisms";
+import { Hero } from "../layout";
 
 export const Home = () => {
-    return(<>
-        <Hero/>
-    </>)
+    return(
+        <>
+            <Hero/>
+        </>
+    )
 };
