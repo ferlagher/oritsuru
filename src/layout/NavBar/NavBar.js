@@ -87,9 +87,9 @@ export const NavBar = ({toggle}) => {
                 </Link>
 
                 <Nav>
-                    <StyledNavLink activeclassname='active' to='/itemlist'>Menú</StyledNavLink>
-                    <StyledNavLink activeclassname='active' to='/'>Sobre</StyledNavLink>
-                    <StyledNavLink activeclassname='active' to='/'>Contacto</StyledNavLink>
+                    <StyledNavLink activeclassname='active' to='/menu'>Menú</StyledNavLink>
+                    <StyledNavLink activeclassname='active' to='/about'>Sobre</StyledNavLink>
+                    <StyledNavLink activeclassname='active' to='/contact'>Contacto</StyledNavLink>
                 </Nav>
 
                 <FlexContainer justify='space-between' align='center' gap='var(--space-sm)'>

@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-const ListContainer = styled.div`
+const ListContainer = styled.aside`
     width: 20%;
+    align-self: stretch;
     background-color: var(--color-bg-dark);
     padding: var(--space-lg);
 `;

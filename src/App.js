@@ -2,8 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GlobalStyle } from './GlobalStyle/GlobalStyle';
 import { ThemeSwitch, useThemeSwitch } from './components';
 import { NavBar } from './layout';
-import { Home, Menu } from './pages';
-
+import { Home, Menu, Placeholder } from './pages';
 
 function App() {
     const [theme, check, toggleTheme] = useThemeSwitch()
@@ -16,7 +15,9 @@ function App() {
             }/>
             <Routes>
                 <Route index element={<Home/>}/>
-                <Route exact path='/itemlist' element={<Menu/>}/>
+                <Route exact path='/menu' element={<Menu/>}/>
+                <Route exact path='/about' element={<Placeholder/>}/>
+                <Route exact path='/contact' element={<Placeholder/>}/>
             </Routes>
         </Router>
     );
