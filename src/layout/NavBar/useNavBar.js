@@ -9,9 +9,7 @@ export const useNavBar = () => {
     useEffect(() => {
         const handleScroll = throttle(() => {
             setOpaque(window.scrollY > 80);
-            console.log("🚀 ~ file: useNavBar.js ~ line 12 ~ handleScroll ~ window.scrollY > 80", window.scrollY > 80)
             setHidden(window.scrollY > y.current);
-            console.log("🚀 ~ file: useNavBar.js ~ line 13 ~ handleScroll ~ window.scrollY", window.scrollY)
             
             y.current = window.scrollY;
         }, 250);

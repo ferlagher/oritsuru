@@ -1,10 +1,21 @@
 import styled from "styled-components";
 import { FlexContainer } from "../../components";
 
-const ListContainer = styled(FlexContainer).attrs({
+const ListTitle = styled.h3`
+    text-align: center;
+    text-transform: uppercase;
+    background: radial-gradient(circle at 50% 50%, var(--color-bg-dark), transparent);
+    width: 100%;
+    padding: 0.5em;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+`;
+
+const List = styled(FlexContainer).attrs({
     as: 'ul',
 })`
-    flex: auto;
+    width: 100%;
     justify-content: flex-start;
     flex-wrap: wrap;
     gap: var(--space-sm);
@@ -12,9 +23,11 @@ const ListContainer = styled(FlexContainer).attrs({
 
 export const ItemList = ({title, children}) => {
     return(
-        <ListContainer>
-            <h3>{title}</h3>
-            {children}
-        </ListContainer>
+        <FlexContainer direction='column' padding='0 var(--space-lg)' gap='var(--space-sm)' flex='auto'>
+            <ListTitle>{title}</ListTitle>
+            <List>
+                {children}
+            </List>
+        </FlexContainer>
     );
 };

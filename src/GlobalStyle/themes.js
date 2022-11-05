@@ -17,7 +17,7 @@ const darkColors = {
     nori: [79, 15, 10],
     rice: [59, 16, 92],
     text: [59, 16, 92],
-    bg: [0, 0, 15],
+    bg: [0, 0, 17],
 };
 
 const createTheme = (arr) => {

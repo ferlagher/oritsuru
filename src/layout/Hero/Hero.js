@@ -6,10 +6,7 @@ import { Parallax } from "./Parallax";
 const HeroContainer = styled(FlexContainer)`
     justify-content: space-between;
     flex-wrap: wrap-reverse;
-    height: 100%;
-    width: 100%;
     max-width: var(--max-width);
-    flex: auto;
     overflow: hidden;
     padding-top: 5rem; // Makes extra space under the navbar
     margin-top: -5rem; // for the parallax effect

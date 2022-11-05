@@ -7,7 +7,7 @@ const Header = styled(FlexContainer).attrs(({isHidden, isOpaque}) =>({
     as: 'header',
 
     style: {
-        'background-color': isOpaque ? 'var(--color-bg-light)' : 'transparent',
+        backgroundColor: isOpaque ? 'var(--color-bg-light)' : 'transparent',
         transform: `translateY(${isHidden ? '-100%' : '0%'})`,
     }
 }))`

@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FlexContainer } from '../../components';
 import { ItemList } from "./ItemList";
@@ -9,22 +8,14 @@ import { testItems } from "../../components/Item/testItems";
 import { useRef } from "react";
 
 const Container = styled(FlexContainer)`
-    height: 100%;
     width: 100%;
-    justify-content: space-between;
+    height: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-lg);
 `;
 
-const CategoriesList = styled(FlexContainer).attrs({
-    as: 'ul',
-})`
-    flex-direction: column;
-    align-items: flex-start;
-    height: 100%;
-    width: 20%;
-    background-color: var(--color-bg-dark);
-    list-style: none;
-    padding: var(--space-sm);
-`;
+
 
 export const ItemListContainer = () => {
     const favs = useRef(JSON.parse(localStorage.getItem('favs')) ?? []);
@@ -33,12 +24,20 @@ export const ItemListContainer = () => {
 
     return(
         <Container>
-            <CategoriesList>
-                <li><Link to='#'>aa</Link></li>
-                <li><Link to='#'>aa</Link></li>
-                <li><Link to='#'>aa</Link></li>
-            </CategoriesList>
-            <ItemList>
+            <ItemList title='nigiris'>
+                {itemList}
+                {itemList}
+            </ItemList>
+            <ItemList title='nigiris'>
+                {itemList}
+                {itemList}
+            </ItemList>
+            <ItemList title='nigiris'>
+                {itemList}
+                {itemList}
+            </ItemList>
+            <ItemList title='nigiris'>
+                {itemList}
                 {itemList}
             </ItemList>
         </Container>

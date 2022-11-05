@@ -41,21 +41,22 @@ export const GlobalStyle = createGlobalStyle`
     #root {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
         width: 100%;
         min-height: 100vh;
         background: var(--color-bg) url(${bg}) no-repeat fixed;
         background-size: cover;
+        scroll-behavior: smooth;
         transition-property: color, fill, background-color;
         transition-duration: 0.2s;
     }
     
     main {
+        flex: auto;
         height: 100%;
         width: 100%;
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        justify-content: center;
     }
 
     a {
