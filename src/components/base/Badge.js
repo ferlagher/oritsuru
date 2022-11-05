@@ -2,10 +2,9 @@ import styled from "styled-components";
 
 const BadgeContainer = styled.div`
     position: relative;
-    display: inline-flex;
-`
+    `;
 
-const BadgeNumber = styled.span`
+const BadgeNumber = styled.div`
     position: absolute;
     top: 0;
     right: 0;
@@ -28,5 +27,5 @@ export const Badge = ({num, color, children}) => {
             {children}
             {num > 0 && <BadgeNumber color={color}>{num > 99 ? '99+' : num}</BadgeNumber>}
         </BadgeContainer>
-    )
-}
+    );
+};

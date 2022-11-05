@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const RibbonContainer = styled.div`
     position: relative;
-    display: inline-flex;
 `;
 
 const RibbonContent = styled.span`
@@ -19,7 +18,7 @@ const RibbonContent = styled.span`
     border: 0.2em solid var(--color-${({color}) => color});
     border-radius: 0.4em 0 0 0.4em;
     box-shadow: var(--shadow-sm);
-
+    
     &::before {
         content: '';
         position: absolute;
