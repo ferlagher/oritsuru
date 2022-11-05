@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { FlexContainer } from "../../components";
+import { Item } from "../../components";
 
 const ListTitle = styled.h3`
     text-align: center;
@@ -21,12 +22,14 @@ const List = styled(FlexContainer).attrs({
     gap: var(--space-sm);
 `;
 
-export const ItemList = ({title, children}) => {
+export const ItemList = ({id, itemList, favs}) => {
+    const listElements = itemList.map(item => <Item item={item} key={item.id} favs={favs}/>)
+
     return(
-        <FlexContainer direction='column' padding='0 var(--space-lg)' gap='var(--space-sm)' flex='auto'>
-            <ListTitle>{title}</ListTitle>
+        <FlexContainer id={id} direction='column' padding='0 var(--space-lg)' gap='var(--space-sm)' flex='auto'>
+            <ListTitle>{id}</ListTitle>
             <List>
-                {children}
+                {listElements}
             </List>
         </FlexContainer>
     );

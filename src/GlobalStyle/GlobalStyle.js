@@ -8,6 +8,8 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Ubuntu', sans-serif;
         font-size: clamp(1rem, 3.5vw, 1.125rem);
         color: var(--color-text);
+        scroll-behavior: smooth;
+        scroll-padding-top: 4rem;
 
         ${({theme}) => themes[theme]}
 
@@ -46,7 +48,6 @@ export const GlobalStyle = createGlobalStyle`
         min-height: 100vh;
         background: var(--color-bg) url(${bg}) no-repeat fixed;
         background-size: cover;
-        scroll-behavior: smooth;
         transition-property: color, fill, background-color;
         transition-duration: 0.2s;
     }

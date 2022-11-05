@@ -22,7 +22,7 @@ const List = styled.ul`
 `;
 
 export const CategoriesList = ({categories}) => {
-    const listItems = categories.map(category => <li><a to={'#' + category}>{category}</a></li>)
+    const listItems = categories.map(category => <li key={category}><a href={'#' + category}>{category}</a></li>)
 
     return(
             <ListContainer>
