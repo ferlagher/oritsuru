@@ -19,7 +19,7 @@ const CountBtn = styled(Button)`
 
 const Input = styled.input`
     font-family: 'Ubuntu', sans-serif;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 1.125rem;
     color: currentColor;
     background-color: #00000020;

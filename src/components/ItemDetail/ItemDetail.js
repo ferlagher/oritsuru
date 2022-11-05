@@ -37,7 +37,7 @@ background-repeat: repeat-y;
 
 const ItemPrice = styled.b`
     font-size: 1.5em;
-    font-weight: 700;
+    font-weight: 500;
     padding: 0.25em 0;
 `;
 

@@ -49,6 +49,7 @@ const StyledNavLink = styled(NavLink)`
     padding: 0.25em;
     position: relative;
     line-height: 1em;
+    font-weight: 400;
     
     &::before {
         content: '';

@@ -10,12 +10,11 @@ export const Menu = () => {
         getItems(setLoading, setItems);
     }, []);
 
-    return(<>
-        {!isLoading &&         
+    return(<>        
         <main>
             <CategoriesList categories={Object.keys(items)}/>
             <ItemListContainer items={items}/>
-        </main>}
+        </main>
         <Footer/>
     </>)
 };

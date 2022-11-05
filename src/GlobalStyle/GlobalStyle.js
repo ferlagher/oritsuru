@@ -6,6 +6,7 @@ import '../assets/fonts/fontFace.css'
 export const GlobalStyle = createGlobalStyle`
     :root {
         font-family: 'Ubuntu', sans-serif;
+        font-weight: 300;
         font-size: clamp(1rem, 3.5vw, 1.125rem);
         color: var(--color-text);
         scroll-behavior: smooth;
@@ -64,5 +65,9 @@ export const GlobalStyle = createGlobalStyle`
     a {
         text-decoration: none;
         color: currentColor;
+    }
+
+    h1, h2, h3, h4 {
+        font-weight: 500;
     }
 `;

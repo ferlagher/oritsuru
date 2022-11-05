@@ -8,7 +8,7 @@ const RibbonContent = styled.span`
     position: absolute;
     top: 0.5em;
     right: -1em;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 0.7em;
     text-align: center;
     min-width: 3em;

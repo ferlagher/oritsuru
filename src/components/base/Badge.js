@@ -9,7 +9,7 @@ const BadgeNumber = styled.div`
     top: 0;
     right: 0;
     translate: 50% -50%;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 0.8rem;
     text-align: center;
     line-height: 1em;

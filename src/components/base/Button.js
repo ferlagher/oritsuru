@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Button = styled.button`
     font-family: 'Ubuntu', sans-serif;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 0.9rem;
     line-height: 1em;
     color: var(--color-${({color, border}) => border ? color : 'rice'});
