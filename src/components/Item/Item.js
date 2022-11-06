@@ -14,6 +14,7 @@ const ItemContainer = styled(FlexContainer).attrs({
 const ItemImg = styled.img`
     height: 100%;
     width: auto;
+    min-width: 8.4rem;
     border-radius: 0.4em;
 `;
 

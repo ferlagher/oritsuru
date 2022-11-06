@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { fadeIn } from '../../utils/keyframes';
 
 const ListContainer = styled.aside`
     width: 20%;
@@ -19,6 +20,7 @@ const List = styled.ul`
     li {
         text-transform: capitalize;
         margin-bottom: var(--space-sm);
+        animation: ${fadeIn} 0.2s ease-in-out;
     }
 `;
 

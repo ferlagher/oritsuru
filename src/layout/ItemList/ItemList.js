@@ -1,6 +1,15 @@
 import styled from "styled-components";
 import { FlexContainer } from "../../components";
 import { Item } from "../../components";
+import { fadeIn } from "../../utils/keyframes";
+
+const ListContainer = styled(FlexContainer)`
+    flex-direction: column;
+    padding: 0 var(--space-lg);
+    gap: var(--space-sm);
+    flex: auto;
+    animation: ${fadeIn} 0.5s ease-in-out;
+`;
 
 const ListTitle = styled.h3`
     text-align: center;
@@ -26,11 +35,11 @@ export const ItemList = ({id, itemList, favs}) => {
     const listElements = itemList.map(item => <Item item={item} key={item.id} favs={favs}/>)
 
     return(
-        <FlexContainer id={id} direction='column' padding='0 var(--space-lg)' gap='var(--space-sm)' flex='auto'>
+        <ListContainer id={id}>
             <ListTitle>{id}</ListTitle>
             <List>
                 {listElements}
             </List>
-        </FlexContainer>
+        </ListContainer>
     );
 };

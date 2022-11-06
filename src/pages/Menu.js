@@ -13,7 +13,7 @@ export const Menu = () => {
     return(<>        
         <main>
             <CategoriesList categories={Object.keys(items)}/>
-            <ItemListContainer items={items}/>
+            <ItemListContainer isLoading={isLoading} items={items}/>
         </main>
         <Footer/>
     </>)

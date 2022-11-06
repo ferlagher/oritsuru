@@ -52,7 +52,7 @@ export const ItemDetail = ({item, favs}) => {
                         <h3>{item.title}</h3>
                         <FavToggle id={item.id} favs={favs}/>
                     </FlexContainer>
-                    <p>{item.description}</p>
+                    <p><i>{item.description}</i></p>
                     <ItemPrice>${item.price}</ItemPrice>
                     
 
