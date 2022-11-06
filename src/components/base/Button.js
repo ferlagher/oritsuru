@@ -26,6 +26,7 @@ export const Button = styled.button`
 
     &:hover {
         color: var(--color-rice-light);
+        background-color: var(--color-${({color}) => color});
         box-shadow: var(--shadow-md);
     }
 

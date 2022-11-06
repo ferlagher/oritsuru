@@ -1,32 +1,23 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-import { group } from "./group";
+import { doc, collection, getDoc, getDocs } from 'firebase/firestore/lite';
+import { db } from './firebaseConfig';
 
-const firebaseConfig = {
-    apiKey: "AIzaSyCtxrh35EQyKvqi5PtA0EYFowThOKeoDrg",
-    authDomain: "oritsuru.firebaseapp.com",
-    databaseURL: "https://oritsuru-default-rtdb.firebaseio.com",
-    projectId: "oritsuru",
-    storageBucket: "oritsuru.appspot.com",
-    messagingSenderId: "460216983173",
-    appId: "1:460216983173:web:55c18e64e33951627a93ec",
-    measurementId: "G-Z75L0FBCCM"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-export const getItems = async (setLoading, setItems) => {
+export const getItems = async (id = null) => {
     try {
-        setLoading(true);
-        const itemsCol = collection(db, 'items');
-        const itemsSnapshot = await getDocs(itemsCol);
-        const itemsList = itemsSnapshot.docs.map(item => ({id:item.id, ...item.data()}));
-
-        setItems(group(itemsList, 'categoryId'));
+        if (id) {
+            const itemRef = doc(db, 'items', id);
+            const itemSnap = await getDoc(itemRef);
+            const item = {id: id, ...itemSnap.data()};
+    
+            return item;
+        } else {
+            const itemsRef = collection(db, 'items');
+            const itemsSnapshot = await getDocs(itemsRef);
+            const itemsList = itemsSnapshot.docs.map(item => ({id:item.id, ...item.data()}));
+    
+            return itemsList;
+        }
+        
     } catch (err) {
         console.error(err);
-    } finally {
-        setLoading(false);
     };
 };

@@ -6,6 +6,10 @@ const ListContainer = styled.aside`
     align-self: stretch;
     background-color: var(--color-bg-dark);
     padding: var(--space-lg);
+
+    @media (max-width: 1023px) {
+        display: none;
+    }
 `;
 
 const ListTitle = styled.h3`

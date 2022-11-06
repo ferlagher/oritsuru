@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { FlexContainer } from "../../components";
-import { Item } from "../../components";
+import { FlexContainer, Item } from "../../components";
 import { fadeIn } from "../../utils/keyframes";
 
 const ListContainer = styled(FlexContainer)`
@@ -29,6 +28,7 @@ const List = styled(FlexContainer).attrs({
     justify-content: flex-start;
     flex-wrap: wrap;
     gap: var(--space-sm);
+    list-style: none;
 `;
 
 export const ItemList = ({id, itemList, favs}) => {

@@ -9,8 +9,8 @@ export const IconButton = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.75em;
-    margin: -0.75em;
+    padding: calc(var(--space-sm) / 2); // Touch target
+    margin: calc(var(--space-sm) / -2);
     cursor: pointer;
     transition: 0.2s ease-in-out;
 

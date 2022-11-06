@@ -1,8 +1,6 @@
 import styled from "styled-components";
-import { FlexContainer } from "../base";
-import { FavToggle } from "../FavToggle/FavToggle";
-import { ItemCount } from "../ItemCount/ItemCount";
-import { Ribbon } from '../base/Ribbon';
+import { FlexContainer, Ribbon, ItemCount, FavToggle, Loader } from "../";
+import { useItemDetail } from "./useItemDetail";
 import bg from '../../assets/pattern.svg'
 
 const ItemContainer = styled(FlexContainer)`
@@ -41,24 +39,27 @@ const ItemPrice = styled.b`
     padding: 0.25em 0;
 `;
 
-export const ItemDetail = ({item, favs}) => {
+export const ItemDetail = () => {
+    const [item, isLoading] = useItemDetail();
+
     return(
+        isLoading ? <Loader/> :
         <Ribbon text={item.isVeggie && 'Veggie'} color='avocado'>
-            <ItemContainer>
-                <ItemImg src={item.image} alt={item.title}/>
+        <ItemContainer>
+            <ItemImg src={item.image} alt={item.title}/>
 
-                <DetailsContainer>
-                    <FlexContainer justify='space-between'>
-                        <h3>{item.title}</h3>
-                        <FavToggle id={item.id} favs={favs}/>
-                    </FlexContainer>
-                    <p><i>{item.description}</i></p>
-                    <ItemPrice>${item.price}</ItemPrice>
-                    
+            <DetailsContainer>
+                <FlexContainer justify='space-between'>
+                    <h3>{item.title}</h3>
+                    <FavToggle id={item.id}/>
+                </FlexContainer>
+                <p><i>{item.description}</i></p>
+                <ItemPrice>${item.price}</ItemPrice>
+                
 
-                    <ItemCount color={item.isVeggie ? 'avocado' : 'salmon'} stock={item.stock} onAdd={alert}/>
-                </DetailsContainer>
-            </ItemContainer>
-        </Ribbon>
+                <ItemCount color={item.isVeggie ? 'avocado' : 'salmon'} stock={item.stock} onAdd={alert}/>
+            </DetailsContainer>
+        </ItemContainer>
+    </Ribbon>
     );
 };

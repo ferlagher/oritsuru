@@ -1,14 +1,18 @@
 import styled from "styled-components";
-import { FlexContainer } from "../base";
-import { FavToggle } from "../FavToggle/FavToggle";
-import { Ribbon } from '../base/Ribbon';
+import { Link } from 'react-router-dom';
+import { FlexContainer, Ribbon, FavToggle } from "../";
 
-const ItemContainer = styled(FlexContainer).attrs({
+const ListItem = styled(FlexContainer).attrs({
     as: 'li',
 })`
-    align-items: stretch;
+    justify-content: space-between;
     width: min(20rem, 100%);
-    height: 5em;
+    height: 5.5em;
+`;
+
+const LinkWrapper = styled(Link)`
+    height: 100%;
+    display: flex;
 `;
 
 const ItemImg = styled.img`
@@ -20,19 +24,19 @@ const ItemImg = styled.img`
 
 export const Item = ({item, favs}) => {
     return(
-        <ItemContainer>
-            <Ribbon text={item.isVeggie && 'Veggie'} color='avocado'>
-                <ItemImg src={item.image} alt={item.title}/>
-            </Ribbon>
+        <ListItem>
+            <LinkWrapper to={`/item/${item.id}`}>
+                <Ribbon text={item.isVeggie && 'Veggie'} color='avocado'>
+                    <ItemImg src={item.image} alt={item.title}/>
+                </Ribbon>
 
-                <FlexContainer justify='space-between' align='stretch' flex='auto' gap='var(--space-sm)' padding='var(--space-sm)'>
-                    <FlexContainer direction='column' justify='space-between' align='flex-start'>
+                    <FlexContainer direction='column' justify='space-between' align='flex-start' padding='var(--space-sm)'>
                         <h4>{item.title}</h4>
                         <p>${item.price}</p>
                     </FlexContainer>
+            </LinkWrapper>
 
-                    <FavToggle id={item.id} favs={favs}/>
-                </FlexContainer>
-        </ItemContainer>
+                    <FavToggle id={item.id}/>
+        </ListItem>
     );
 };

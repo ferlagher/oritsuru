@@ -14,11 +14,9 @@ const Container = styled(FlexContainer)`
 
 
 export const ItemListContainer = ({isLoading, items}) => {
-    const favs = useRef(JSON.parse(localStorage.getItem('favs')) ?? []);
 
     const listsByCategory = Object.entries(items).map(([category, itemList]) => {
-        
-        return <ItemList key={category} id={category} itemList={itemList} favs={favs}/>
+        return <ItemList key={category} id={category} itemList={itemList}/>
     });
 
     return(

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { MoonIcon, SunIcon } from "../base";
+import { MoonIcon, SunIcon } from "../";
 
 const SwitchContainer = styled.label`
     position: relative;

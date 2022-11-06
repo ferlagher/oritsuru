@@ -1,10 +1,12 @@
 import styled from "styled-components";
-import { IconButton, HeartIcon } from "../base";
+import { IconButton, HeartIcon } from "../";
 import { useFavToggle } from "./useFavToggle";
 
 const Label = styled(IconButton).attrs({
     as: 'label',
 })`
+    z-index: 2;
+    
     svg {
         fill: transparent;
         stroke: var(--color-tuna);
