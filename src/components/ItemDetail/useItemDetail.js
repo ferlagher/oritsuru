@@ -15,7 +15,7 @@ export const useItemDetail = () => {
         };
 
         getData();
-    }, []);
+    }, [id]);
 
     return [item, isLoading]
 }
