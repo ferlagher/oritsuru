@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 import { fadeIn } from '../../utils/keyframes';
 
@@ -29,7 +30,7 @@ const List = styled.ul`
 `;
 
 export const CategoriesList = ({categories}) => {
-    const listItems = categories.map(category => <li key={category}><a href={'#' + category}>{category}</a></li>)
+    const listItems = categories.map(category => <li key={category}><Link to={`/category/${category}`}>{category}</Link></li>)
 
     return(
             <ListContainer>

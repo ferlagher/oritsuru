@@ -1,6 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { FlexContainer, Logo, IconButton, UserIcon, CartWidget } from '../../components';
+import { FlexContainer, Logo, IconButton, UserIcon, CartWidget, Dropdown } from '../../components';
 import { useNavBar } from './useNavBar';
 
 const Header = styled(FlexContainer).attrs(({isHidden, isOpaque}) =>({
@@ -29,17 +29,20 @@ const HeaderContent = styled(FlexContainer)`
     gap: var(--space-sm);
 `;
 
-const Nav = styled(FlexContainer).attrs({
-    as: 'nav',
-})`
-    justify-content: space-between;
-    align-items: center;
-    gap: var(--space-sm);
-    
+const Nav = styled.nav`
     @media (max-width: 425px) {
         order: 2;
         width: 100%;
     }
+`;
+
+const Ul = styled(FlexContainer).attrs({
+    as: 'ul',
+})`
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-sm);
+    list-style: none;
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -77,6 +80,18 @@ const StyledNavLink = styled(NavLink)`
     }
 `;
 
+const Categories = styled.ul`
+    list-style: none;
+
+    li {
+        margin-bottom: 0.5em;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+`;
+
 export const NavBar = ({toggle}) => {
     const [isOpaque, isHidden] = useNavBar();
     
@@ -88,9 +103,22 @@ export const NavBar = ({toggle}) => {
                 </Link>
 
                 <Nav>
-                    <StyledNavLink activeclassname='active' to='/menu'>Menú</StyledNavLink>
-                    <StyledNavLink activeclassname='active' to='/about'>Sobre</StyledNavLink>
-                    <StyledNavLink activeclassname='active' to='/contact'>Contacto</StyledNavLink>
+                    <Ul>
+                        <li><Dropdown
+                        visible={<StyledNavLink activeclassname='active' to='/'>Menú</StyledNavLink>}
+                        hidden={
+                            <Categories>
+                                <li><Link to='/category/gunkan'>Gunkan</Link></li>
+                                <li><Link to='/category/sashimi'>Sashimi</Link></li>
+                                <li><Link to='/category/temaki'>Temaki</Link></li>
+                                <li><Link to='/category/nigiri'>Nigiri</Link></li>
+                                <li><Link to='/category/roll'>Roll</Link></li>
+                            </Categories>
+                        }
+                        /></li>
+                        <li><StyledNavLink activeclassname='active' to='/about'>Sobre</StyledNavLink></li>
+                        <li><StyledNavLink activeclassname='active' to='/contact'>Contacto</StyledNavLink></li>
+                    </Ul>
                 </Nav>
 
                 <FlexContainer justify='space-between' align='center' gap='var(--space-sm)'>

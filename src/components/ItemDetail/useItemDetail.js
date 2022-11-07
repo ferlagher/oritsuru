@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom'
-import { getItems } from "../../utils/getItems";
+import { useParams } from 'react-router-dom';
+import { getFakeItems } from "../../utils";
 
 export const useItemDetail = () => {
     const [item, setItem] = useState({});
@@ -9,7 +9,7 @@ export const useItemDetail = () => {
 
     useEffect(() => {
         const getData = async () => {
-            const data = await getItems(id);
+            const data = await getFakeItems(id);
             setItem(data);
             setLoading(false);
         };
@@ -17,5 +17,5 @@ export const useItemDetail = () => {
         getData();
     }, []);
 
-    return [item, isLoading]
-}
+    return [item, isLoading];
+};

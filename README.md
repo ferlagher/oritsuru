@@ -1,5 +1,30 @@
-# Oritsuru Sushi 🍣
+# Pre-entrega 2
 
-A fake sushi e-commerce I'm buildind to learn React.
+![GIF mostrando la navegabilidad](./PreEntrega2.gif)
 
-[Deploy](oritsuru.netlify.app) [![Netlify Status](https://api.netlify.com/api/v1/badges/a253097a-2925-4d33-bb21-7eb6cf663ab0/deploy-status)](https://app.netlify.com/sites/oritsuru/deploys)
+## Consignas
+### Componentes
+
+[Navar con cart](./src/layout/NavBar/)
+[Catálogo](./src/layout/ItemListContainer/)
+[Detalle de producto](./src/components/ItemDetail/)
+[Item Count](./src/components/ItemCount/)
+
+### Rutas
+
+[BrowserRouter](./src/App.js)
+
+### Links
+
+[‘/’](./src/layout/NavBar/NavBar.js)
+[‘/item/:id’](./src/components/Item/Item.js)
+[‘/category/:categoryId’](./src/layout/NavBar/NavBar.js)
+
+### Hooks
+
+[useEffect & useParams (ItemListContainer)](./src/layout/ItemListContainer/useItemListContainer.js)
+[useEffect & useParams (ItemDetails)](./src/components/ItemDetail/useItemDetail.js)
+
+### Promise
+
+[Promise con productos](./src/utils/getFakeItems.js)

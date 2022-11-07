@@ -22,7 +22,7 @@ const ItemImg = styled.img`
     border-radius: 0.4em;
 `;
 
-export const Item = ({item, favs}) => {
+export const Item = ({item}) => {
     return(
         <ListItem>
             <LinkWrapper to={`/item/${item.id}`}>
