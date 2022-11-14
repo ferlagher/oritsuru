@@ -2,16 +2,20 @@ import styled from "styled-components";
 
 export const Button = styled.button`
     font-family: 'Ubuntu', sans-serif;
-    font-weight: 500;
-    font-size: 0.9rem;
+    font-weight: 700;
+    font-size: 0.8rem;
     line-height: 1em;
-    color: var(--color-${({color, border}) => border ? color : 'rice'});
+    text-transform: uppercase;
+    color: var(--color-foreground);
     background-color: var(--color-${({color, border}) => border ? 'transparent' : color});
+    background-image: 
+        radial-gradient(var(--color-${({color}) => color}-transparent) 25%, transparent 25%),
+        radial-gradient(var(--color-${({color}) => color}-transparent) 25%, transparent 25%);
+    background-position: 0px 0px, 5px 5px;
+    background-size: 10px 10px;
     border: 2px solid var(--color-${({color}) => color});
-    border-top: 2px solid var(--color-${({color}) => color}-light);
-    border-left: 2px solid var(--color-${({color}) => color}-light);
-    border-radius: 0.4em;
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 0 0 var(--color-${({color}) => color}-dark),
+        0.2em 0.2em 0 var(--color-secondary-dark);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,23 +26,26 @@ export const Button = styled.button`
 
     svg {
         fill: currentColor;
+        height: 1em;
+        width: 1em;
     }
 
     &:hover {
-        color: var(--color-rice-light);
-        background-color: var(--color-${({color}) => color});
-        box-shadow: var(--shadow-md);
+        translate: -0.2em -0.2em;
+        box-shadow: 0.2em 0.2em 0 var(--color-${({color}) => color}-dark),
+        0.4em 0.4em 0 var(--color-secondary-dark);
     }
 
     &:active {
-        color: var(--color-rice-dark);
-        background-color: var(--color-${({color}) => color}-dark);
-        border: 2px solid var(--color-${({color}) => color}-dark);
-        box-shadow: 0 0 0 #000;
+        translate: 0 0;
+        box-shadow: 0 0 0 var(--color-${({color}) => color}-dark),
+        0.2em 0.2em 0 var(--color-secondary-dark);
     }
 
     &:disabled {
         opacity: 0.6;
         pointer-events: none;
+        box-shadow: 0 0 0 var(--color-${({color}) => color}-dark),
+        0.1em 0.1em 0 var(--color-secondary-dark);
     }
 `;

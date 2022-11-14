@@ -9,7 +9,7 @@ const Label = styled(IconButton).attrs({
     
     svg {
         fill: transparent;
-        stroke: var(--color-tuna);
+        stroke: var(--color-foreground);
         stroke-width: 40px;
     }
 `;
@@ -22,7 +22,7 @@ const Checkbox = styled.input.attrs({
     opacity: 0;
 
     &:checked + svg {
-        fill: var(--color-tuna);
+        fill: var(--color-primary);
     }
 `;
 

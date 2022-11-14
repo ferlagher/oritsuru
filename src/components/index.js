@@ -4,5 +4,4 @@ export * from './FavToggle/FavToggle';
 export * from './ItemCount/ItemCount';
 export * from './Item/Item';
 export * from './ItemDetail/ItemDetail';
-export * from './ThemeSwitch/ThemeSwitch'
-export * from './ThemeSwitch/useThemeSwitch'
+export * from './Garnish/Garnish';

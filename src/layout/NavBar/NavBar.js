@@ -3,26 +3,39 @@ import styled from 'styled-components';
 import { FlexContainer, Logo, IconButton, UserIcon, CartWidget } from '../../components';
 import { useNavBar } from './useNavBar';
 
-const Header = styled(FlexContainer).attrs(({isHidden, isOpaque}) =>({
+const Header = styled(FlexContainer).attrs(({isSmall: isSmall}) =>({
     as: 'header',
 
-    style: {
-        backgroundColor: isOpaque ? 'var(--color-bg-light)' : 'transparent',
-        transform: `translateY(${isHidden ? '-100%' : '0%'})`,
-    }
+/*     style: {
+        transform: `translateY(${isSmall ? '-100%' : '0%'})`,
+    } */
 }))`
     position: sticky;
-    top: 0;
     width: 100%;
-    padding: var(--space-sm);
-    z-index: 99;
+    margin-top: calc((-0.10510423526 * 100vw / 2));
+    padding: calc((0.10510423526 * 100vw / 2) + var(--space-sm)) var(--space-sm);
     transition: background-color, transform;
     transition-duration: 0.2s, 0.5s;
     transition-timing-function: ease-in-out;
+    
+/*     &:before {
+    content: '';
+    position: absolute;
+    background-color: var(--color-secondary);
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    transform: skewY(-6deg);
+    z-index: 98;
+    box-shadow: 
+        0 0.6rem 0 var(--color-primary-dark);
+    } */
 `;
 
 const HeaderContent = styled(FlexContainer)`
     width: 100%;
+    z-index: 99;
     max-width: var(--max-width);
     justify-content: space-between;
     flex-wrap: wrap;
@@ -43,61 +56,29 @@ const Nav = styled(FlexContainer).attrs({
 `;
 
 const StyledNavLink = styled(NavLink)`
-    color: transparent;
-    background: linear-gradient(90deg, #ed8840, #eb8141, #e87b42, #e67543, #e36f44, #e16a45, #de6547, #dc6048, #d95b49, #d6574a, #d4534c, #d14f4d);
-    -webkit-background-clip: text;
     padding: 0.25em;
-    position: relative;
     line-height: 1em;
     font-weight: 400;
-    
-    &::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        translate: -50% -50%;
-        background-color: var(--color-salmon-light);
-        height: 2.5em;
-        width: 2.5em;
-        border-radius: 50%;
-        opacity: 0;
-        scale: 0;
-        transition: 0.2s ease-in-out;
-    }
-
-    &:hover::before {
-        opacity: 0.2;
-        scale: 1;
-    }
 
     &.active {
-        color: currentColor;
-        opacity: 0.7;
     }
 `;
 
-export const NavBar = ({toggle}) => {
-    const [isOpaque, isHidden] = useNavBar();
+export const NavBar = () => {
+    const isSmall = useNavBar();
     
     return(
-        <Header isOpaque={isOpaque} isHidden={isHidden}>
+        <Header isSmall={isSmall}>
             <HeaderContent>
                 <Link to='/'>
                     <Logo hideOnMobile/>
                 </Link>
 
                 <Nav>
-                    <StyledNavLink activeclassname='active' to='/menu'>Menú</StyledNavLink>
-                    <StyledNavLink activeclassname='active' to='/about'>Sobre</StyledNavLink>
-                    <StyledNavLink activeclassname='active' to='/contact'>Contacto</StyledNavLink>
+                    <StyledNavLink activeclassname='active' to='/category/:categoryId'>categoryId</StyledNavLink>
                 </Nav>
 
-                <FlexContainer justify='space-between' align='center' gap='var(--space-sm)'>
-                    {toggle}
-                    <IconButton href='#'><CartWidget/></IconButton>
-                    <IconButton href='#'><UserIcon/></IconButton>
-                </FlexContainer>
+                <IconButton href='#'><CartWidget/></IconButton>
             </HeaderContent>
         </Header>
     );

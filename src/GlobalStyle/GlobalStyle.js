@@ -1,18 +1,17 @@
 import { createGlobalStyle } from 'styled-components';
-import { themes } from './themes';
-import bg from '../assets/background.svg'
+import { theme } from './themes';
 import '../assets/fonts/fontFace.css'
 
 export const GlobalStyle = createGlobalStyle`
     :root {
-        font-family: 'Ubuntu', sans-serif;
+        font-family: 'Josefin Sans', sans-serif;
         font-weight: 300;
-        font-size: clamp(1rem, 3.5vw, 1.125rem);
-        color: var(--color-text);
+        font-size: clamp(1rem, 3.5vw, 1.2rem);
+        color: var(--color-foreground-light);
         scroll-behavior: smooth;
         scroll-padding-top: 4rem;
 
-        ${({theme}) => themes[theme]}
+        ${theme}
 
         --space-sm: clamp(8px, 2.5vw, 16px);
         --space-lg: clamp(16px, 3vw, 32px);
@@ -47,16 +46,13 @@ export const GlobalStyle = createGlobalStyle`
         align-items: stretch;
         width: 100%;
         min-height: 100vh;
-        background: var(--color-bg) url(${bg}) no-repeat fixed;
-        background-size: cover;
+        background: var(--color-background);
         transition-property: color, fill, background-color;
         transition-duration: 0.2s;
     }
     
     main {
         flex: auto;
-        height: 100%;
-        width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;

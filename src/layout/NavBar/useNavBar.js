@@ -1,17 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { throttle } from "../../utils/throttle";
 
 export const useNavBar = () => {
-    const [isOpaque, setOpaque] = useState(false);
-    const [isHidden, setHidden] = useState(false);
-    const y = useRef(window.scrollY);
+    const [isSmall, setIsSmall] = useState(false);
     
     useEffect(() => {
         const handleScroll = throttle(() => {
-            setOpaque(window.scrollY > 80);
-            setHidden(window.scrollY > y.current);
-            
-            y.current = window.scrollY;
+            setIsSmall(window.scrollY > 100);
         }, 250);
     
         window.addEventListener('scroll', handleScroll);
@@ -19,5 +14,5 @@ export const useNavBar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    return [isOpaque, isHidden];
+    return isSmall;
 };
