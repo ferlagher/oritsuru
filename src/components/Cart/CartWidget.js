@@ -2,7 +2,7 @@ import { CartIcon, Badge } from "../";
 
 export const CartWidget = () => {
     return(
-        <Badge num={9} color='tuna'>
+        <Badge num={0} color='tuna'>
             <CartIcon/>
         </Badge>
     );

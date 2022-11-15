@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { FlexContainer, ItemCount, FavToggle, Loader, Garnish } from "../";
 import { useItemDetail } from "./useItemDetail";
@@ -15,7 +16,9 @@ const ImgContainer = styled(FlexContainer)`
 const ItemImg = styled.img`
     height: auto;
     width: 100%;
+    max-height: 16rem;
     max-width: 20rem;
+    object-fit: contain;
     z-index: 2;
     filter: drop-shadow(0.3rem 0.5rem 0 var(--color-${({color}) => color}-dark));
     `;
@@ -27,25 +30,19 @@ const DetailsContainer = styled(FlexContainer)`
     padding: var(--space-sm);
     transform: skewY(-6deg);
     background-color: var(--color-secondary);
-    background-image: linear-gradient(var(--color-secondary-light) 0.1em, transparent 0.1em), linear-gradient(90deg, var(--color-secondary-light) 0.1em, transparent 0.1em);
+    background-image: 
+    linear-gradient(var(--color-secondary-light) 0.1em, transparent 0.1em), 
+    linear-gradient(90deg, var(--color-secondary-light) 0.1em, transparent 0.1em);
     background-size: 1.5rem 1.5rem;
     box-shadow: 
-        0.5rem 0.5rem 0 var(--color-background),
-        1rem 1rem 0 var(--color-${({color}) => color}-dark);
+    0.5rem 0.5rem 0 var(--color-background),
+    1rem 1rem 0 var(--color-${({color}) => color});
     
     h3 {
+        color: var(--color-${({color}) => color});
         font-size: 1.5em;
         font-weight: 700;
-        color: var(--color-${({color}) => color});
-        text-shadow: 
-            0.05em 0.05em 0 var(--color-foreground),
-            0.05em -0.05em 0 var(--color-foreground),
-            -0.05em 0.05em 0 var(--color-foreground),
-            -0.05em -0.05em 0 var(--color-foreground),
-            0 0.05em 0 var(--color-foreground),
-            0.05em 0 0 var(--color-foreground),
-            0 -0.05em 0 var(--color-foreground),
-            -0.05em 0 0 var(--color-foreground);
+        text-shadow: var(--text-outline-background);
     }
 
     p {
@@ -57,32 +54,33 @@ const DetailsContainer = styled(FlexContainer)`
         font-size: 1.4em;
         font-weight: 500;
         padding: 0.25em 0;
-        text-shadow: 0.1em 0.1em 0 var(--color-${({color}) => color}-dark);
+        text-shadow: 0.1em 0.1em 0 var(--color-${({color}) => color});
     }
     `;
 
 export const ItemDetail = () => {
     const [item, isLoading] = useItemDetail();
+    const [isImgLoaded, setIsImgLoaded] = useState(false);
     const color = item.isVeggie ? 'accent' : 'primary';
 
     return(
         isLoading ? <Loader/> :
         <ItemContainer>
             <ImgContainer>
-                    <Garnish category={item.categoryId} isHover={true}/>
-                    <ItemImg color={color} src={item.image} alt={item.title}/>
+                    <Garnish category={item.categoryId} isVisible={isImgLoaded}/>
+                    <ItemImg src={item.image} alt={item.title} onLoad={() => setIsImgLoaded(true)} color={color}/>
             </ImgContainer>
 
             <DetailsContainer color={color}>
                 <FlexContainer justify='space-between'>
                     <h3>{item.title}</h3>
-                    <FavToggle id={item.id}/>
+                    <FavToggle id={item.id} color={color}/>
                 </FlexContainer>
+
                 <p><i>{item.description}</i></p>
                 <b>${item.price}</b>
-                
 
-                <ItemCount color={color} stock={item.stock} onAdd={alert}/>
+                <ItemCount stock={item.stock} onAdd={alert} color={color}/>
             </DetailsContainer>
         </ItemContainer>
     );

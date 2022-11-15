@@ -8,7 +8,7 @@ const GarnishContainer = styled.div`
     width: 100%;
     z-index: 1;
 
-    &.hover img {
+    &.visible img {
         opacity: 1;
 
         &:nth-of-type(1) {
@@ -52,11 +52,11 @@ const Slice = styled.img`
     transition-timing-function: ease-in-out;
 `;
 
-export const Garnish = ({category, isHover}) => {
+export const Garnish = ({category, isVisible}) => {
     const slice = category === 'sashimi' ? lime : cucumber;
 
     return(
-        <GarnishContainer className={isHover ? 'hover' : ''}>
+        <GarnishContainer className={isVisible ? 'visible' : ''}>
             <Slice src={slice}/>
             <Slice src={slice}/>
             <Slice src={slice}/>

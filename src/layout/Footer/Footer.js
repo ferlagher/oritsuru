@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { FlexContainer, CartIcon, GithubIcon, HeartIcon, LinkedinIcon, UserIcon } from '../../components';
+import { FlexContainer, CartIcon, GithubIcon, HeartIcon, LinkedinIcon } from '../../components';
 
 const FooterContainer = styled(FlexContainer).attrs({
     as: 'footer',
@@ -22,7 +22,6 @@ export const Footer = () => {
                     <GithubIcon light/>
                     <LinkedinIcon light/>
                     <CartIcon light/>
-                    <UserIcon light/>
             </FooterContent>
         </FooterContainer>
     )

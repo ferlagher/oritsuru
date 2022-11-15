@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GlobalStyle } from './GlobalStyle/GlobalStyle';
-import { Item, ItemDetail } from './components';
-import { NavBar } from './layout';
+import { ItemDetail } from './components';
+import { NavBar, ItemListContainer } from './layout';
 
 function App() {
 
@@ -9,10 +9,14 @@ function App() {
         <Router>
             <GlobalStyle/>
             <NavBar/>
-            <Routes>
-                <Route index element={<main><Item/></main>}/>
-                <Route exact path='/item/:id' element={<main><ItemDetail/></main>}/>
-            </Routes>
+            <main>
+                <Routes>
+                    <Route exact path='/' element={<ItemListContainer/>}/>
+                    <Route exact path='/category/:id' element={<ItemListContainer/>}/>
+                    <Route exact path='/item/:id' element={<ItemDetail/>}/>
+                    <Route path='*' element={<div/>}/>
+                </Routes>
+            </main>
         </Router>
     );
 };

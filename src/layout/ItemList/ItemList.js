@@ -3,32 +3,53 @@ import { FlexContainer, Item } from "../../components";
 import { fadeIn } from "../../utils/keyframes";
 
 const ListContainer = styled(FlexContainer)`
+    width: 100%;
     flex-direction: column;
-    padding: 0 var(--space-lg);
-    gap: var(--space-sm);
+    align-items: center;
     flex: auto;
     animation: ${fadeIn} 0.5s ease-in-out;
+    position: relative;
+
+    &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 7.6rem;
+    width: 100%;
+    background-image: 
+        linear-gradient(var(--color-secondary-light) 0.1em, transparent 0.1em), 
+        linear-gradient(90deg, var(--color-secondary-light) 0.1em, transparent 0.1em);
+    background-size: 1.5rem 1.5rem;
+    transform: var(--skew);
+    z-index: 0;
+    }
 `;
 
 const ListTitle = styled.h3`
-    text-align: center;
+    font-size: 1.7rem;
+    font-weight: 700;
     text-transform: uppercase;
-    background: radial-gradient(circle at 50% 50%, var(--color-bg-dark), transparent);
-    width: 100%;
-    padding: 0.5em;
-    position: sticky;
-    top: 0;
-    z-index: 2;
+    color: var(--color-secondary);
+    width: fit-content;
+
 `;
 
 const List = styled(FlexContainer).attrs({
     as: 'ul',
 })`
-    width: 100%;
+    max-width: 100%;
     justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: var(--space-sm);
+    gap: var(--space-lg);
+    padding: var(--space-lg);
     list-style: none;
+    overflow-x: auto;
+    transform: var(--skew);
+    z-index: 1; 
+
+    li {
+        transform: skew(6deg) rotate(6deg);
+    }
 `;
 
 export const ItemList = ({id, itemList, favs}) => {
@@ -36,7 +57,7 @@ export const ItemList = ({id, itemList, favs}) => {
 
     return(
         <ListContainer id={id}>
-            <ListTitle>{id}</ListTitle>
+            <ListTitle><span>{id}</span></ListTitle>
             <List>
                 {listElements}
             </List>

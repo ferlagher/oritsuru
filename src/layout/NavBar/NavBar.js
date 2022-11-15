@@ -1,64 +1,91 @@
 import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { FlexContainer, Logo, IconButton, UserIcon, CartWidget } from '../../components';
+import { FlexContainer, Logo, IconButton, CartWidget, LeafIcon, HeartIcon } from '../../components';
 import { useNavBar } from './useNavBar';
 
 const Header = styled(FlexContainer).attrs(({isSmall: isSmall}) =>({
     as: 'header',
-
-/*     style: {
-        transform: `translateY(${isSmall ? '-100%' : '0%'})`,
-    } */
 }))`
+    flex-direction: column;
     position: sticky;
-    width: 100%;
-    margin-top: calc((-0.10510423526 * 100vw / 2));
-    padding: calc((0.10510423526 * 100vw / 2) + var(--space-sm)) var(--space-sm);
-    transition: background-color, transform;
-    transition-duration: 0.2s, 0.5s;
-    transition-timing-function: ease-in-out;
-    
-/*     &:before {
-    content: '';
-    position: absolute;
-    background-color: var(--color-secondary);
     top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    transform: skewY(-6deg);
-    z-index: 98;
-    box-shadow: 
-        0 0.6rem 0 var(--color-primary-dark);
-    } */
-`;
+    width: 100%;
+    margin-bottom: calc(var(--space-factor) * 100vw);
+    z-index: 10;
+    `;
 
 const HeaderContent = styled(FlexContainer)`
-    width: 100%;
-    z-index: 99;
-    max-width: var(--max-width);
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: var(--space-sm);
-`;
+    width: 100%;
+    padding: var(--space-sm);
+    padding-bottom: calc(var(--space-factor) * 100vw * 2);
+    background-color: var(--color-secondary);
+    z-index: 12;
+
+    svg {
+        width: 4rem;
+        height: 4rem;
+        fill: var(--color-background);
+        stroke: var(--color-primary);
+        stroke-width: 0.5rem;
+        filter: drop-shadow(-0.15rem 0.15rem 0 var(--color-primary));
+        position: relative;
+
+        &:after {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            content: '';
+            background-image: 
+                radial-gradient(var(--color-primary-transparent) 28%, transparent 28%),
+                radial-gradient(var(--color-primary-transparent) 28%, transparent 28%);
+            background-position: 0px 0px, 3px 3px;
+            background-size: 6px 6px, 6px 6px;
+        }
+    }
+    `;
 
 const Nav = styled(FlexContainer).attrs({
     as: 'nav',
 })`
     justify-content: space-between;
     align-items: center;
-    gap: var(--space-sm);
+    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+    gap: 0.2em;
+    transform: var(--skew);
+    margin-top: calc(var(--space-factor) * -100vw);
+    z-index: 13;
     
-    @media (max-width: 425px) {
-        order: 2;
+    &:before {
+        content: '';
         width: 100%;
+        height: calc(var(--space-factor) * 100vw * 2);
+        background-color: var(--color-background);
+        background-image: 
+            repeating-linear-gradient(45deg, var(--color-primary), var(--color-primary) 8vw, transparent 8vw, transparent 16vw),
+            radial-gradient(var(--color-primary-transparent) 28%, transparent 28%),
+            radial-gradient(var(--color-primary-transparent) 28%, transparent 28%);
+        background-position: 0px 0px, 0px 0px, 3px 3px;
+        background-size: cover, 6px 6px, 6px 6px;
+        border: 0.13rem solid var(--color-primary);
+        outline: 0.15rem solid var(--color-background);
     }
-`;
+    `;
 
 const StyledNavLink = styled(NavLink)`
-    padding: 0.25em;
-    line-height: 1em;
-    font-weight: 400;
+    font-size: clamp(0.6rem, 2vw, 1rem);
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    background-color: var(--color-background);
+    border: 0.13rem solid var(--color-primary);
+    outline: 0.15rem solid var(--color-background);
+    padding: 0.5em;
+    flex: 1;
 
     &.active {
     }
@@ -70,16 +97,21 @@ export const NavBar = () => {
     return(
         <Header isSmall={isSmall}>
             <HeaderContent>
-                <Link to='/'>
-                    <Logo hideOnMobile/>
-                </Link>
-
-                <Nav>
-                    <StyledNavLink activeclassname='active' to='/category/:categoryId'>categoryId</StyledNavLink>
-                </Nav>
-
-                <IconButton href='#'><CartWidget/></IconButton>
+                <Link to='/'><Logo/></Link>
+                <FlexContainer justify='space-between'>
+                    <Link to='#'><HeartIcon/></Link>
+                    <Link to='#'><LeafIcon/></Link>
+                    <Link to='#'><CartWidget/></Link>
+                </FlexContainer>
             </HeaderContent>
+
+            <Nav>
+                <StyledNavLink activeclassname='active' to='/category/gunkan'>gunkan</StyledNavLink>
+                <StyledNavLink activeclassname='active' to='/category/sashimi'>sashimi</StyledNavLink>
+                <StyledNavLink activeclassname='active' to='/category/temaki'>temaki</StyledNavLink>
+                <StyledNavLink activeclassname='active' to='/category/nigiri'>nigiri</StyledNavLink>
+                <StyledNavLink activeclassname='active' to='/category/roll'>roll</StyledNavLink>
+            </Nav>
         </Header>
     );
 };
