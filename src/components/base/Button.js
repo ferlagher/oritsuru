@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { halftoneBkgd } from "../../utils/mixins";
 
 export const Button = styled.button`
     font-family: 'Ubuntu', sans-serif;
@@ -8,11 +9,7 @@ export const Button = styled.button`
     text-transform: uppercase;
     color: var(--color-foreground);
     background-color: var(--color-${({color, border}) => border ? 'transparent' : color});
-    background-image: 
-        radial-gradient(var(--color-${({color}) => color}-transparent) 28%, transparent 28%),
-        radial-gradient(var(--color-${({color}) => color}-transparent) 28%, transparent 28%);
-    background-position: 0px 0px, 3px 3px;
-    background-size: 6px 6px;
+    ${({color}) => halftoneBkgd(`var(--color-${color}-transparent)`)}
     border: 2px solid var(--color-${({color}) => color});
     box-shadow: 0 0 0 var(--color-${({color}) => color}-dark),
         0.2em 0.2em 0 var(--color-secondary-dark);

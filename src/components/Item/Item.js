@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Link } from 'react-router-dom';
 import { FlexContainer, FavToggle, Garnish } from "../";
 import { useState } from "react";
+import { textOutline } from "../../utils/mixins";
 
 
 const ListItem = styled(FlexContainer).attrs({
@@ -43,13 +44,13 @@ const ItemText = styled(FlexContainer)`
         color: var(--color-${({color}) => color});
         font-size: 1.3em;
         font-weight: 700;
-        text-shadow: var(--text-outline-foreground), 0.1em 0.1em 0 var(--color-foreground);
+        ${textOutline('var(--color-foreground)', true)}
     }
     
     b {
         font-size: 1.25em;
         font-weight: 700;
-        text-shadow: var(--text-outline-${({color}) => color}), 0.1em 0.1em 0 var(--color-${({color}) => color});
+        ${({color}) => textOutline(`var(--color-${color})`, true)}
     }
 `;
 

@@ -21,15 +21,6 @@ const createTheme = (arr) => {
         theme += `--color-${color}-dark: hsl(${h}, ${add(s, 5)}%, ${subtract(l, 10)}%);`;
         theme += `--color-${color}-light: hsl(${h}, ${subtract(s, 5)}%, ${add(l, 10)}%);`;
         theme += `--color-${color}-transparent: hsla(${h}, ${s}%, ${l}%, 0.5);`;
-        theme += `--text-outline-${color}: 
-            0.04em 0.04em 0 var(--color-${color}),
-            0.04em -0.04em 0 var(--color-${color}),
-            -0.04em 0.04em 0 var(--color-${color}),
-            -0.04em -0.04em 0 var(--color-${color}),
-            0 0.04em 0 var(--color-${color}),
-            0.04em 0 0 var(--color-${color}),
-            0 -0.04em 0 var(--color-${color}),
-            -0.04em 0 0 var(--color-${color});`
     };
 
     return theme;

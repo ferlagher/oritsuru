@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const BadgeContainer = styled.div`
     position: relative;
+    display: inline-flex;
     `;
 
 const BadgeNumber = styled.div`

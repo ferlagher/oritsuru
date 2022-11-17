@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { FlexContainer, ItemCount, FavToggle, Loader, Garnish } from "../";
+import { gridBkgd, textOutline } from "../../utils/mixins";
 import { useItemDetail } from "./useItemDetail";
 
 const ItemContainer = styled(FlexContainer)`
@@ -28,12 +29,9 @@ const DetailsContainer = styled(FlexContainer)`
     align-items: stretch;
     gap: var(--space-sm);
     padding: var(--space-sm);
-    transform: skewY(-6deg);
+    transform: skewY(var(--skew-deg));
     background-color: var(--color-secondary);
-    background-image: 
-    linear-gradient(var(--color-secondary-light) 0.1em, transparent 0.1em), 
-    linear-gradient(90deg, var(--color-secondary-light) 0.1em, transparent 0.1em);
-    background-size: 1.5rem 1.5rem;
+    ${gridBkgd('var(--color-secondary-light)')}
     box-shadow: 
     0.5rem 0.5rem 0 var(--color-background),
     1rem 1rem 0 var(--color-${({color}) => color});
@@ -42,7 +40,7 @@ const DetailsContainer = styled(FlexContainer)`
         color: var(--color-${({color}) => color});
         font-size: 1.5em;
         font-weight: 700;
-        text-shadow: var(--text-outline-background);
+        ${textOutline('var(--color-background)')}
     }
 
     p {

@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { theme } from './themes';
 import '../assets/fonts/fontFace.css'
+import { halftoneBkgd } from '../utils/mixins';
 
 export const GlobalStyle = createGlobalStyle`
     :root {
@@ -13,8 +14,8 @@ export const GlobalStyle = createGlobalStyle`
 
         ${theme}
 
-        --skew: skewY(-6deg);
-        --space-factor: calc(0.10510423526 / 2); // tan(6deg) / 2
+        --skew-deg: -2deg;
+        --space-factor: 0.01746038474; // tan(2deg) / 2
         --space-sm: clamp(8px, 2.5vw, 16px);
         --space-lg: clamp(16px, 3vw, 32px);
         --max-width: 1200px;
@@ -35,11 +36,7 @@ export const GlobalStyle = createGlobalStyle`
             
             &-track {
                 background-color: var(--color-background);
-                background-image: 
-                    radial-gradient(var(--color-secondary-transparent) 25%, transparent 25%),
-                    radial-gradient(var(--color-secondary-transparent) 25%, transparent 25%);
-                background-position: 0px 0px, 3px 3px;
-                background-size: 6px 6px;
+                ${halftoneBkgd('var(--color-secondary-transparent)')}
                 box-shadow: inset 0.1em 0.1em 0 var(--color-secondary);
                 border: 2px solid var(--color-secondary);
             }
@@ -62,17 +59,17 @@ export const GlobalStyle = createGlobalStyle`
     #root {
         display: flex;
         flex-direction: column;
-        align-items: stretch;
+        align-items: center;
         width: 100%;
         min-height: 100vh;
         background: var(--color-background);
-        transition-property: color, fill, background-color;
-        transition-duration: 0.2s;
+        padding: 0 var(--space-lg);
     }
     
     main {
         flex: auto;
         width: 100%;
+        max-width: var(--max-width);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -81,9 +78,9 @@ export const GlobalStyle = createGlobalStyle`
     a {
         text-decoration: none;
         color: currentColor;
-    }
 
-    h1, h2, h3, h4 {
-        font-weight: 500;
+        &:has(svg) {
+            display: inline-flex;
+        }
     }
 `;

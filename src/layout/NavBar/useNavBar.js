@@ -6,7 +6,7 @@ export const useNavBar = () => {
     
     useEffect(() => {
         const handleScroll = throttle(() => {
-            setIsSmall(window.scrollY > 100);
+            setIsSmall(window.scrollY > 1);
         }, 250);
     
         window.addEventListener('scroll', handleScroll);

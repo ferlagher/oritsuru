@@ -1,9 +1,6 @@
 import styled from 'styled-components'
+import { textOutline } from '../../utils/mixins';
 import { FlexContainer } from '../base';
-
-const LogoContainer = styled(FlexContainer)`
-    font-size: ${({size}) => size}; /* Easy child sizing using em's */
-`
 
 const Isotype = styled.svg.attrs({ 
     version: '1.1', 
@@ -12,17 +9,21 @@ const Isotype = styled.svg.attrs({
 })`
     height: 1em;
     width: 1.8em;
-    fill: currentColor;
+    fill: var(--color-background);
+    stroke: var(--color-primary);
+    stroke-width: 0.25em;
+    filter: drop-shadow(0.1em 0.1em 0 var(--color-primary));
 `;
 
-const Logotype = styled.span`
+const Logotype = styled(FlexContainer)`
     font-family: 'Nuku-Nuku', sans-serif;
-    font-size: 1em;
+    color: var(--color-background);
+    ${textOutline('var(--color-primary)', true)}
 `;
 
-export const Logo = ({size = '1.3em'}) => {
+export const Logo = () => {
     return(
-        <LogoContainer size={size} gap='0.25em'>
+        <FlexContainer gap='0.25em'>
             <Isotype viewBox="0 0 680 416">
             <polygon points="338.355 165.815 529.15 340.821 261.558 241.644 338.355 165.815"/>
             <polygon points="540.788 26.104 575.312 6.539 568.056 346.164 443.902 232.297 540.788 26.104"/>
@@ -33,7 +34,7 @@ export const Logo = ({size = '1.3em'}) => {
             <polygon points="544.533 416 407.012 382.291 560.865 382.291 544.533 416"/>
             <polygon points="596.377 67.938 597.495 15.834 680 106.977 596.377 67.938"/>
             </Isotype>
-            <Logotype>ORITSURU</Logotype>
-        </LogoContainer>
+            <Logotype><span>ORITSURU</span></Logotype>
+        </FlexContainer>
     );
 };
