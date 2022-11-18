@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { FlexContainer, Item } from "../../components";
-import { fadeIn } from "../../utils/keyframes";
-import { gridBkgd, halftoneBkgd } from "../../utils/mixins";
 
 const kanjiList = {
     nigiri: '握り',
@@ -15,20 +13,18 @@ const ListContainer = styled(FlexContainer)`
     width: 100%;
     gap: var(--space-lg);
     flex: auto;
-    transform: skewY(var(--skew-deg));
-
-    &:nth-of-type(2n) {
-        flex-direction: row-reverse;
-    }
     `;
 
 const TitleContainer = styled(FlexContainer)`
+    align-self: flex-start;
     flex-direction: column;
     border: 0.2em solid var(--color-secondary);
     border-radius: 2px;
+    margin-bottom: -100%;
+    width: 3em;
     
     h3 {
-        font-size: 2em;
+        font-size: 1.3em;
         font-weight: 700;
         text-transform: uppercase;
         writing-mode: vertical-lr;
@@ -44,9 +40,8 @@ const TitleContainer = styled(FlexContainer)`
     span {
         font-family: 'Murecho', sans-serif;
         font-weight: 500;
-        font-size: 1.2em;
+        font-size: 0.8em;
         white-space: nowrap;
-        color: var(--color-secondary);
     }
 `;
 
@@ -58,25 +53,8 @@ const List = styled(FlexContainer).attrs({
     position: relative;
     width: 100%;
     gap: var(--space-lg);
-    padding: var(--space-lg);
     list-style: none;
-    z-index: 1; 
-
-    li {
-        transform: skewY(calc(var(--skew-deg) * -1));
-    }
-
-    &:before {
-    content: '';
-    position: absolute;
-    right: 0;
-    bottom: 50%;
-    translate: 0 50%;
-    height: 7.3rem;
-    width: calc(100% - 0.2em);
-    ${gridBkgd('var(--color-secondary)')}
-    z-index: 0;
-    }
+    z-index: 1;
 `;
 
 export const ItemList = ({id, itemList, favs}) => {
@@ -85,13 +63,13 @@ export const ItemList = ({id, itemList, favs}) => {
 
     return(
         <ListContainer id={id}>
+            <List>
+                {listElements}
+            </List>
             <TitleContainer>
                 <h3>{id}</h3>
                 <span>{kanji}</span>
             </TitleContainer> 
-            <List>
-                {listElements}
-            </List>
         </ListContainer>
     );
 };

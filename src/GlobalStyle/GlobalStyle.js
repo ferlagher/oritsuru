@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Josefin Sans', sans-serif;
         font-weight: 300;
         font-size: clamp(1rem, 3.5vw, 1.2rem);
-        color: var(--color-foreground-light);
+        color: var(--color-secondary);
         scroll-behavior: smooth;
         scroll-padding-top: 4rem;
 

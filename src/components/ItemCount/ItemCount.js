@@ -7,7 +7,7 @@ const Input = styled.input`
     font-weight: 500;
     font-size: 1.125rem;
     color: currentColor;
-    background-color: var(--color-secondary-dark);
+    background-color: var(--color-background);
     width: 3rem;
     text-align: center;
     border: none;
@@ -34,18 +34,18 @@ export const ItemCount = ({stock, color,  onAdd}) => {
             <Span>Disponible: {stock}</Span>
             <FlexContainer justify='space-between' gap='var(--space-sm)'>
                 <FlexContainer align='stretch'>
-                    <Button border color={color} onClick={decrease} disabled={count === 0} aria-label='Más'>
+                    <Button $border $color={color} onClick={decrease} disabled={count === 0} aria-label='Más'>
                         <MinusIcon/>
                     </Button>
 
                     <Input type='text' onChange={handleChange} value={count} disabled={stock === 0} aria-label='Cantidad'/>
 
-                    <Button border color={color} onClick={increase} disabled={count === stock} aria-label='Menos'>
+                    <Button $border $color={color} onClick={increase} disabled={count === stock} aria-label='Menos'>
                         <PlusIcon/>
                     </Button>
                 </FlexContainer>
 
-                <Button color={color} onClick={() => onAdd(count)} disabled={count === 0}>Agregar al carrito</Button>
+                <Button $color={color} onClick={() => onAdd(count)} disabled={count === 0}>Agregar al carrito</Button>
             </FlexContainer>
         </FlexContainer>
     );

@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { FlexContainer, Logo, IconButton, CartWidget, LeafIcon, HeartIcon } from '../../components';
-import { halftoneBkgd, textOutline } from '../../utils/mixins';
+import { FlexContainer, Logo, CartWidget } from '../../components';
+import { textOutline } from '../../utils/mixins';
 import { useNavBar } from './useNavBar';
 
 const Header = styled(FlexContainer).attrs({
@@ -29,7 +29,6 @@ const Header = styled(FlexContainer).attrs({
             radial-gradient(var(--color-secondary-dark) 28%, transparent 28%);
         background-position: 50% 0%, 0px 0px, 3px 3px;
         background-size: 100% 200%, 6px 6px, 6px 6px;
-    transition: all 0.2s ease-in-out;
         border-bottom: 0.15rem dotted var(--color-secondary-dark);
     }
     `;
@@ -44,7 +43,6 @@ const HeaderContent = styled(FlexContainer)`
     z-index: 11;
     
     h1 {
-        color: var(--color-secondary);
         font-size: 0.7em;
         background-color: var(--color-background);
         padding: 0.1em;
@@ -105,8 +103,6 @@ export const NavBar = () => {
                     <h1>Sushi Fresh & Fun!</h1>
                 </FlexContainer>
                 <IconsContainer>
-                    <Link to='#'><HeartIcon/></Link>
-                    <Link to='#'><LeafIcon/></Link>
                     <Link to='#'><CartWidget/></Link>
                 </IconsContainer>
             </HeaderContent>

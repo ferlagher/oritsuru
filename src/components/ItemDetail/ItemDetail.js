@@ -1,50 +1,55 @@
-import { useState } from "react";
 import styled from "styled-components";
-import { FlexContainer, ItemCount, FavToggle, Loader, Garnish } from "../";
-import { gridBkgd, textOutline } from "../../utils/mixins";
+import { FavToggle, FlexContainer, ItemImg, ItemCount, Loader } from "../";
+import { scaleUp } from "../../utils/keyframes";
+import { textOutline } from "../../utils/mixins";
 import { useItemDetail } from "./useItemDetail";
 
 const ItemContainer = styled(FlexContainer)`
     flex-wrap: wrap;
+    align-self: stretch;
+    width: 100%;
+    overflow: hidden;
+    max-width: var(--max-width);
     gap: var(--space-sm);
     padding: var(--space-lg);
 `;
 
 const ImgContainer = styled(FlexContainer)`
+    padding: var(--space-lg);
     position: relative;
-    `;
 
-const ItemImg = styled.img`
-    height: auto;
-    width: 100%;
-    max-height: 16rem;
-    max-width: 20rem;
-    object-fit: contain;
-    z-index: 2;
-    filter: drop-shadow(0.3rem 0.5rem 0 var(--color-${({color}) => color}-dark));
-    `;
+    &:has(.show)::before {
+        content: '';
+        position: absolute;
+        width: 200vmax;
+        height: 200vmax;
+        border-radius: 200vmax;
+        background-image: 
+            repeating-conic-gradient(var(--color-background) 0 9deg, transparent 9deg 18deg),
+            radial-gradient(var(--color-background-dark) 28%, transparent 28%),
+            radial-gradient(var(--color-background-dark) 28%, transparent 28%);
+        background-position: 0px 0px, 0px 0px, 3px 3px;
+        background-size: 100% 100%, 6px 6px, 6px 6px;
+        z-index: 0;
+        animation: ${scaleUp} 1s ease-in;
+    }
+`;
 
 const DetailsContainer = styled(FlexContainer)`
     flex-direction: column;
     align-items: stretch;
     gap: var(--space-sm);
-    padding: var(--space-sm);
-    transform: skewY(var(--skew-deg));
-    background-color: var(--color-secondary);
-    ${gridBkgd('var(--color-secondary-light)')}
-    box-shadow: 
-    0.5rem 0.5rem 0 var(--color-background),
-    1rem 1rem 0 var(--color-${({color}) => color});
-    
+    z-index: 2;
+
     h3 {
-        color: var(--color-${({color}) => color});
+        width: 100%;
         font-size: 1.5em;
         font-weight: 700;
-        ${textOutline('var(--color-background)')}
+        color: var(--color-primary);
     }
 
     p {
-        background-color: var(--color-secondary);
+        background-color: var(--color-background);
         width: fit-content;
     }
 
@@ -52,33 +57,30 @@ const DetailsContainer = styled(FlexContainer)`
         font-size: 1.4em;
         font-weight: 500;
         padding: 0.25em 0;
-        text-shadow: 0.1em 0.1em 0 var(--color-${({color}) => color});
+        ${textOutline('var(--color-background)')}
     }
-    `;
+`;
 
 export const ItemDetail = () => {
     const [item, isLoading] = useItemDetail();
-    const [isImgLoaded, setIsImgLoaded] = useState(false);
-    const color = item.isVeggie ? 'accent' : 'primary';
 
     return(
         isLoading ? <Loader/> :
         <ItemContainer>
             <ImgContainer>
-                    <Garnish category={item.categoryId} isVisible={isImgLoaded}/>
-                    <ItemImg src={item.image} alt={item.title} onLoad={() => setIsImgLoaded(true)} color={color}/>
+                <ItemImg item={item} isGarnishShown={true} $size='75vmin'/>
             </ImgContainer>
 
-            <DetailsContainer color={color}>
+            <DetailsContainer>
                 <FlexContainer justify='space-between'>
                     <h3>{item.title}</h3>
-                    <FavToggle id={item.id} color={color}/>
+                    <FavToggle id={item.id}/>
                 </FlexContainer>
 
                 <p><i>{item.description}</i></p>
                 <b>${item.price}</b>
 
-                <ItemCount stock={item.stock} onAdd={alert} color={color}/>
+                <ItemCount stock={item.stock} onAdd={alert} color='primary'/>
             </DetailsContainer>
         </ItemContainer>
     );

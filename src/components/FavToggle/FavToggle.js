@@ -22,16 +22,16 @@ const Checkbox = styled.input.attrs({
     opacity: 0;
 
     &:checked + svg {
-        fill: var(--color-${({color}) => color});
+        fill: var(--color-primary);
     }
 `;
 
-export const FavToggle = ({id, favs, color}) => {
+export const FavToggle = ({id, favs}) => {
     const [isFav, toggleFav] = useFavToggle(id, favs);
 
     return(
         <Label>
-            <Checkbox onChange={toggleFav} checked={isFav} color={color}/>
+            <Checkbox onChange={toggleFav} checked={isFav}/>
             <HeartIcon/>
         </Label>
     );

@@ -8,11 +8,12 @@ export const Button = styled.button`
     line-height: 1em;
     text-transform: uppercase;
     color: var(--color-foreground);
-    background-color: var(--color-${({color, border}) => border ? 'transparent' : color});
-    ${({color}) => halftoneBkgd(`var(--color-${color}-transparent)`)}
-    border: 2px solid var(--color-${({color}) => color});
-    box-shadow: 0 0 0 var(--color-${({color}) => color}-dark),
-        0.2em 0.2em 0 var(--color-secondary-dark);
+    background-color: var(--color-${({$color, $border}) => $border ? 'transparent' : $color});
+    ${({$color}) => halftoneBkgd(`var(--color-${$color}-transparent)`)}
+    border: 2px solid var(--color-${({$color}) => $color});
+    border-radius: 2px;
+    box-shadow: 0 0 0 var(--color-${({$color}) => $color}-dark),
+        0.2em 0.2em 0 var(--color-background-dark);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,20 +30,20 @@ export const Button = styled.button`
 
     &:hover {
         translate: -0.2em -0.2em;
-        box-shadow: 0.2em 0.2em 0 var(--color-${({color}) => color}-dark),
-        0.4em 0.4em 0 var(--color-secondary-dark);
+        box-shadow: 0.2em 0.2em 0 var(--color-${({$color}) => $color}-dark),
+        0.4em 0.4em 0 var(--color-background-dark);
     }
 
     &:active {
         translate: 0 0;
-        box-shadow: 0 0 0 var(--color-${({color}) => color}-dark),
-        0.2em 0.2em 0 var(--color-secondary-dark);
+        box-shadow: 0 0 0 var(--color-${({$color}) => $color}-dark),
+        0.1em 0.1em 0 var(--color-background-dark);
     }
 
     &:disabled {
         opacity: 0.6;
         pointer-events: none;
-        box-shadow: 0 0 0 var(--color-${({color}) => color}-dark),
-        0.1em 0.1em 0 var(--color-secondary-dark);
+        box-shadow: 0 0 0 var(--color-${({$color}) => $color}-dark),
+        0.1em 0.1em 0 var(--color-background-dark);
     }
 `;

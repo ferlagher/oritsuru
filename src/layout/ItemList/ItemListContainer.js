@@ -5,15 +5,13 @@ import { FlexContainer, Loader } from '../../components';
 import { useItemListContainer } from './useItemListContainer';
 import { ItemList } from "./ItemList";
 
-const Container = styled(FlexContainer)`
+const ListContainer = styled(FlexContainer)`
     width: 100%;
     height: 100%;
     flex-direction: column;
-    gap: calc((var(--space-factor) * 100vw));
+    gap: calc((var(--space-lg) * 3));
     padding-bottom: var(--space-lg);
 `;
-
-
 
 export const ItemListContainer = () => {
     const [isLoading, items] = useItemListContainer();
@@ -29,8 +27,8 @@ export const ItemListContainer = () => {
     });
 
     return(
-            <Container>
-                {isLoading ? <Loader/> : listsByCategory}
-            </Container>
+        <ListContainer>
+            {isLoading ? <Loader/> : listsByCategory}
+        </ListContainer>
     );
 };
