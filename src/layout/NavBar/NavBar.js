@@ -10,7 +10,7 @@ const Header = styled(FlexContainer).attrs({
     flex-direction: column;
     position: relative;
     width: 100%;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     margin-bottom: calc(var(--space-factor) * 100vw);
     z-index: 10;
 
@@ -55,6 +55,7 @@ const HeaderContent = styled(FlexContainer)`
 const IconsContainer = styled(FlexContainer)`
     justify-content: space-between;
     padding-bottom: calc(var(--space-factor) * min(100vw, var(--max-width)) * 2);
+    color: var(--color-background);
 `;
 
 const Nav = styled(FlexContainer).attrs({
@@ -74,16 +75,16 @@ const Nav = styled(FlexContainer).attrs({
     `;
 
 const StyledNavLink = styled(NavLink)`
-    font-size: clamp(0.6rem, 2vw, 1rem);
+    font-size: 0.7em;
     font-weight: 700;
     text-align: center;
     text-transform: uppercase;
     color: var(--color-primary);
     ${textOutline('var(--color-background)')}
     background-color: var(--color-background);
-    border: 0.13rem solid var(--color-secondary);
-    outline: 0.15rem solid var(--color-background);
-    padding: 0.5em;
+    border: 0.2em solid var(--color-secondary);
+    outline: 0.2em solid var(--color-background);
+    padding: 0.35em 0.1em;
     border-radius: 1px;
     flex: 1;
     
@@ -100,10 +101,10 @@ export const NavBar = () => {
             <HeaderContent>
                 <FlexContainer direction='column' justify='space-between' align='flex-start'>
                     <Link to='/'><Logo/></Link>
-                    <h1>Sushi Fresh & Fun!</h1>
+                    <h1>Sushi delivery & take away</h1>
                 </FlexContainer>
                 <IconsContainer>
-                    <Link to='#'><CartWidget/></Link>
+                    <Link to='/cart'><CartWidget/></Link>
                 </IconsContainer>
             </HeaderContent>
 

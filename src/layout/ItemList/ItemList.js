@@ -7,6 +7,7 @@ const kanjiList = {
     gunkan: '軍艦',
     temaki: '手巻き',
     roll: '巻き',
+    error: '❌❗',
 }
 
 const ListContainer = styled(FlexContainer)`

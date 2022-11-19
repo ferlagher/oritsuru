@@ -9,7 +9,7 @@ const Label = styled(IconButton).attrs({
     
     svg {
         fill: transparent;
-        stroke: var(--color-foreground);
+        stroke: var(--color-secondary);
         stroke-width: 40px;
     }
 `;

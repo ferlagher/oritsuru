@@ -43,6 +43,7 @@ export const GlobalStyle = createGlobalStyle`
 
             &-thumb {
                 background-color: var(--color-primary);
+                border-radius: 2px;
                 box-shadow:
                 -0.1em -0.1em 0 var(--color-primary),
                 inset -0.1em -0.1em 0 var(--color-secondary);

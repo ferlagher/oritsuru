@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import { FlexContainer } from "../base";
 import cucumberSlice from '../../assets/cucumber.png';
+import { fadeIn } from "../../utils/keyframes";
 
 const showGarnish = () => {
     let styles = '';
@@ -16,10 +17,10 @@ const showGarnish = () => {
 const Container = styled(FlexContainer)`
     position: relative;
     filter:
-        drop-shadow(0.3rem 0.3rem 0 var(--color-background))
-        drop-shadow(0.3rem -0.3rem 0 var(--color-background))
-        drop-shadow(-0.3rem 0.3rem 0 var(--color-background))
-        drop-shadow(-0.3rem -0.3rem 0 var(--color-background));
+        drop-shadow(0.2rem 0.2rem 0 var(--color-background))
+        drop-shadow(0.2rem -0.2rem 0 var(--color-background))
+        drop-shadow(-0.2rem 0.2rem 0 var(--color-background))
+        drop-shadow(-0.2rem -0.2rem 0 var(--color-background));
     `;
 
 const Garnish = styled.div`
@@ -55,7 +56,12 @@ const Img = styled.img`
     max-width: 20rem;
     max-height: 16rem;
     object-fit: contain;
+    opacity: 0;
     z-index: 2;
+
+    &.loaded {
+        animation: ${fadeIn} 0.2s ease-in-out forwards;
+    }
     `;
 
 export const ItemImg = ({item, isGarnishShown, $size}) => {
@@ -72,7 +78,8 @@ export const ItemImg = ({item, isGarnishShown, $size}) => {
                 <Slice src={cucumberSlice}/>
             </Garnish>
 
-            <Img src={item.image} alt={item.title} $size={$size} onLoad={() => setIsImgLoaded(true)}/>
+            <Img src={item.image} alt={item.title} $size={$size} className={isImgLoaded ? 'loaded' : ''}
+            onLoad={() => setIsImgLoaded(true)}/>
         </Container>
     );
 };

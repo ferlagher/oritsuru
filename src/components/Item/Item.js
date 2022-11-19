@@ -1,3 +1,4 @@
+import { memo } from "react";
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
 import { FlexContainer, FavToggle, ItemImg } from "../";
@@ -38,7 +39,7 @@ const ItemText = styled(FlexContainer)`
     }
 `;
 
-export const Item = ({item}) => {
+export const Item = memo(({item}) => {
     const [isHover, setIsHover] = useState(false);
 
     return(
@@ -55,4 +56,4 @@ export const Item = ({item}) => {
             <FavToggle id={item.id}/>
         </ListItem>
     );
-};
+});

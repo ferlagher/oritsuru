@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components';
 import { FlexContainer, Loader } from '../../components';
-import { useItemListContainer } from './useItemListContainer';
+import { ItemsContext } from '../../context';
+import { group } from '../../utils';
 import { ItemList } from "./ItemList";
 
 const ListContainer = styled(FlexContainer)`
@@ -14,7 +15,7 @@ const ListContainer = styled(FlexContainer)`
 `;
 
 export const ItemListContainer = () => {
-    const [isLoading, items] = useItemListContainer();
+    const {isLoading, items} = useContext(ItemsContext);
     const {id} = useParams();
 
     useEffect(() => {
@@ -22,7 +23,9 @@ export const ItemListContainer = () => {
         el && el.scrollIntoView();
     }, [id, isLoading]);
 
-    const listsByCategory = Object.entries(items).map(([category, itemList]) => {
+    const itemsByCategory = group(items, 'categoryId');
+
+    const listsByCategory = Object.entries(itemsByCategory).map(([category, itemList]) => {
         return <ItemList key={category} id={category} itemList={itemList}/>
     });
 

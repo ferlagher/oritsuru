@@ -7,8 +7,8 @@ const Isotype = styled.svg.attrs({
     xmlns: 'http://www.w3.org/2000/svg', 
     xmlnsXlink: 'http://www.w3.org/1999/xlink',
 })`
-    height: 1em;
-    width: 1.8em;
+    height: 1.5em;
+    width: 2.7em;
     fill: var(--color-background);
     stroke: var(--color-primary);
     stroke-width: 0.25em;
@@ -17,6 +17,7 @@ const Isotype = styled.svg.attrs({
 
 const Logotype = styled(FlexContainer)`
     font-family: 'Nuku-Nuku', sans-serif;
+    font-size: 1.5em;
     color: var(--color-background);
     ${textOutline('var(--color-primary)', true)}
 `;
