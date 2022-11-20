@@ -9,20 +9,23 @@ function App() {
     return (
         <Router>
             <GlobalStyle/>
-            <NavBar/>
-            <main>
-            <CartProvider>
                 <ItemsProvider>
-                    <Routes>
-                        <Route exact path='/' element={<ItemListContainer/>}/>
-                        <Route exact path='/category/:id' element={<ItemListContainer/>}/>
-                        <Route exact path='/item/:id' element={<ItemDetail/>}/>
-                        <Route exact path='/cart' element={<Cart/>}/>
-                        <Route path='*' element={'🚧4️⃣0️⃣4️⃣🚧'}/>
-                    </Routes>
+                    <CartProvider>
+                        <NavBar/>
+                        <main>
+                            <Routes>
+                                <Route exact path='/' element={<ItemListContainer/>}/>
+                                <Route exact path='/category/:id' element={<ItemListContainer/>}/>
+                                <Route exact path='/item/:id' element={<ItemDetail/>}/>
+                                <Route exact path='/cart' element={<Cart/>}/>
+                                <Route path='*' element={'🚧4️⃣0️⃣4️⃣🚧'}/>
+                            </Routes>
+                            <aside>
+                                <Cart $small/>
+                            </aside>
+                        </main>
+                    </CartProvider>
                 </ItemsProvider>
-            </CartProvider>
-            </main>
         </Router>
     );
 };

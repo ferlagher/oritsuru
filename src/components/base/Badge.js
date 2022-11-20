@@ -13,20 +13,20 @@ const BadgeNumber = styled.div`
     font-weight: 500;
     font-size: 0.8rem;
     text-align: center;
-    line-height: 1em;
-    min-width: 1.4em;
-    color: var(--color-rice);
-    background-color: var(--color-${({color}) => color});
-    border-radius: 10em;
-    border: 0.2em solid var(--color-${({color}) => color});
+    min-width: 1.2em;
+    color: var(--color-background-light);
+    background-color: var(--color-primary);
+    border-radius: 2px;
+    border: 0.1em solid var(--color-primary);
     box-shadow: var(--shadow-sm);
+    transform: skewY(var(--skew-deg));
 `
 
-export const Badge = ({num, color, children}) => {
+export const Badge = ({num, children}) => {
     return(
         <BadgeContainer>
             {children}
-            {num > 0 && <BadgeNumber color={color}>{num > 99 ? '99+' : num}</BadgeNumber>}
+            {num > 0 && <BadgeNumber>{num > 99 ? '99+' : num}</BadgeNumber>}
         </BadgeContainer>
     );
 };

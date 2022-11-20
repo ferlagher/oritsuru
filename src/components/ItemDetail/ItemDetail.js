@@ -6,7 +6,9 @@ import { CartContext, ItemsContext } from "../../context";
 import { scaleUp } from "../../utils/keyframes";
 import { textOutline } from "../../utils/mixins";
 
-const ItemContainer = styled(FlexContainer)`
+const ItemContainer = styled(FlexContainer).attrs({
+    as: 'section',
+})`
     flex-wrap: wrap;
     align-self: stretch;
     width: 100%;

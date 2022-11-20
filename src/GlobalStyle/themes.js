@@ -1,6 +1,6 @@
 // Values are [hue, saturation(%), lightness(%)]
 // Hue is a degree on the color wheel. 0 is red, 120 is green, 240 is blue.
-const colors = {
+const COLORS = {
     primary: [25, 95, 50],
     secondary: [249, 30, 26],
     accent: [118, 90, 35],
@@ -8,11 +8,11 @@ const colors = {
     background: [25, 40, 87],
 };
 
-const createTheme = (arr) => {
+const createTheme = (colors) => {
     let theme = '';
 
-    for (const color in arr) {
-        const [h, s, l] = arr[color];
+    for (const color in colors) {
+        const [h, s, l] = colors[color];
 
         const add = (n, m) => Math.min(n + m, 100);
         const subtract = (n, m) => Math.max(n - m, 0);
@@ -26,4 +26,4 @@ const createTheme = (arr) => {
     return theme;
 };
 
-export const theme = createTheme(colors);
+export const theme = createTheme(COLORS);

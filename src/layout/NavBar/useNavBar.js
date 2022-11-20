@@ -1,18 +1,18 @@
+import { useContext } from "react";
 import { useEffect, useState } from "react";
-import { throttle } from "../../utils/throttle";
+import { ItemsContext } from "../../context";
 
 export const useNavBar = () => {
-    const [isSmall, setIsSmall] = useState(false);
-    
-    useEffect(() => {
-        const handleScroll = throttle(() => {
-            setIsSmall(window.scrollY > 1);
-        }, 250);
-    
-        window.addEventListener('scroll', handleScroll);
-    
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    const {items} = useContext(ItemsContext);
+    const [categories, setCategories] = useState([]);
 
-    return isSmall;
+    useEffect(() => {
+        setCategories(items.reduce((ctgy, obj) => {
+            !ctgy.includes(obj.categoryId) && ctgy.push(obj.categoryId);
+            
+            return ctgy;
+        }, []));
+    }, [items])
+
+    return categories;
 };

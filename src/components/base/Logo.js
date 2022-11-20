@@ -2,30 +2,41 @@ import styled from 'styled-components'
 import { textOutline } from '../../utils/mixins';
 import { FlexContainer } from '../base';
 
+const LogoContainer = styled(FlexContainer)`
+    gap: 0.25rem;
+    color: var(--color-background);
+    transition: color 0.2s ease-in-out;
+
+    :hover, :focus-visible{
+        outline: none;
+        color: var(--color-background-light);
+    }
+`;
+
 const Isotype = styled.svg.attrs({ 
     version: '1.1', 
     xmlns: 'http://www.w3.org/2000/svg', 
     xmlnsXlink: 'http://www.w3.org/1999/xlink',
+    viewBox:"0 0 680 416",
 })`
     height: 1.5em;
     width: 2.7em;
-    fill: var(--color-background);
+    fill: currentColor;
     stroke: var(--color-primary);
-    stroke-width: 0.25em;
+    stroke-width: 0.75em;
     filter: drop-shadow(0.1em 0.1em 0 var(--color-primary));
 `;
 
 const Logotype = styled(FlexContainer)`
     font-family: 'Nuku-Nuku', sans-serif;
     font-size: 1.5em;
-    color: var(--color-background);
     ${textOutline('var(--color-primary)', true)}
 `;
 
 export const Logo = () => {
     return(
-        <FlexContainer gap='0.25em'>
-            <Isotype viewBox="0 0 680 416">
+        <LogoContainer>
+            <Isotype>
             <polygon points="338.355 165.815 529.15 340.821 261.558 241.644 338.355 165.815"/>
             <polygon points="540.788 26.104 575.312 6.539 568.056 346.164 443.902 232.297 540.788 26.104"/>
             <path d="M338.8193,21.268,452.64,161.1116l-26.0063,55.3423-81.01-74.308a11.1845,11.1845,0,0,0-15.42.2834l-61.92,61.1377-32.3388-32.6651Z"/>
@@ -36,6 +47,6 @@ export const Logo = () => {
             <polygon points="596.377 67.938 597.495 15.834 680 106.977 596.377 67.938"/>
             </Isotype>
             <Logotype><span>ORITSURU</span></Logotype>
-        </FlexContainer>
+        </LogoContainer>
     );
 };

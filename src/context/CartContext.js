@@ -29,6 +29,13 @@ export const CartProvider = ({children}) => {
     };
 
     const removeItem = (id) => {
+        setCartList(prevList => {
+            const newList = [...prevList];
+            const i = newList.findIndex(obj => obj.id === id);
+            newList.splice(i, 1);
+
+            return newList
+        })
     };
 
     const clear = () => {

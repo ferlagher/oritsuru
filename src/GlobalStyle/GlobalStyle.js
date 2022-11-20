@@ -72,8 +72,21 @@ export const GlobalStyle = createGlobalStyle`
         width: 100%;
         max-width: var(--max-width);
         display: flex;
-        justify-content: center;
-        align-items: center;
+    }
+
+    section {
+        flex: auto;
+        flex-basis: 80%;
+        margin-top: calc(var(--space-factor) * 100vw);
+    }
+    
+    aside {
+        flex-basis: 20%;
+        padding-left: var(--space-sm);
+        
+        @media (max-width: 820px) {
+            display: none;
+        }
     }
 
     a {

@@ -1,19 +1,20 @@
 import styled from "styled-components";
 import { FlexContainer, Item } from "../../components";
 
-const kanjiList = {
+const KANJIS = {
     nigiri: '握り',
     sashimi: '刺身',
     gunkan: '軍艦',
     temaki: '手巻き',
     roll: '巻き',
     error: '❌❗',
-}
+};
+
+const DEFAULT_KANJI = '寿司';
 
 const ListContainer = styled(FlexContainer)`
     width: 100%;
     gap: var(--space-lg);
-    flex: auto;
     `;
 
 const TitleContainer = styled(FlexContainer)`
@@ -59,18 +60,18 @@ const List = styled(FlexContainer).attrs({
 `;
 
 export const ItemList = ({id, itemList, favs}) => {
-    const listElements = itemList.map(item => <Item item={item} key={item.id} favs={favs}/>)
-    const kanji = kanjiList[id];
+    const listElements = itemList?.map(item => <Item item={item} key={item.id} favs={favs}/>)
+    const kanji = KANJIS[id] || DEFAULT_KANJI;
 
     return(
-        <ListContainer id={id}>
-            <List>
-                {listElements}
-            </List>
+        <ListContainer>
             <TitleContainer>
                 <h3>{id}</h3>
                 <span>{kanji}</span>
             </TitleContainer> 
+            <List>
+                {listElements}
+            </List>
         </ListContainer>
     );
 };

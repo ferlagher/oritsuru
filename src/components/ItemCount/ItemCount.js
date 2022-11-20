@@ -26,6 +26,7 @@ const Input = styled.input`
 
 const Span = styled.span`
     font-size: 0.9rem;
+    width: fit-content;
     margin-bottom: 0.5em;
     background-color: var(--color-background);
     border-radius: 2px;
@@ -40,18 +41,19 @@ export const ItemCount = ({stock, inCart, onAdd}) => {
             <Span>En carrito: {inCart}</Span>
             <FlexContainer justify='space-between' gap='var(--space-sm)'>
                 <FlexContainer align='stretch'>
-                    <Button $border onClick={decrease} disabled={count === 0} aria-label='Más'>
+                    <Button $border onClick={decrease} disabled={count <= 0} aria-label='Más'>
                         <MinusIcon/>
                     </Button>
 
-                    <Input type='text' onChange={handleChange} value={count} disabled={stock === 0} aria-label='Cantidad'/>
+                    <Input type='text' value={count} disabled={stock <= 0} onChange={handleChange}
+                    onKeyDown={e => e.key === 'Enter' && onAdd(count)} aria-label='Cantidad'/>
 
-                    <Button $border onClick={increase} disabled={count === stock} aria-label='Menos'>
+                    <Button $border onClick={increase} disabled={count >= stock} aria-label='Menos'>
                         <PlusIcon/>
                     </Button>
                 </FlexContainer>
 
-                <Button onClick={() => onAdd(count)} disabled={count === 0}>Agregar al carrito</Button>
+                <Button onClick={() => onAdd(count)} disabled={count <= 0}>Agregar al carrito</Button>
             </FlexContainer>
         </FlexContainer>
     );

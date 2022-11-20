@@ -64,7 +64,7 @@ const Img = styled.img`
     }
     `;
 
-export const ItemImg = ({item, isGarnishShown, $size}) => {
+export const ItemImg = ({item, isGarnishShown = false, $size}) => {
     const [isImgLoaded, setIsImgLoaded] = useState(false);
 
     return(

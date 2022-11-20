@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export const useItemCount = (maxValue) => {
+export const useItemCount = maxValue => {
     const initialValue = maxValue ? 1 : 0;
 
     const [count, setCount] = useState(initialValue);
 
-    const increase = e => {
+    const increase = () => {
         setCount(previousValue => Math.min(previousValue + 1, maxValue));
     };
 
@@ -20,6 +20,10 @@ export const useItemCount = (maxValue) => {
 
         setCount(newValue);
     };
+
+    useEffect(() => {
+        setCount(previousValue => Math.min(previousValue, maxValue));
+    }, [maxValue]);
 
     return [count, increase, decrease, handleChange];
 };

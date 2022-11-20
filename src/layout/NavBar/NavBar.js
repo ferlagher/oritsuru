@@ -50,13 +50,11 @@ const HeaderContent = styled(FlexContainer)`
         transform: skewY(var(--skew-deg));
         margin-bottom: 0.4em;
     }
-    `;
 
-const IconsContainer = styled(FlexContainer)`
-    justify-content: space-between;
-    padding-bottom: calc(var(--space-factor) * min(100vw, var(--max-width)) * 2);
-    color: var(--color-background);
-`;
+    & > *:last-child { // margin between HeaderContent and Nav
+        margin-bottom: calc(var(--space-factor) * min(100vw, var(--max-width)) * 2);
+    }
+    `;
 
 const Nav = styled(FlexContainer).attrs({
     as: 'nav',
@@ -87,6 +85,14 @@ const StyledNavLink = styled(NavLink)`
     padding: 0.35em 0.1em;
     border-radius: 1px;
     flex: 1;
+    transition-property: border, padding;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out;
+    
+    &:hover, &:focus-visible {
+        border-width: 0.3em;
+        padding: 0.25em 0;
+    }
     
     &.active {
         border-color: var(--color-primary);
@@ -94,26 +100,22 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 export const NavBar = () => {
-    const isSmall = useNavBar();
+    const categories = useNavBar();
+    
+    const navLinks = categories.map(ctgy => <StyledNavLink to={`/category/${ctgy}`} activeclassname='active' key={ctgy}>{ctgy}</StyledNavLink>)
     
     return(
-        <Header className={isSmall ? 'small' : ''}>
+        <Header>
             <HeaderContent>
                 <FlexContainer direction='column' justify='space-between' align='flex-start'>
                     <Link to='/'><Logo/></Link>
                     <h1>Sushi delivery & take away</h1>
                 </FlexContainer>
-                <IconsContainer>
-                    <Link to='/cart'><CartWidget/></Link>
-                </IconsContainer>
+                <CartWidget/>
             </HeaderContent>
 
             <Nav>
-                <StyledNavLink activeclassname='active' to='/category/gunkan'>gunkan</StyledNavLink>
-                <StyledNavLink activeclassname='active' to='/category/sashimi'>sashimi</StyledNavLink>
-                <StyledNavLink activeclassname='active' to='/category/temaki'>temaki</StyledNavLink>
-                <StyledNavLink activeclassname='active' to='/category/nigiri'>nigiri</StyledNavLink>
-                <StyledNavLink activeclassname='active' to='/category/roll'>roll</StyledNavLink>
+                {navLinks}
             </Nav>
         </Header>
     );
