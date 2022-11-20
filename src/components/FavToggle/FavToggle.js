@@ -1,38 +1,13 @@
-import styled from "styled-components";
-import { IconButton, HeartIcon } from "../";
+import { Toggle, HeartIcon } from "../";
 import { useFavToggle } from "./useFavToggle";
 
-const Label = styled(IconButton).attrs({
-    as: 'label',
-})`
-    z-index: 2;
-    
-    svg {
-        fill: transparent;
-        stroke: var(--color-secondary);
-        stroke-width: 40px;
-    }
-`;
-
-const Checkbox = styled.input.attrs({
-    type: 'checkbox'
-})`
-    width: 0;
-    height: 0;
-    opacity: 0;
-
-    &:checked + svg {
-        fill: var(--color-primary);
-    }
-`;
-
-export const FavToggle = ({id, favs}) => {
-    const [isFav, toggleFav] = useFavToggle(id, favs);
+export const FavToggle = ({id}) => {
+    const [isInStorage, toggleFav] = useFavToggle(id);
+    console.log("🚀 ~ file: FavToggle.js ~ line 6 ~ FavToggle ~ isInStorage", isInStorage)
 
     return(
-        <Label>
-            <Checkbox onChange={toggleFav} checked={isFav}/>
+        <Toggle value={isInStorage} onToggle={toggleFav}>
             <HeartIcon/>
-        </Label>
+        </Toggle>
     );
 };

@@ -1,6 +1,7 @@
 export * from './base';
 export * from './Cart/Cart';
 export * from './Cart/CartWidget';
+export * from './Toggle/Toggle';
 export * from './FavToggle/FavToggle';
 export * from './ItemCount/ItemCount';
 export * from './ItemImg/ItemImg';

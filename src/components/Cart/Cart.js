@@ -46,8 +46,9 @@ export const Cart = ({$small = false}) => {
 
     return(
         <Container className={$small ? 'small' : ''}>
+            <h3>Carrito:</h3>
             <List>
-                {listItems}
+                {listItems.length === 0 ? 'oe' : listItems}
             </List>
             <TotalContainer>
                 <span>Total: <b>${total}</b></span>

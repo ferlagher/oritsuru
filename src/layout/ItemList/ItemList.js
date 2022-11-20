@@ -15,6 +15,7 @@ const DEFAULT_KANJI = '寿司';
 const ListContainer = styled(FlexContainer)`
     width: 100%;
     gap: var(--space-lg);
+    margin-bottom: calc(var(--space-lg) * 3);
     `;
 
 const TitleContainer = styled(FlexContainer)`
@@ -59,14 +60,14 @@ const List = styled(FlexContainer).attrs({
     z-index: 1;
 `;
 
-export const ItemList = ({id, itemList, favs}) => {
+export const ItemList = ({title, itemList, favs}) => {
     const listElements = itemList?.map(item => <Item item={item} key={item.id} favs={favs}/>)
-    const kanji = KANJIS[id] || DEFAULT_KANJI;
+    const kanji = KANJIS[title] || DEFAULT_KANJI;
 
     return(
         <ListContainer>
             <TitleContainer>
-                <h3>{id}</h3>
+                <h3>{title}</h3>
                 <span>{kanji}</span>
             </TitleContainer> 
             <List>
