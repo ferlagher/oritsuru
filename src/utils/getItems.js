@@ -1,8 +1,6 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 import d0nas from '../assets/d0nas.jpg';
 
-const URL = '/.netlify/functions/firebaseConfig';
+const URL = '/.netlify/functions/firebase';
 
 const FALLBACK_ITEM = [{
     id: 'F',
@@ -18,14 +16,7 @@ const FALLBACK_ITEM = [{
 
 export const getItems = async () => {
     try {
-        const {firebaseConfig} = await fetch(URL).then((res) => res.json());
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const itemsRef = collection(db, 'items');
-        const itemsSnapshot = await getDocs(itemsRef);
-        const itemsList = itemsSnapshot.docs.map(item => ({id:item.id, ...item.data()}));
-
-        return itemsList;
+        return {itemsList} = await fetch(URL).then((res) => res.json());
     } catch (err) {
         console.error(err);
         return FALLBACK_ITEM;

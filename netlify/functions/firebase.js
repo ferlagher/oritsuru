@@ -10,8 +10,21 @@ const firebaseConfig = {
 };
 
 exports.handler = async () => {
-    return {
-        statusCode: 200,
-        body: JSON.stringify({firebaseConfig}),
+    try {
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const itemsRef = collection(db, 'items');
+        const itemsSnapshot = await getDocs(itemsRef);
+        const itemsList = itemsSnapshot.docs.map(item => ({id:item.id, ...item.data()}));
+        
+        return {
+            statusCode: 200,
+            body: JSON.stringify({itemsList}),
+        };
+    } catch (err) {
+        return {
+            statusCode: 404,
+            body: err.toString(),
+        };
     };
 };
