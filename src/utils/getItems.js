@@ -10,8 +10,7 @@ const FALLBACK_ITEM = [{
     isVeggie: false,
     categoryId: 'error',
     image: d0nas,
-    description:
-        'Hubo un error al obtener los datos. 😿'
+    description:'Hubo un error al obtener los datos. 😿',
     }]
 
 export const getItems = async () => {
