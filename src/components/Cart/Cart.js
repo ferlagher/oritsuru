@@ -8,6 +8,8 @@ const Container = styled(FlexContainer).attrs({
     as: 'section',
 })`
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     gap: var(--space-sm);
 
     &.small {
@@ -15,7 +17,21 @@ const Container = styled(FlexContainer).attrs({
         top: var(--space-lg);
         font-size: 0.5rem;
 
-        img, button {
+        img, button, a {
+            display: none;
+        }
+    }
+`;
+
+const EmptyCart = styled(FlexContainer).attrs({
+    as: 'section',
+})`
+    &.small {
+        position: sticky;
+        top: var(--space-lg);
+        font-size: 0.5rem;
+
+        a {
             display: none;
         }
     }
@@ -25,6 +41,7 @@ const List = styled(FlexContainer).attrs({
     as: 'ul',
 })`
     flex-direction: column;
+    flex: auto;
     width: 100%;
     border-bottom: 0.2em solid var(--color-background-dark);
     `;
@@ -39,21 +56,36 @@ const TotalContainer = styled(FlexContainer)`
     }
 `;
 
+const ButtonsContainer = styled(FlexContainer)`
+    justify-content: flex-end;
+    gap: var(--space-sm);
+    width: 100%;
+`;
+
 export const Cart = ({$small = false}) => {
     const {cartList, clear} = useContext(CartContext);
     const listItems = cartList.map(item => <CartItem key={item.id} item={item}/>);
     const total = cartList.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
     return(
+        listItems.length === 0 ? 
+        <EmptyCart className={$small ? 'small' : ''}>
+            <Button to='/'>Ver menú</Button>
+        </EmptyCart>
+        :
         <Container className={$small ? 'small' : ''}>
             <h3>Carrito:</h3>
             <List>
-                {listItems.length === 0 ? 'oe' : listItems}
+                {listItems}
             </List>
             <TotalContainer>
                 <span>Total: <b>${total}</b></span>
                 <Button onClick={clear} $border><PlusIcon/></Button>
             </TotalContainer>
+            <ButtonsContainer>
+                <Button to=''>Seguir comprando</Button>
+                <Button to=''>Confirmar pedido</Button>
+            </ButtonsContainer>
         </Container>
     )
 };

@@ -78,11 +78,13 @@ export const GlobalStyle = createGlobalStyle`
         flex: auto;
         flex-basis: 80%;
         margin-top: calc(var(--space-factor) * 100vw);
+        margin-bottom: var(--space-lg);
     }
     
     aside {
         flex-basis: 20%;
         padding-left: var(--space-sm);
+        margin-bottom: var(--space-lg);
         
         @media (max-width: 820px) {
             display: none;

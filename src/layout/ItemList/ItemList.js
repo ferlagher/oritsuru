@@ -16,6 +16,10 @@ const ListContainer = styled(FlexContainer)`
     width: 100%;
     gap: var(--space-lg);
     margin-bottom: calc(var(--space-lg) * 3);
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
     `;
 
 const TitleContainer = styled(FlexContainer)`

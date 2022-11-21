@@ -1,34 +1,23 @@
 import styled from "styled-components";
+import { FlexContainer } from "../base";
 import { useToggle } from "./useToggle";
 
-const Label = styled.label`
-    z-index: 2;
-    
-    svg {
-        fill: transparent;
-        stroke: var(--color-secondary);
-        stroke-width: 40px;
-    }
-`;
-
-const Checkbox = styled.input.attrs({
-    type: 'checkbox'
+const Label = styled(FlexContainer).attrs({
+    as: 'label',
 })`
-    width: 0;
-    height: 0;
-    opacity: 0;
-
-    &:checked + svg {
-        fill: var(--color-primary);
+    input {
+        width: 0;
+        height: 0;
+        opacity: 0;
     }
 `;
 
-export const Toggle = ({value = false, onToggle, children}) => {
+export const Toggle = ({value = false, onToggle, children, className}) => {
     const [isCheked, handleChange] = useToggle(value, onToggle);
 
     return(
-        <Label>
-            <Checkbox onChange={handleChange} checked={isCheked}/>
+        <Label className={className}>
+            <input type='checkbox' onChange={handleChange} checked={isCheked}/>
             {children}
         </Label>
     );

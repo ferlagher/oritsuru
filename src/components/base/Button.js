@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const Button = styled.button`
+export const Button = styled(Link).attrs(({onClick}) => ({
+    as: onClick && 'button',
+}))`
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 500;
     font-size: 1rem;

@@ -10,7 +10,30 @@ const Container = styled(FlexContainer).attrs({
     width: 100%;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: flex-start;
     gap: var(--space-lg);
+`;
+
+const StyledToggle = styled(Toggle)`
+    font-weight: 500;
+    color: var(--color-primary);
+    padding: 0.1em;
+    border: 0.15em solid var(--color-secondary);
+    border-radius: 2px;
+    
+    &:has(input:checked) {
+        color: var(--color-background);
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+    }
+    
+    &:hover {
+        border-color: var(--color-primary);
+    }
+
+    svg {
+        fill: currentColor;
+    }
 `;
 
 export const ItemListContainer = () => {
@@ -19,10 +42,9 @@ export const ItemListContainer = () => {
 
     return(
         <Container>
-            <FlexContainer>
-                <span>Filtros:</span>
-                <Toggle onToggle={setIsFav}><HeartIcon/></Toggle>
-                <Toggle onToggle={setIsVeggie}><LeafIcon/></Toggle>
+            <FlexContainer justify='flex-start' gap='var(--space-sm)'>
+                <StyledToggle onToggle={setIsFav} $color='primary'><HeartIcon/>Favoritos</StyledToggle>
+                <StyledToggle onToggle={setIsVeggie} $color='accent'><LeafIcon/>Veggie</StyledToggle>
             </FlexContainer>
             {isLoading ? <Loader/> : list}
         </Container>

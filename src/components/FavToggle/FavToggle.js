@@ -1,12 +1,25 @@
+import styled from "styled-components";
 import { Toggle, HeartIcon } from "../";
 import { useFavToggle } from "./useFavToggle";
+
+const StyledToggle = styled(Toggle)`
+    svg {
+        fill: transparent;
+        stroke: var(--color-secondary);
+        stroke-width: 2rem;
+    }
+
+    input:checked + svg {
+        fill: var(--color-primary);
+    }
+`;
 
 export const FavToggle = ({id}) => {
     const [isInStorage, toggleFav] = useFavToggle(id);
 
     return(
-        <Toggle value={isInStorage} onToggle={toggleFav}>
+        <StyledToggle value={isInStorage} onToggle={toggleFav}>
             <HeartIcon/>
-        </Toggle>
+        </StyledToggle>
     );
 };

@@ -18,19 +18,19 @@ export const useItemListContainer = (items) => {
     const [isFav, setIsFav] = useState(false);
     const [isVeggie, setIsVeggie] = useState(false);
     
-    let filteredItems = [...items];
-    filteredItems = isFav ? filterByFav(filteredItems) : filteredItems;
-    filteredItems = isVeggie ? filterByVeggie(filteredItems) : filteredItems;
-    
-    const itemsByCategory = group(filteredItems, 'categoryId');
-
-    const newList = id
-    ? <ItemList key={id} title={id} itemList={itemsByCategory[id]}/>
-    : Object.entries(itemsByCategory).map(([category, itemList]) => {
-        return <ItemList key={category} title={category} itemList={itemList}/>
-    });
-    
     useEffect(() => {
+        let filteredItems = [...items];
+        filteredItems = isFav ? filterByFav(filteredItems) : filteredItems;
+        filteredItems = isVeggie ? filterByVeggie(filteredItems) : filteredItems;
+
+        const itemsByCategory = group(filteredItems, 'categoryId');
+
+        const newList = id
+        ? <ItemList key={id} title={id} itemList={itemsByCategory[id]}/>
+        : Object.entries(itemsByCategory).map(([category, itemList]) => {
+            return <ItemList key={category} title={category} itemList={itemList}/>
+        });
+    
         setList(newList);
     }, [id, items, isFav, isVeggie]);
     
