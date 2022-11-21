@@ -9,7 +9,7 @@ const firebaseConfig = {
     measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
-exports.handler = () => {
+exports.handler = async () => {
     return {
         statusCode: 200,
         body: JSON.stringify({firebaseConfig}),
