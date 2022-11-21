@@ -12,6 +12,19 @@ const firebaseConfig = {
     measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
-const app = initializeApp(firebaseConfig);
+exports.handler = async function () {
+    try {
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
 
-export const db = getFirestore(app);
+        return {
+            statusCode: 200,
+            body: JSON.stringify({db}),
+        };
+    } catch (err) {
+        return {
+            statusCode: 404,
+            body: err.toString(),
+        };
+    };
+};

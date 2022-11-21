@@ -1,6 +1,7 @@
 import { collection, getDocs } from 'firebase/firestore/lite';
-import { db } from './firebaseConfig';
 import d0nas from '../assets/d0nas.jpg';
+
+const URL = '/.netlify/functions/firestore';
 
 const FALLBACK_ITEM = [{
     id: 'F',
@@ -16,6 +17,8 @@ const FALLBACK_ITEM = [{
 
 export const getItems = async () => {
     try {
+        const {db} = await fetch(URL).then((res) => res.json());
+        console.log("🚀 ~ file: getItems.js ~ line 21 ~ getItems ~ db", db)
         const itemsRef = collection(db, 'items');
         const itemsSnapshot = await getDocs(itemsRef);
         const itemsList = itemsSnapshot.docs.map(item => ({id:item.id, ...item.data()}));

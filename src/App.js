@@ -5,6 +5,7 @@ import { NavBar, ItemListContainer } from './layout';
 import { CartProvider, ItemsProvider } from './context';
 
 function App() {
+    console.log(process.env)
 
     return (
         <Router>
