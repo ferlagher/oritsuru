@@ -1,6 +1,3 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from 'firebase/firestore/lite';
-
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -12,19 +9,9 @@ const firebaseConfig = {
     measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
-exports.handler = async function () {
-    try {
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
-        return {
-            statusCode: 200,
-            body: JSON.stringify({db}),
-        };
-    } catch (err) {
-        return {
-            statusCode: 404,
-            body: err.toString(),
-        };
+exports.handler = () => {
+    return {
+        statusCode: 200,
+        body: JSON.stringify({firebaseConfig}),
     };
 };
