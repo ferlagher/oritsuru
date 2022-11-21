@@ -16,7 +16,8 @@ const FALLBACK_ITEM = [{
 
 export const getItems = async () => {
     try {
-        return {itemsList} = await fetch(URL).then((res) => res.json());
+        const {itemsList} = await fetch(URL).then((res) => res.json());
+        return itemsList;
     } catch (err) {
         console.error(err);
         return FALLBACK_ITEM;
