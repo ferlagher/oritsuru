@@ -4,12 +4,13 @@ import { app } from '/firebaseConfig';
 const auth = getAuth(app);
 
 exports.handler = async e => {
-    const {email, pass} = e.queryStringParameters;
+    const {email, pass, action} = e.queryStringParameters;
 
     if (action === 'login') {
         try {
             const {_tokenResponse} = await signInWithEmailAndPassword(auth, email, pass);
             const token = _tokenResponse.refreshToken
+            console.log("🚀 ~ file: authentication.js ~ line 13 ~ token", token)
 
             return {
                 statusCode: 200,
@@ -26,6 +27,7 @@ exports.handler = async e => {
     try {
         const {_tokenResponse} = await createUserWithEmailAndPassword(auth, email, pass);
         const token = _tokenResponse.refreshToken
+        console.log("🚀 ~ file: authentication.js ~ line 30 ~ token", token)
 
         return {
             statusCode: 200,

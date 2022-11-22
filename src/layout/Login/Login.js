@@ -10,6 +10,7 @@ const getAuth = async () => {
 
 export const Login = () => {
     const [user, setUser] = useState('');
+    setUser(setUser(getAuth()))
     useEffect(() => console.log(user), [user])
     return(<section></section>);
 };

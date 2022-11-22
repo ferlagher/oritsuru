@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { EmptyState, FlexContainer, Item } from "../../components";
+import { FlexContainer, Item } from "../../components";
 
 const KANJIS = {
     nigiri: '握り',
