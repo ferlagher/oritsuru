@@ -1,6 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { FlexContainer, Logo, CartWidget } from '../../components';
+import { FlexContainer, Logo, CartWidget, UserIcon } from '../../components';
 import { textOutline } from '../../utils/mixins';
 import { useNavBar } from './useNavBar';
 
@@ -41,6 +41,10 @@ const HeaderContent = styled(FlexContainer)`
     max-width: var(--max-width);
     padding: var(--space-sm) 0;
     z-index: 11;
+
+    a:focus-visible {
+        outline: none;
+    }
     
     h1 {
         font-size: 0.7em;
@@ -55,6 +59,26 @@ const HeaderContent = styled(FlexContainer)`
         margin-bottom: calc(var(--space-factor) * min(100vw, var(--max-width)) * 2);
     }
     `;
+
+const IconsContainer = styled(FlexContainer)`
+    gap: var(--space-sm);
+
+    svg {
+        fill: var(--color-background);
+        stroke: var(--color-secondary-dark);
+        stroke-width: 1em;
+        transition-property: fill stroke;
+        transition-duration: 0.2s;
+        transition-timing-function: ease-in-out;
+    }
+
+    a:hover, a:focus-visible {
+        svg{
+            fill: var(--color-background-light);
+            stroke: var(--color-primary);
+        }
+    }
+`;
 
 const Nav = styled(FlexContainer).attrs({
     as: 'nav',
@@ -111,7 +135,10 @@ export const NavBar = () => {
                     <Link to='/'><Logo/></Link>
                     <h1>Sushi delivery & take away</h1>
                 </FlexContainer>
-                <CartWidget/>
+                <IconsContainer>
+                    <Link to='/login'><UserIcon/></Link>
+                    <CartWidget/>
+                </IconsContainer>
             </HeaderContent>
 
             <Nav>

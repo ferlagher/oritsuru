@@ -5,6 +5,8 @@ import { useToggle } from "./useToggle";
 const Label = styled(FlexContainer).attrs({
     as: 'label',
 })`
+    cursor: pointer;
+    
     input {
         width: 0;
         height: 0;

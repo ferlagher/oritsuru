@@ -17,6 +17,10 @@ const LinkWrapper = styled(Link)`
     height: 100%;
     display: flex;
     align-items: center;
+
+    &:focus {
+        outline: none;
+    }
 `;
 
 const ItemText = styled(FlexContainer)`
@@ -44,7 +48,7 @@ export const Item = memo(({item}) => {
 
     return(
         <ListItem onMouseOver={() => setIsHover(true)} onMouseOut={() => setIsHover(false)}>
-            <LinkWrapper to={`/item/${item.id}`}>
+            <LinkWrapper to={`/item/${item.id}`} onFocus={() => setIsHover(true)} onBlur={() => setIsHover(false)}>
                 <ItemImg item={item} isGarnishShown={isHover} $size='6rem'/>
 
                 <ItemText>

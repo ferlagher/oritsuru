@@ -1,6 +1,6 @@
 import d0nas from '../assets/d0nas.jpg';
 
-const URL = '/.netlify/functions/firebase';
+const URL = '/.netlify/functions/firestore';
 
 const FALLBACK_ITEM = [{
     id: 'F',
@@ -15,7 +15,7 @@ const FALLBACK_ITEM = [{
 
 export const getItems = async () => {
     try {
-        const {itemsList} = await fetch(URL).then((res) => res.json());
+        const {itemsList} = await fetch(URL).then(res => res.json());
         return itemsList;
     } catch (err) {
         console.error(err);

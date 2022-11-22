@@ -8,6 +8,10 @@ const StyledToggle = styled(Toggle)`
         stroke: var(--color-secondary);
         stroke-width: 2rem;
     }
+    
+    &:hover svg, input:focus + svg {
+        stroke: var(--color-primary);
+    }
 
     input:checked + svg {
         fill: var(--color-primary);

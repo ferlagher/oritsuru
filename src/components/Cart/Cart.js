@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import { CartContext } from "../../context";
-import { FlexContainer, Button, PlusIcon } from "../";
+import { FlexContainer, EmptyState, Button, PlusIcon } from "../";
 import { CartItem } from "./CartItem";
 
 const Container = styled(FlexContainer).attrs({
@@ -26,6 +26,8 @@ const Container = styled(FlexContainer).attrs({
 const EmptyCart = styled(FlexContainer).attrs({
     as: 'section',
 })`
+    flex-direction: column;
+    
     &.small {
         position: sticky;
         top: var(--space-lg);
@@ -63,13 +65,13 @@ const ButtonsContainer = styled(FlexContainer)`
 `;
 
 export const Cart = ({$small = false}) => {
-    const {cartList, clear} = useContext(CartContext);
+    const {cartList, total, clear} = useContext(CartContext);
     const listItems = cartList.map(item => <CartItem key={item.id} item={item}/>);
-    const total = cartList.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
     return(
         listItems.length === 0 ? 
         <EmptyCart className={$small ? 'small' : ''}>
+            <EmptyState view='cart'/>
             <Button to='/'>Ver menú</Button>
         </EmptyCart>
         :
@@ -83,8 +85,8 @@ export const Cart = ({$small = false}) => {
                 <Button onClick={clear} $border><PlusIcon/></Button>
             </TotalContainer>
             <ButtonsContainer>
-                <Button to=''>Seguir comprando</Button>
-                <Button to=''>Confirmar pedido</Button>
+                <Button to='/'>Seguir comprando</Button>
+                <Button to='/checkout'>Confirmar pedido</Button>
             </ButtonsContainer>
         </Container>
     )

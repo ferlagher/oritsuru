@@ -1,7 +1,5 @@
-import { useContext } from 'react';
 import styled from 'styled-components';
-import { Toggle, FlexContainer, Loader, HeartIcon, LeafIcon } from '../../components';
-import { ItemsContext } from '../../context';
+import { Toggle, FlexContainer, Loader, HeartIcon, LeafIcon, EmptyState } from '../../components';
 import { useItemListContainer } from './useItemListContainer';
 
 const Container = styled(FlexContainer).attrs({
@@ -27,7 +25,7 @@ const StyledToggle = styled(Toggle)`
         border-color: var(--color-primary);
     }
     
-    &:hover {
+    &:hover, &:has(input:focus) {
         border-color: var(--color-primary);
     }
 
@@ -37,8 +35,7 @@ const StyledToggle = styled(Toggle)`
 `;
 
 export const ItemListContainer = () => {
-    const {items, isLoading} = useContext(ItemsContext);
-    const {list, setIsFav, setIsVeggie} = useItemListContainer(items);
+    const {list, isLoading, setIsFav, setIsVeggie} = useItemListContainer();
 
     return(
         <Container>
@@ -46,7 +43,8 @@ export const ItemListContainer = () => {
                 <StyledToggle onToggle={setIsFav} $color='primary'><HeartIcon/>Favoritos</StyledToggle>
                 <StyledToggle onToggle={setIsVeggie} $color='accent'><LeafIcon/>Veggie</StyledToggle>
             </FlexContainer>
-            {isLoading ? <Loader/> : list}
+            {isLoading ? <Loader/> :
+            list.length ? list : <EmptyState view='itemList'/>}
         </Container>
     );
 };

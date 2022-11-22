@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { FavToggle, FlexContainer, ItemImg, ItemCount, Loader } from "../";
+import { FavToggle, FlexContainer, ItemImg, ItemCount, Loader, EmptyState } from "../";
 import { CartContext, ItemsContext } from "../../context";
 import { scaleUp } from "../../utils/keyframes";
 import { textOutline } from "../../utils/mixins";
@@ -82,6 +82,7 @@ export const ItemDetail = () => {
 
     return(
         isLoading ? <Loader/> :
+        !item ? <EmptyState view='itemDetail'/> :
         <ItemContainer>
             <ImgContainer>
                 <ItemImg item={item} isGarnishShown={true} $size='75vmin'/>

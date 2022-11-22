@@ -1,13 +1,18 @@
 import { createContext, useEffect, useState } from "react";
 
+const calcTotal = (arr) => arr.reduce((sum, item) => sum + item.price * item.quantity, 0)
+
 export const CartContext = createContext({});
 
 export const CartProvider = ({children}) => {
     const storedList = JSON.parse(localStorage.getItem('cartList')) ?? [];
     const [cartList, setCartList] = useState(storedList);
+    const [total, setTotal] = useState(calcTotal(cartList));
+
 
     useEffect(() => {
         localStorage.setItem('cartList', JSON.stringify(cartList));
+        setTotal(calcTotal(cartList));
     }, [cartList]);
 
     const addItem = (item, quantity) => {
@@ -43,7 +48,7 @@ export const CartProvider = ({children}) => {
     };
 
     return (
-        <CartContext.Provider value={{cartList, addItem, removeItem, clear}}>
+        <CartContext.Provider value={{cartList, total, addItem, removeItem, clear}}>
             { children }
         </CartContext.Provider>
     );
