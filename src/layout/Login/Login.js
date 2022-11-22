@@ -1,7 +1,7 @@
 /* import { useEffect, useState } from "react"; */
 
 //const URL = `/.netlify/functions/authentication?email=${email}&pass=${pass}&acton=${action}`;
-const URL = `/.netlify/functions/authentication?email=a@h.com&pass=1234&action=login`;
+const URL = `/.netlify/functions/authentication?email=a@h.com&pass=123456&action=login`;
 
 const getToken = async () => {
     try {
@@ -10,7 +10,7 @@ const getToken = async () => {
 
         return res;
     } catch(err) {
-        console.warn(err);
+        console.log(err);
     };
 };
 
