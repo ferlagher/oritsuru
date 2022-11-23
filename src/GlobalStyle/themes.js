@@ -4,7 +4,6 @@ const COLORS = {
     primary: [25, 95, 50],
     secondary: [249, 30, 26],
     accent: [118, 90, 35],
-    foreground: [0, 100, 100],
     background: [25, 40, 87],
 };
 

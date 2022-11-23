@@ -82,7 +82,7 @@ export const ItemDetail = () => {
 
     return(
         isLoading ? <Loader/> :
-        !item ? <EmptyState view='itemDetail'/> :
+        !item ? <EmptyState/> :
         <ItemContainer>
             <ImgContainer>
                 <ItemImg item={item} isGarnishShown={true} $size='75vmin'/>
