@@ -125,7 +125,6 @@ const StyledNavLink = styled(NavLink)`
 
 export const NavBar = () => {
     const [categories, isLoading] = useNavBar();
-    console.log("🚀 ~ file: NavBar.js ~ line 128 ~ NavBar ~ isLoading", isLoading)
     
     const navLinks = categories.map(ctgy => <StyledNavLink to={`/category/${ctgy.name}`} activeclassname='active' key={ctgy.id}>{ctgy.name}</StyledNavLink>)
     

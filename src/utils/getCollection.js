@@ -1,4 +1,5 @@
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { collection, getDocs } from 'firebase/firestore/lite';
+import { db } from './firebase';
 import d0nas from '../assets/d0nas.jpg';
 
 const FALLBACK_ITEM = [{
@@ -14,7 +15,6 @@ const FALLBACK_ITEM = [{
 
 export const getCollection = async (col) => {
     try {
-        const db = getFirestore();
         const itemsRef = collection(db, col);
         const itemsSnapshot = await getDocs(itemsRef);
         const itemsList = itemsSnapshot.docs.map(item => ({id:item.id, ...item.data()}));

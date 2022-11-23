@@ -1,23 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
 import { initializeApp } from "firebase/app";
-
-// ---Netlify---
-
-//const URL = '/.netlify/functions/firebaseConfig';
-//const initializeFirebase = async () => {
-//    try {
-//        const firebaseConfig = await fetch(URL).then(res => res.json());
-//        initializeApp(firebaseConfig);
-//    } catch (err) {
-//        console.error(err);
-//    };
-//};
-
-//initializeFirebase();
-
-// ---Local---
+import { getFirestore } from "firebase/firestore/lite";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -32,9 +15,5 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    <>
-        <App/>
-    </>
-);
+export const db = getFirestore(app);
+export const auth = getAuth(app);
