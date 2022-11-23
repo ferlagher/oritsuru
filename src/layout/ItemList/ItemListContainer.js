@@ -2,10 +2,9 @@ import styled from 'styled-components';
 import { Toggle, FlexContainer, Loader, HeartIcon, LeafIcon, EmptyState } from '../../components';
 import { useItemListContainer } from './useItemListContainer';
 
-const Container = styled(FlexContainer).attrs({
-    as: 'section',
-})`
+const Container = styled(FlexContainer)`
     width: 100%;
+    height: 100%;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;

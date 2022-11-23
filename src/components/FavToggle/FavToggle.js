@@ -9,7 +9,7 @@ const StyledToggle = styled(Toggle)`
         stroke-width: 2rem;
     }
     
-    &:hover svg, input:focus + svg {
+    &:hover svg, input:focus-visible + svg {
         stroke: var(--color-primary);
     }
 

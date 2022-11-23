@@ -1,10 +1,10 @@
 import { createContext, useState, useEffect } from "react";
-import { getItems } from "../utils";
+import { getCollection } from "../utils";
 
-const getData = async (setItems, setLoading) => {
-    const data = await getItems();
+const getData = async (setItems, setIsLoading) => {
+    const data = await getCollection('items');
     setItems(data);
-    setLoading(false);
+    setIsLoading(false);
 };
 
 export const ItemsContext = createContext({
@@ -13,11 +13,11 @@ export const ItemsContext = createContext({
 });
 
 export const ItemsProvider = ({children}) => {
-    const [isLoading, setLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        getData(setItems, setLoading);
+        getData(setItems, setIsLoading);
     }, []);
     
     return(

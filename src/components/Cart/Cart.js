@@ -4,9 +4,7 @@ import { CartContext } from "../../context";
 import { FlexContainer, EmptyState, Button, PlusIcon } from "../";
 import { CartItem } from "./CartItem";
 
-const Container = styled(FlexContainer).attrs({
-    as: 'section',
-})`
+const Container = styled(FlexContainer)`
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
@@ -23,15 +21,15 @@ const Container = styled(FlexContainer).attrs({
     }
 `;
 
-const EmptyCart = styled(FlexContainer).attrs({
-    as: 'section',
-})`
+const EmptyCart = styled(FlexContainer)`
     flex-direction: column;
+    height: 100%;
     
     &.small {
         position: sticky;
         top: var(--space-lg);
         font-size: 0.5rem;
+        height: initial;
 
         a {
             display: none;
@@ -71,8 +69,9 @@ export const Cart = ({$small = false}) => {
     return(
         listItems.length === 0 ? 
         <EmptyCart className={$small ? 'small' : ''}>
-            <EmptyState view='cart'/>
-            <Button to='/'>Ver menú</Button>
+            <EmptyState view='cart'>
+                <Button to='/'>Ver menú</Button>
+            </EmptyState>
         </EmptyCart>
         :
         <Container className={$small ? 'small' : ''}>

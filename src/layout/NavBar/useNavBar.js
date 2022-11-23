@@ -1,18 +1,19 @@
-import { useContext } from "react";
 import { useEffect, useState } from "react";
-import { ItemsContext } from "../../context";
+import { getCollection } from "../../utils";
+
+const getData = async (setCategories, setIsLoading) => {
+    const data = await getCollection('categories');
+    setCategories(data);
+    setIsLoading(false);
+};
 
 export const useNavBar = () => {
-    const {items} = useContext(ItemsContext);
     const [categories, setCategories] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        setCategories(items.reduce((ctgy, obj) => {
-            !ctgy.includes(obj.categoryId) && ctgy.push(obj.categoryId);
-            
-            return ctgy;
-        }, []));
-    }, [items])
+        getData(setCategories, setIsLoading);
+    }, [])
 
-    return categories;
+    return [categories, isLoading];
 };

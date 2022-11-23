@@ -10,24 +10,29 @@ const VIEWS = {
     default: {title: '404 Not Found', message: 'Yo había ponido mi web aquí.', img: ponido},
 }
 
-const Container = styled(FlexContainer).attrs({
-    as: 'section',
-})`
+const Container = styled(FlexContainer)`
     flex-wrap: wrap;
     gap: var(--space-sm);
-    width: 100%;
+    height: 100%;
+    justify-self: center;
+    align-self: center;
     font-size: 1.2em;
 
     img {
-        height: 100%;
+        height: auto;
+        width: auto;
         max-width: 100%;
         max-height: 60vh;
         object-fit: contain;
     }
-    
-    div {
+`;
 
-    }
+const TextContainer = styled(FlexContainer)`
+    flex-direction: column;
+    gap: var(--space-sm);
+    flex: auto;
+    flex-basis: 30%;
+    max-width: 500px;
 
     h2 {
         color: var(--color-background);
@@ -35,7 +40,7 @@ const Container = styled(FlexContainer).attrs({
         border-radius: 2px;
         padding: 0.2em;
         transform: skewY(var(--skew-deg));
-        margin-bottom: 1em;
+        margin-bottom: 0.25em;
     }
 
     h3 {
@@ -48,11 +53,11 @@ export const EmptyState = ({view = 'default', children}) => {
     const flexDir = view === 'cart' ? 'row-reverse' : 'row';
     return(
         <Container direction={flexDir}>
-            <FlexContainer direction='column'>
+            <TextContainer>
                 <h2>{title}</h2>
                 <h3>{message}</h3>
                 {children}
-            </FlexContainer>
+            </TextContainer>
             <img src={img} alt={title}></img>
         </Container>
     );
