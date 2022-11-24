@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { FlexContainer, Logo, UserIcon } from '../../components';
 import { textOutline } from '../../utils';
 import { CartWidget } from './CartWidget';
+import { useNavBar } from './useNavBar';
 
 const Header = styled(FlexContainer).attrs({
     as: 'header',
@@ -123,8 +124,9 @@ const StyledNavLink = styled(NavLink)`
     }
 `;
 
-export const NavBar = (categories, itemsInCart) => {
-    //const navLinks = categories.map(ctgy => <StyledNavLink to={`/category/${ctgy.name}`} activeclassname='active' key={ctgy.id}>{ctgy.name}</StyledNavLink>)
+export const NavBar = () => {
+    const [categories, itemsInCart] = useNavBar();
+    const navLinks = categories.map(ctgy => <StyledNavLink to={`/category/${ctgy.name}`} activeclassname='active' key={ctgy.id}>{ctgy.name}</StyledNavLink>)
     
     return(
         <Header>
@@ -139,7 +141,7 @@ export const NavBar = (categories, itemsInCart) => {
                 </IconsContainer>
             </HeaderContent>
             <Nav>
-                {/* navLinks */}
+                {navLinks}
             </Nav>
         </Header>
     );

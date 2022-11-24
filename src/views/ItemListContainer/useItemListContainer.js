@@ -11,27 +11,36 @@ export const useItemListContainer = () => {
     const {categoryId} = useParams();
     const [isFilteringVeggie, setIsFilteringVeggie] = useState(false);
     const [isFilteringFav, setIsFilteringFav] = useState(false);
-    const favList = JSON.parse(localStorage.getItem('favs')) ?? [];
-
+    
     useEffect(() => {
         const params = [];
+        const favList = JSON.parse(localStorage.getItem('favs')) ?? [];
         categoryId && params.push(where('categoryId', '==', categoryId));
         isFilteringFav && params.push(where(documentId(), 'in', favList));
         isFilteringVeggie && params.push(where('isVeggie', '==', true));
+
+        if (isFilteringFav && !favList.length) {
+            setFilteredItems([]);
+            setIsLoading(false);
+            setIsFiltering(true);
+
+            return;
+        };
         
         if (params.length) {
             setIsLoading(true);
             getCollection('items', params)
                 .then(items => {
                     setFilteredItems(items);
-                    setIsLoading(false);
                     setIsFiltering(true);
-            });
-        } else {
-            setIsFiltering(false);
+                }).finally(() => setIsLoading(false));
+            
+            return;
         };
+        
+        setIsFiltering(false);
 
-    }, [categoryId, isFilteringFav, isFilteringVeggie]);
+    }, [categoryId, isFilteringFav, isFilteringVeggie, setFilteredItems, setIsFiltering, setIsLoading]);
 
     const createListsByCategory = (items) => {
         const itemsByCategory = Object.entries(group(items, 'categoryId')); // [[ctgy1, [list1]], [ctgy2, [list2]], etc.]
