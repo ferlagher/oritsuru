@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { FavToggle, FlexContainer, ItemImg, ItemCount, Loader, EmptyState } from "../";
+import { ItemCount, } from "./ItemCount/ItemCount";
+import { FavToggle, FlexContainer, ItemImg, Loader, EmptyState } from "../../components";
 import { CartContext, ItemsContext } from "../../context";
-import { scaleUp } from "../../utils/keyframes";
-import { textOutline } from "../../utils/mixins";
+import { textOutline, scaleUp } from "../../utils";
 
 const ItemContainer = styled(FlexContainer)`
     flex-wrap: wrap;
@@ -84,7 +84,7 @@ export const ItemDetail = () => {
         !item ? <EmptyState/> :
         <ItemContainer>
             <ImgContainer>
-                <ItemImg item={item} isGarnishShown={true} $size='75vmin'/>
+                <ItemImg src={item.image} alt={item.title} isGarnishShown={true} $size='75vmin'/>
             </ImgContainer>
 
             <DetailsContainer>

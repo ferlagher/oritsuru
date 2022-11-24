@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { FlexContainer, Item } from "../../components";
+import { FlexContainer } from "../../components";
+import { Item } from "./Item";
 
 const ListContainer = styled(FlexContainer)`
     width: 100%;

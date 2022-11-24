@@ -14,12 +14,12 @@ const Label = styled(FlexContainer).attrs({
     }
 `;
 
-export const Toggle = ({value = false, onToggle, children, className}) => {
+export const Toggle = ({value = false, onToggle, children, className, disabled}) => {
     const [isCheked, handleChange] = useToggle(value, onToggle);
 
     return(
         <Label className={className}>
-            <input type='checkbox' onChange={handleChange} checked={isCheked}/>
+            <input type='checkbox' onChange={handleChange} checked={isCheked} disabled={disabled}/>
             {children}
         </Label>
     );

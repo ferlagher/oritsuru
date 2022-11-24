@@ -5,7 +5,7 @@ import shopping from '../../assets/shopping.png';
 import cheems from '../../assets/cheems.png';
 
 const VIEWS = {
-    itemList: {title: 'Sin coincidencias', message: 'Tamtos filtros me dan amsiedad.', img: cheems},
+    filters: {title: 'Sin coincidencias', message: 'Tamtos filtros me dan amsiedad.', img: cheems},
     cart: {title: 'Tu carrito está vacío', message: 'Elige una categoría o vuelve al menú para seguir comprando.', img: shopping},
     default: {title: '404 Not Found', message: 'Yo había ponido mi web aquí.', img: ponido},
 }

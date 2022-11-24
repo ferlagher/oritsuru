@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import { CartContext } from "../../context";
-import { Button, FlexContainer, PlusIcon } from "../base";
+import { Button, FlexContainer, PlusIcon } from "../../components";
 
 const ListItem = styled(FlexContainer).attrs({
     as: 'li',

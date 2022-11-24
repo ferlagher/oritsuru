@@ -2,20 +2,6 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore/lite";
 import { getAuth } from "firebase/auth";
 
-// ---Netlify---
-
-//const URL = '/.netlify/functions/firebaseConfig';
-//const initializeFirebase = async () => {
-//    try {
-//        const firebaseConfig = await fetch(URL).then(res => res.json());
-//        initializeApp(firebaseConfig);
-//    } catch (err) {
-//        console.error(err);
-//    };
-//};
-
-//initializeFirebase();
-
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,

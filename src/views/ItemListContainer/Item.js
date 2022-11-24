@@ -1,7 +1,7 @@
 import { memo } from "react";
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
-import { FlexContainer, FavToggle, ItemImg } from "../";
+import { FlexContainer, FavToggle, ItemImg } from "../../components";
 import { useState } from "react";
 
 
@@ -49,7 +49,7 @@ export const Item = memo(({item}) => {
     return(
         <ListItem onMouseOver={() => setIsHover(true)} onMouseOut={() => setIsHover(false)}>
             <LinkWrapper to={`/item/${item.id}`} onFocus={() => setIsHover(true)} onBlur={() => setIsHover(false)}>
-                <ItemImg item={item} isGarnishShown={isHover} $size='6rem'/>
+                <ItemImg src={item.image} alt={item.title} isGarnishShown={isHover} $size='6rem'/>
 
                 <ItemText>
                     <h4>{item.title}</h4>

@@ -19,10 +19,10 @@ const StyledToggle = styled(Toggle)`
 `;
 
 export const FavToggle = ({id}) => {
-    const [isInStorage, toggleFav] = useFavToggle(id);
+    const [isFav, toggleFav] = useFavToggle(id);
 
     return(
-        <StyledToggle value={isInStorage} onToggle={toggleFav}>
+        <StyledToggle value={isFav} onToggle={toggleFav}>
             <HeartIcon/>
         </StyledToggle>
     );

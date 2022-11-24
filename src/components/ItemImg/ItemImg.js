@@ -64,7 +64,7 @@ const Img = styled.img`
     }
     `;
 
-export const ItemImg = ({item, isGarnishShown = false, $size}) => {
+export const ItemImg = ({src, alt, isGarnishShown = false, $size}) => {
     const [isImgLoaded, setIsImgLoaded] = useState(false);
 
     return(
@@ -77,9 +77,7 @@ export const ItemImg = ({item, isGarnishShown = false, $size}) => {
                 <Slice src={cucumberSlice}/>
                 <Slice src={cucumberSlice}/>
             </Garnish>
-
-            <Img src={item.image} alt={item.title} $size={$size} className={isImgLoaded ? 'loaded' : ''}
-            onLoad={() => setIsImgLoaded(true)}/>
+            <Img src={src} alt={alt} $size={$size} className={isImgLoaded ? 'loaded' : ''} onLoad={() => setIsImgLoaded(true)}/>
         </Container>
     );
 };

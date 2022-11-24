@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Toggle, FlexContainer, Loader, HeartIcon, LeafIcon, EmptyState } from '../../components';
+import { Toggle, FlexContainer, HeartIcon, LeafIcon,} from '../../components';
 import { useItemListContainer } from './useItemListContainer';
 
 const Container = styled(FlexContainer)`
@@ -11,7 +11,7 @@ const Container = styled(FlexContainer)`
     gap: var(--space-lg);
 `;
 
-const StyledToggle = styled(Toggle)`
+const ToggleButton = styled(Toggle)`
     font-weight: 500;
     color: var(--color-primary);
     padding: 0.1em;
@@ -23,8 +23,13 @@ const StyledToggle = styled(Toggle)`
         background-color: var(--color-primary);
         border-color: var(--color-primary);
     }
+
+    &:has(input:disabled) {
+        opacity: 0.5;
+        pointer-events: none;
+    }
     
-    &:hover, &:has(input:focus) {
+    &:hover, &:has(input:focus-visible) {
         border-color: var(--color-primary);
     }
 
@@ -34,16 +39,15 @@ const StyledToggle = styled(Toggle)`
 `;
 
 export const ItemListContainer = () => {
-    const {list, isLoading, setIsFav, setIsVeggie} = useItemListContainer();
+    const {renderList, isLoading, setIsFilteringFav, setIsFilteringVeggie} = useItemListContainer();
 
     return(
         <Container>
             <FlexContainer justify='flex-start' gap='var(--space-sm)'>
-                <StyledToggle onToggle={setIsFav} $color='primary'><HeartIcon/>Favoritos</StyledToggle>
-                <StyledToggle onToggle={setIsVeggie} $color='accent'><LeafIcon/>Veggie</StyledToggle>
+                <ToggleButton onToggle={setIsFilteringFav} disabled={isLoading}><HeartIcon/>Favoritos</ToggleButton>
+                <ToggleButton onToggle={setIsFilteringVeggie} disabled={isLoading}><LeafIcon/>Veggie</ToggleButton>
             </FlexContainer>
-            {isLoading ? <Loader/> :
-            list.length ? list : <EmptyState view='itemList'/>}
+            {renderList()}
         </Container>
     );
 };

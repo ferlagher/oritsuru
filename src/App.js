@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GlobalStyle } from './GlobalStyle/GlobalStyle';
-import { Cart, ItemDetail, EmptyState, Button } from './components';
-import { NavBar, ItemListContainer, Login } from './layout';
+import { EmptyState, Button } from './components';
+import { NavBar } from './layout';
+import { ItemListContainer, ItemDetail, Cart, Login } from './views';
 import { CartProvider, ItemsProvider } from './context';
 
 const App = () => {
@@ -15,7 +16,7 @@ const App = () => {
                         <section>
                             <Routes>
                                 <Route exact path='/' element={<ItemListContainer/>}/>
-                                <Route exact path='/category/:id' element={<ItemListContainer/>}/>
+                                <Route exact path='/category/:categoryId' element={<ItemListContainer/>}/>
                                 <Route exact path='/item/:id' element={<ItemDetail/>}/>
                                 <Route exact path='/cart' element={<Cart/>}/>
                                 <Route exact path='/login' element={<Login/>}/>

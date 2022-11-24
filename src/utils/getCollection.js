@@ -1,28 +1,22 @@
-import { collection, getDocs } from 'firebase/firestore/lite';
+import { collection, getDocs, query } from 'firebase/firestore/lite';
 import { db } from './firebase';
-import d0nas from '../assets/d0nas.jpg';
 
-const FALLBACK_ITEM = [{
-    id: 'F',
-    title: 'meperd0n as¿',
-    stock: 666,
-    price: 1,
-    isVeggie: false,
-    categoryId: 'error',
-    image: d0nas,
-    description:'Hubo un error al obtener los datos. 😿',
-    }]
+export const getCollection = async (col, params = null) => {
+    const q = params ?
+        query(collection(db, col), ...params) :
+        collection(db, col);
 
-export const getCollection = async (col) => {
     try {
-        const itemsRef = collection(db, col);
-        const itemsSnapshot = await getDocs(itemsRef);
-        const itemsList = itemsSnapshot.docs.map(item => ({id:item.id, ...item.data()}));
+        const snapshot = await getDocs(q);
+
+        if(snapshot.size === 0) {
+            return [];
+        }
+
+        const docs = snapshot.docs.map(doc => ({id:doc.id, ...doc.data()}));
         
-        return itemsList;
+        return docs;
     } catch (err) {
         console.error(err);
-
-        return FALLBACK_ITEM;
     };
 };

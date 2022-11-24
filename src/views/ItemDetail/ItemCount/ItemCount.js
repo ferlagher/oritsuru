@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FlexContainer, Button, PlusIcon, MinusIcon } from "../base";
+import { FlexContainer, Button, PlusIcon, MinusIcon } from "../../../components";
 import { useItemCount } from "./useItemCount";
 
 const Input = styled.input`

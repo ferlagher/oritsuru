@@ -8,3 +8,6 @@ export const group = (arr, key) => {
         return groups;
     }, {});
 };
+
+// const example = [{id: 1, cat: 🐱‍🐉}, {id: 2, cat: 🐱‍🐉}, {id: 3, cat: 🐱‍👤}]
+// group(example, cat) ➡ {🐱‍🐉: [{id: 1, cat: 🐱‍🐉}, {id: 2, cat: 🐱‍🐉}], 🐱‍👤: [{id: 3, cat: 🐱‍👤}]}

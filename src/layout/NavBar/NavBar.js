@@ -1,8 +1,8 @@
 import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { FlexContainer, Logo, CartWidget, UserIcon } from '../../components';
-import { textOutline } from '../../utils/mixins';
-import { useNavBar } from './useNavBar';
+import { FlexContainer, Logo, UserIcon } from '../../components';
+import { textOutline } from '../../utils';
+import { CartWidget } from './CartWidget';
 
 const Header = styled(FlexContainer).attrs({
     as: 'header',
@@ -123,11 +123,8 @@ const StyledNavLink = styled(NavLink)`
     }
 `;
 
-export const NavBar = () => {
-    const [categories, isLoading] = useNavBar();
-    console.log("🚀 ~ file: NavBar.js ~ line 128 ~ NavBar ~ isLoading", isLoading)
-    
-    const navLinks = categories.map(ctgy => <StyledNavLink to={`/category/${ctgy.name}`} activeclassname='active' key={ctgy.id}>{ctgy.name}</StyledNavLink>)
+export const NavBar = (categories, itemsInCart) => {
+    //const navLinks = categories.map(ctgy => <StyledNavLink to={`/category/${ctgy.name}`} activeclassname='active' key={ctgy.id}>{ctgy.name}</StyledNavLink>)
     
     return(
         <Header>
@@ -138,12 +135,11 @@ export const NavBar = () => {
                 </FlexContainer>
                 <IconsContainer>
                     <Link to='/login'><UserIcon/></Link>
-                    <CartWidget/>
+                    <CartWidget itemsInCart={itemsInCart}/>
                 </IconsContainer>
             </HeaderContent>
-
             <Nav>
-                {navLinks}
+                {/* navLinks */}
             </Nav>
         </Header>
     );
