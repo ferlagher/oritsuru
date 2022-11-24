@@ -7,8 +7,9 @@ import { ItemList } from './ItemList';
 import { EmptyState, Loader } from '../../components';
 
 export const useItemListContainer = () => {
-    const {allItems, filteredItems, isFiltering, setFilteredItems, setIsFiltering, isLoading, setIsLoading, categories} = useContext(ItemsContext);
+    const {allItems, filteredItems, setFilteredItems, isLoading, setIsLoading, categories} = useContext(ItemsContext);
     const {id} = useParams();
+    const [isFiltering, setIsFiltering] = useState(false);
     const [isFilteringVeggie, setIsFilteringVeggie] = useState(false);
     const [isFilteringFav, setIsFilteringFav] = useState(false);
     
@@ -18,8 +19,8 @@ export const useItemListContainer = () => {
         const params = [];
 
         categoryId && params.push(where('categoryId', '==', categoryId));
-        isFilteringFav && params.push(where(documentId(), 'in', favList));
         isFilteringVeggie && params.push(where('isVeggie', '==', true));
+        isFilteringFav && params.push(where(documentId(), 'in', favList));
 
         if (isFilteringFav && !favList.length) {
             setFilteredItems([]);

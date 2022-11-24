@@ -15,7 +15,6 @@ export const ItemsContext = createContext({
 export const ItemsProvider = ({children}) => {
     const [allItems, setAllItems] = useState([]);
     const [filteredItems, setFilteredItems] = useState([]);
-    const [isFiltering, setIsFiltering] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [categories, setCategories] = useState([]);
     
@@ -32,11 +31,9 @@ export const ItemsProvider = ({children}) => {
     const values = {
         allItems,
         filteredItems,
-        isFiltering,
         isLoading,
         categories,
         setFilteredItems,
-        setIsFiltering,
         setIsLoading,
     };
 
