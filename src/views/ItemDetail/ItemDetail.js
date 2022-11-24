@@ -1,11 +1,9 @@
-import { useContext } from "react";
-import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { ItemCount, } from "./ItemCount/ItemCount";
 import { FavToggle, FlexContainer, ItemImg, Loader, EmptyState } from "../../components";
-import { CartContext, ItemsContext } from "../../context";
 import { textOutline, scaleUp } from "../../utils";
 import { Cart } from "../Cart/Cart";
+import { useItemDetail } from "./useItemDetail";
 
 const ItemContainer = styled(FlexContainer)`
     flex-wrap: wrap;
@@ -75,11 +73,7 @@ const DetailsContainer = styled(FlexContainer)`
     `;
 
 export const ItemDetail = () => {
-    const {allItems, isLoading} = useContext(ItemsContext);
-    const {cartList, addItem} = useContext(CartContext);
-    const {id} = useParams();
-    const item = allItems.find(obj => obj.id === id);
-    const quantityInCart = cartList.find(obj => obj.id === id)?.quantity ?? 0;
+    const [isLoading, item, quantityInCart, addItem] = useItemDetail();
 
     return(<>
         <section>{
