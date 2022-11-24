@@ -14,7 +14,6 @@ const Header = styled(FlexContainer).attrs({
     width: 100%;
     font-size: 1.1rem;
     margin-bottom: calc(var(--space-factor) * 100vw);
-    z-index: 10;
 
     &::before {
         content: '';

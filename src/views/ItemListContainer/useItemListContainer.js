@@ -31,10 +31,10 @@ export const useItemListContainer = () => {
         
         if (params.length) {
             setIsLoading(true);
+            setIsFiltering(true);
             getCollection('items', params)
-                .then(items => {
+            .then(items => {
                     setFilteredItems(items);
-                    setIsFiltering(true);
                 }).finally(() => setIsLoading(false));
             
             return;
@@ -52,7 +52,8 @@ export const useItemListContainer = () => {
 
     const renderList = () => {
         if (isLoading) {
-            return <Loader/>
+            console.log("🚀 ~ file: useItemListContainer.js ~ line 56 ~ renderList ~ isFiltering", isFiltering)
+            return <Loader message={isFiltering ? 'Filtrando...' : 'Cargando...'}/>
         };
 
         if (isFiltering && !filteredItems.length) {
