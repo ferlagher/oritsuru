@@ -10,24 +10,24 @@ const App = () => {
         <Router>
             <GlobalStyle/>
             <CartProvider>
-                <NavBar/>
-                <main>
-                    <ItemsProvider>
+                <ItemsProvider>
+                    <NavBar/>
+                    <main>
                         <section>
                             <Routes>
                                 <Route exact path='/' element={<ItemListContainer/>}/>
-                                <Route exact path='/category/:categoryId' element={<ItemListContainer/>}/>
+                                <Route exact path='/category/:id' element={<ItemListContainer/>}/>
                                 <Route exact path='/item/:id' element={<ItemDetail/>}/>
                                 <Route exact path='/cart' element={<Cart/>}/>
                                 <Route exact path='/login' element={<Login/>}/>
                                 <Route path='*' element={<EmptyState><Button to='/'>Volver al inicio</Button></EmptyState>}/>
                             </Routes>
                         </section>
-                    </ItemsProvider>
-                    <aside>
-                        <Cart $small/>
-                    </aside>
-                </main>
+                        <aside>
+                            <Cart $small/>
+                        </aside>
+                    </main>
+                </ItemsProvider>
             </CartProvider>
         </Router>
     );

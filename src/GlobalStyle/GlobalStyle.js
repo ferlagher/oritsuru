@@ -27,13 +27,9 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         
         ::-webkit-scrollbar {
-            width: 1rem;
-            height: 1rem;
+            width: 20px;
+            height: 20px;
 
-            @media (pointer: coarse) {
-                display: none;
-            }
-            
             &-track {
                 background-color: var(--color-background);
                 ${halftoneBkgd('var(--color-secondary-transparent)')}

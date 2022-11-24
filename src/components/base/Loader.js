@@ -7,6 +7,7 @@ export const Loader = styled.span`
     width: 48px;
     height: 48px;
     display: inline-block;
+    align-self: center;
     position: relative;
     transform: rotate(45deg);
 

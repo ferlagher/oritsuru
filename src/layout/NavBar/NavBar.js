@@ -1,9 +1,10 @@
+import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { FlexContainer, Logo, UserIcon } from '../../components';
+import { CartContext, ItemsContext } from '../../context';
 import { textOutline } from '../../utils';
 import { CartWidget } from './CartWidget';
-import { useNavBar } from './useNavBar';
 
 const Header = styled(FlexContainer).attrs({
     as: 'header',
@@ -125,8 +126,9 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 export const NavBar = () => {
-    const [categories, itemsInCart] = useNavBar();
-    const navLinks = categories.map(ctgy => <StyledNavLink to={`/category/${ctgy.name}`} activeclassname='active' key={ctgy.id}>{ctgy.name}</StyledNavLink>)
+    const { categories } = useContext(ItemsContext);
+    const itemsInCart = useContext(CartContext).cartList.length;
+    const navLinks = categories.map(ctgy => <StyledNavLink to={`/category/${ctgy.name}`} activeclassname='active' key={ctgy.id}>{ctgy.name}</StyledNavLink>);
     
     return(
         <Header>

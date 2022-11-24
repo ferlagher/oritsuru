@@ -15,24 +15,29 @@ export const ItemsContext = createContext({
 export const ItemsProvider = ({children}) => {
     const [allItems, setAllItems] = useState([]);
     const [filteredItems, setFilteredItems] = useState([]);
-    console.log("🚀 ~ file: ItemsContext.js ~ line 18 ~ ItemsProvider ~ filteredItems", filteredItems)
     const [isFiltering, setIsFiltering] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [categories, setCategories] = useState([]);
     
     useEffect(() => {
         setIsLoading(true);
-        getCollection('items')
-            .then(items => {
+        Promise.all([getCollection('categories'), getCollection('items')])
+            .then(([ctgys, items]) => {
+                setCategories(ctgys);
                 setAllItems(items);
                 setIsLoading(false);
             });
     }, []);
     
     const values = {
-        allItems, setAllItems,
-        filteredItems, setFilteredItems,
-        isFiltering, setIsFiltering,
-        isLoading, setIsLoading,
+        allItems,
+        filteredItems,
+        isFiltering,
+        isLoading,
+        categories,
+        setFilteredItems,
+        setIsFiltering,
+        setIsLoading,
     };
 
     return(

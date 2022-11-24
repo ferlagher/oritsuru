@@ -54,15 +54,14 @@ const List = styled(FlexContainer).attrs({
     z-index: 1;
 `;
 
-export const ItemList = ({title, itemList, favs}) => {
-    const listElements = itemList?.map(item => <Item item={item} key={item.id} favs={favs}/>);
-    //const kanji = KANJIS[title] || KANJIS.default;
+export const ItemList = ({title, kanji, itemList}) => {
+    const listElements = itemList?.map(item => <Item item={item} key={item.id}/>);
 
     return(
         <ListContainer>
             <TitleContainer>
                 <h3>{title}</h3>
-                <span>{/* kanji */}</span>
+                <span>{kanji}</span>
             </TitleContainer> 
             <List>
                 {listElements}

@@ -7,14 +7,16 @@ import { ItemList } from './ItemList';
 import { EmptyState, Loader } from '../../components';
 
 export const useItemListContainer = () => {
-    const {allItems, filteredItems, isFiltering, setFilteredItems, setIsFiltering, isLoading, setIsLoading} = useContext(ItemsContext);
-    const {categoryId} = useParams();
+    const {allItems, filteredItems, isFiltering, setFilteredItems, setIsFiltering, isLoading, setIsLoading, categories} = useContext(ItemsContext);
+    const {id} = useParams();
     const [isFilteringVeggie, setIsFilteringVeggie] = useState(false);
     const [isFilteringFav, setIsFilteringFav] = useState(false);
     
     useEffect(() => {
-        const params = [];
+        const categoryId = categories.find(ctgy => ctgy.name === id)?.id;
         const favList = JSON.parse(localStorage.getItem('favs')) ?? [];
+        const params = [];
+
         categoryId && params.push(where('categoryId', '==', categoryId));
         isFilteringFav && params.push(where(documentId(), 'in', favList));
         isFilteringVeggie && params.push(where('isVeggie', '==', true));
@@ -40,11 +42,12 @@ export const useItemListContainer = () => {
         
         setIsFiltering(false);
 
-    }, [categoryId, isFilteringFav, isFilteringVeggie, setFilteredItems, setIsFiltering, setIsLoading]);
+    }, [id, categories, isFilteringFav, isFilteringVeggie, setFilteredItems, setIsFiltering, setIsLoading]);
 
     const createListsByCategory = (items) => {
-        const itemsByCategory = Object.entries(group(items, 'categoryId')); // [[ctgy1, [list1]], [ctgy2, [list2]], etc.]
-        return itemsByCategory.map(([category, itemList]) => <ItemList key={category} title={category} itemList={itemList}/>);
+        const itemsByCategory = group(items, 'categoryId');
+        const filteredCategories = categories.filter(ctgy => itemsByCategory?.[ctgy.id]);
+        return filteredCategories.map(({id, name, kanji}) => <ItemList key={id} title={name} kanji={kanji} itemList={itemsByCategory[id]}/>);
     }
 
     const renderList = () => {

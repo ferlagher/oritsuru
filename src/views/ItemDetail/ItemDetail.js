@@ -73,10 +73,10 @@ const DetailsContainer = styled(FlexContainer)`
     `;
 
 export const ItemDetail = () => {
-    const {isLoading, items} = useContext(ItemsContext);
-    const {id} = useParams();
+    const {allItems, isLoading} = useContext(ItemsContext);
     const {cartList, addItem} = useContext(CartContext);
-    const item = items.find(obj => obj.id === id);
+    const {id} = useParams();
+    const item = allItems.find(obj => obj.id === id);
     const quantityInCart = cartList.find(obj => obj.id === id)?.quantity ?? 0;
 
     return(
