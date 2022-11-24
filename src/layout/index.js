@@ -1,1 +1,2 @@
-export * from '../layout/NavBar/NavBar';
+export * from './NavBar/NavBar';
+export * from './Footer/Footer';

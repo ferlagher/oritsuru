@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Toggle, FlexContainer, HeartIcon, LeafIcon,} from '../../components';
+import { Cart } from '../Cart/Cart';
 import { useItemListContainer } from './useItemListContainer';
 
 const Container = styled(FlexContainer)`
@@ -41,13 +42,18 @@ const ToggleButton = styled(Toggle)`
 export const ItemListContainer = () => {
     const {renderList, isLoading, setIsFilteringFav, setIsFilteringVeggie} = useItemListContainer();
 
-    return(
-        <Container>
-            <FlexContainer justify='flex-start' gap='var(--space-sm)'>
-                <ToggleButton onToggle={setIsFilteringFav} disabled={isLoading}><HeartIcon/>Favoritos</ToggleButton>
-                <ToggleButton onToggle={setIsFilteringVeggie} disabled={isLoading}><LeafIcon/>Veggie</ToggleButton>
-            </FlexContainer>
-            {renderList()}
-        </Container>
-    );
+    return(<>
+        <section>
+            <Container>
+                <FlexContainer justify='flex-start' gap='var(--space-sm)'>
+                    <ToggleButton onToggle={setIsFilteringFav} disabled={isLoading}><HeartIcon/>Favoritos</ToggleButton>
+                    <ToggleButton onToggle={setIsFilteringVeggie} disabled={isLoading}><LeafIcon/>Veggie</ToggleButton>
+                </FlexContainer>
+                {renderList()}
+            </Container>
+        </section>
+        <aside>
+            <Cart $small/>
+        </aside>
+    </>);
 };

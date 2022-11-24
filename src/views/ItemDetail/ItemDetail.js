@@ -5,6 +5,7 @@ import { ItemCount, } from "./ItemCount/ItemCount";
 import { FavToggle, FlexContainer, ItemImg, Loader, EmptyState } from "../../components";
 import { CartContext, ItemsContext } from "../../context";
 import { textOutline, scaleUp } from "../../utils";
+import { Cart } from "../Cart/Cart";
 
 const ItemContainer = styled(FlexContainer)`
     flex-wrap: wrap;
@@ -25,6 +26,7 @@ const ItemContainer = styled(FlexContainer)`
 
 const ImgContainer = styled(FlexContainer)`
     position: relative;
+    margin-top: var(--space-lg);
 
     &:has(.show)::before {
         content: '';
@@ -79,25 +81,27 @@ export const ItemDetail = () => {
     const item = allItems.find(obj => obj.id === id);
     const quantityInCart = cartList.find(obj => obj.id === id)?.quantity ?? 0;
 
-    return(
-        isLoading ? <Loader/> :
-        !item ? <EmptyState/> :
-        <ItemContainer>
-            <ImgContainer>
-                <ItemImg src={item.image} alt={item.title} isGarnishShown={true} $size='75vmin'/>
-            </ImgContainer>
-
-            <DetailsContainer>
-                <FlexContainer gap='var(--space-sm)'>
-                    <h3>{item.title}</h3>
-                    <FavToggle id={item.id}/>
-                </FlexContainer>
-
-                <p><i>{item.description}</i></p>
-                <b>${item.price}</b>
-
-                <ItemCount stock={item.stock - quantityInCart} inCart={quantityInCart} onAdd={count => addItem(item, count)}/>
-            </DetailsContainer>
-        </ItemContainer>
-    );
+    return(<>
+        <section>{
+            isLoading ? <Loader/> :
+            !item ? <EmptyState/> :
+            <ItemContainer>
+                <ImgContainer>
+                    <ItemImg src={item.image} alt={item.title} isGarnishShown={true} $size='75vmin'/>
+                </ImgContainer>
+                <DetailsContainer>
+                    <FlexContainer gap='var(--space-sm)'>
+                        <h3>{item.title}</h3>
+                        <FavToggle id={item.id}/>
+                    </FlexContainer>
+                    <p><i>{item.description}</i></p>
+                    <b>${item.price}</b>
+                    <ItemCount stock={item.stock - quantityInCart} inCart={quantityInCart} onAdd={count => addItem(item, count)}/>
+                </DetailsContainer>
+            </ItemContainer>
+        }</section>
+        <aside>
+            <Cart $small/>
+        </aside>
+    </>);
 };

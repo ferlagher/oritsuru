@@ -60,13 +60,13 @@ export const GlobalStyle = createGlobalStyle`
         width: 100%;
         min-height: 100vh;
         background: var(--color-background);
-        padding: 0 var(--space-lg);
     }
     
     main {
+        padding: 0 var(--space-lg);
         flex: auto;
         width: 100%;
-        max-width: var(--max-width);
+        max-width: calc(var(--max-width) + var(--space-lg) * 2);
         display: flex;
     }
 

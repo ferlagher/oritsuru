@@ -31,7 +31,7 @@ const EmptyCart = styled(FlexContainer)`
         font-size: 0.5rem;
         height: initial;
 
-        a {
+        a, h3 {
             display: none;
         }
     }
@@ -67,26 +67,28 @@ export const Cart = ({$small = false}) => {
     const listItems = cartList.map(item => <CartItem key={item.id} item={item}/>);
 
     return(
-        listItems.length === 0 ? 
-        <EmptyCart className={$small ? 'small' : ''}>
-            <EmptyState view='cart'>
-                <Button to='/'>Ver menú</Button>
-            </EmptyState>
-        </EmptyCart>
-        :
-        <Container className={$small ? 'small' : ''}>
-            <h3>Carrito:</h3>
-            <List>
-                {listItems}
-            </List>
-            <TotalContainer>
-                <span>Total: <b>${total}</b></span>
-                <Button onClick={clear} $border><PlusIcon/></Button>
-            </TotalContainer>
-            <ButtonsContainer>
-                <Button to='/'>Seguir comprando</Button>
-                <Button to='/checkout'>Confirmar pedido</Button>
-            </ButtonsContainer>
-        </Container>
+        <section>{
+            listItems.length === 0 ? 
+            <EmptyCart className={$small ? 'small' : ''}>
+                <EmptyState view='cart'>
+                    <Button to='/'>Ver menú</Button>
+                </EmptyState>
+            </EmptyCart>
+            :
+            <Container className={$small ? 'small' : ''}>
+                <h3>Carrito:</h3>
+                <List>
+                    {listItems}
+                </List>
+                <TotalContainer>
+                    <span>Total: <b>${total}</b></span>
+                    <Button onClick={clear} $border><PlusIcon/></Button>
+                </TotalContainer>
+                <ButtonsContainer>
+                    <Button to='/'>Seguir comprando</Button>
+                    <Button to='/checkout'>Confirmar pedido</Button>
+                </ButtonsContainer>
+            </Container>
+        }</section>
     )
 };

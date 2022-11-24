@@ -13,6 +13,7 @@ const Header = styled(FlexContainer).attrs({
     position: relative;
     width: 100%;
     font-size: 1.1rem;
+    padding: 0 var(--space-lg);
     margin-bottom: calc(var(--space-factor) * 100vw);
 
     &::before {
@@ -20,7 +21,7 @@ const Header = styled(FlexContainer).attrs({
         position: absolute;
         left: 50%;
         bottom: calc(var(--space-factor) * 100vw);
-        width: calc(100% + var(--space-lg) * 2);
+        width: 100%;
         height: calc(100% + var(--space-factor) * 100vw);
         transform: skewY(var(--skew-deg)) translate(-50%);
         background-color: var(--color-secondary);
