@@ -19,10 +19,9 @@ export const CartProvider = ({children}) => {
         setCartList(prevList => {
             const newList = [...prevList];
             const i = newList.findIndex(obj => obj.id === item.id);
-            const isInCart = i !== -1;
 
-            if (isInCart) {
-                newList[i].quantity += quantity;
+            if (i !== -1) {
+                newList[i].quantity = quantity;
                 return newList;
             };
             
