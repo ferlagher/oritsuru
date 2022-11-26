@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useCallback } from "react";
 import { getCollection } from "../utils";
 
 export const ItemsContext = createContext({
@@ -17,9 +17,12 @@ export const ItemsProvider = ({children}) => {
     const [filteredItems, setFilteredItems] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [categories, setCategories] = useState([]);
+    const [favs, setFavs] = useState([])
+
     
     useEffect(() => {
         setIsLoading(true);
+        setFavs(JSON.parse(localStorage.getItem('favs')) ?? [])
         Promise.all([getCollection('categories'), getCollection('items')])
             .then(([ctgys, items]) => {
                 setCategories(ctgys);
@@ -28,21 +31,23 @@ export const ItemsProvider = ({children}) => {
             });
     }, []);
 
-    const getFilteredItems = query => {
+    const getFilteredItems = useCallback(query => {
         setIsLoading(true);
         getCollection('items', query)
         .then(items => {
                 setFilteredItems(items);
                 setIsLoading(false)
             });
-    }
+    }, []);
     
     const values = {
         allItems,
         filteredItems,
         isLoading,
         categories,
+        favs,
         getFilteredItems,
+        setFavs,
     };
 
     return(
