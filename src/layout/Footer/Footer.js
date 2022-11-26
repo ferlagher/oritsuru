@@ -8,7 +8,6 @@ const Container = styled(FlexContainer)`
     width: 100%;
     position: relative;
     padding: 0 var(--space-lg);
-    margin-top: calc(var(--skew-margin-factor) * 100vw);
     overflow-y: clip;
 
     &::before {

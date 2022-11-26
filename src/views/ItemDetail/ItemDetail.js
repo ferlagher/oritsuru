@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { ItemCount, } from "./ItemCount/ItemCount";
-import { FavToggle, FlexContainer, ItemImg, Loader, EmptyState } from "../../components";
+import { FavToggle, FlexContainer, ItemImg, Loader, EmptyState, Badge } from "../../components";
 import { textOutline, scaleUp } from "../../utils";
 import { Cart } from "../Cart/Cart";
 import { useItemDetail } from "./useItemDetail";
@@ -14,6 +14,7 @@ const ItemContainer = styled(FlexContainer)`
     max-width: var(--max-width);
     gap: var(--space-lg);
     padding: var(--space-lg);
+    border: var(--border) var(--color-background-dark);
     transform: skewY(var(--skew-deg));
     margin-bottom: calc(var(--skew-margin-factor) * 100vw);
     
@@ -25,13 +26,14 @@ const ItemContainer = styled(FlexContainer)`
 const ImgContainer = styled(FlexContainer)`
     position: relative;
     margin-top: var(--space-lg);
+    width: min(40vh, 70vw);
 
     & > div {
         filter:
-        drop-shadow(0.4rem 0.4rem 0 var(--color-background))
-        drop-shadow(0.4rem -0.4rem 0 var(--color-background))
-        drop-shadow(-0.4rem 0.4rem 0 var(--color-background))
-        drop-shadow(-0.4rem -0.4rem 0 var(--color-background));
+            drop-shadow(0.4rem 0.4rem 0 var(--color-background))
+            drop-shadow(0.4rem -0.4rem 0 var(--color-background))
+            drop-shadow(-0.4rem 0.4rem 0 var(--color-background))
+            drop-shadow(-0.4rem -0.4rem 0 var(--color-background));
     }
 
     &:has(.show)::before {
@@ -51,10 +53,14 @@ const ImgContainer = styled(FlexContainer)`
     }
 `;
 
-const DetailsContainer = styled(FlexContainer)`
+const DetailsContainer = styled(FlexContainer).attrs({
+    $card: true,
+})`
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-sm);
+    padding: var(--space-lg);
+    background-color: var(--color-background);
     z-index: 2;
 
     h3 {
@@ -78,10 +84,11 @@ const DetailsContainer = styled(FlexContainer)`
         padding: 0.25em 0;
         ${textOutline('var(--color-background)')}
     }
-    `;
+`;
 
 export const ItemDetail = () => {
     const [isLoading, item, quantityInCart, addItem] = useItemDetail();
+    const {id, title, description, image, price, stock, isVeggie} = item || {};
 
     return(<>
         <section>{
@@ -89,16 +96,19 @@ export const ItemDetail = () => {
             !item ? <EmptyState/> :
             <ItemContainer>
                 <ImgContainer>
-                    <ItemImg src={item.image} alt={item.title} isGarnishShown={true} $size='75vmin'/>
+                    <ItemImg src={image} alt={title} isGarnishShown={true}/>
                 </ImgContainer>
                 <DetailsContainer>
                     <FlexContainer $gap='var(--space-sm)'>
-                        <h3>{item.title}</h3>
-                        <FavToggle id={item.id}/>
+                        <h3>{title}</h3>
+                        <FavToggle id={id}/>
                     </FlexContainer>
-                    <p><i>{item.description}</i></p>
-                    <b>${item.price}</b>
-                    <ItemCount stock={item.stock - quantityInCart} inCart={quantityInCart} onAdd={count => addItem(item, count)}/>
+                    <p>{description}</p>
+                    <FlexContainer $gap='var(--space-sm)'>
+                    <b>${price}</b>
+                    {isVeggie && <Badge>Veggie</Badge>}
+                    </FlexContainer>
+                    <ItemCount stock={stock - quantityInCart} inCart={quantityInCart} onAdd={count => addItem(item, count)}/>
                 </DetailsContainer>
             </ItemContainer>
         }</section>

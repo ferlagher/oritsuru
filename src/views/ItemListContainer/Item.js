@@ -15,6 +15,7 @@ const ListItem = styled(FlexContainer).attrs({
     
     label {
         ${halftoneBkgd('var(--color-secondary)')}
+        border-left: var(--border) var(--color-secondary);
     }
 `;
 
@@ -26,12 +27,20 @@ const LinkWrapper = styled(Link)`
     &:focus {
         outline: none;
     }
+
+    & > div:first-child {
+        filter:
+            drop-shadow(0.1rem 0.1rem 0 var(--color-secondary))
+            drop-shadow(0.03rem -0.03rem 0 var(--color-secondary))
+            drop-shadow(-0.03rem 0.03rem 0 var(--color-secondary))
+            drop-shadow(-0.03rem -0.03rem 0 var(--color-secondary));
+    }
 `;
 
 const ItemText = styled(FlexContainer)`
+    flex-wrap: wrap;
+    justify-content: flex-start;
     width: 100%;
-    flex-direction: column;
-    align-items: stretch;
     gap: 0.25em;
     position: relative;
     z-index: 3;
@@ -39,6 +48,7 @@ const ItemText = styled(FlexContainer)`
     h4 {
         font-size: 1em;
         font-weight: 700;
+        width: 100%;
     }
     
     b {
@@ -47,23 +57,20 @@ const ItemText = styled(FlexContainer)`
     }
 `;
 
-export const Item = memo(({item}) => {
+export const Item = memo(({item = {}}) => {
     const [isHover, setIsHover] = useState(false);
     const {id, title, image, price, isVeggie} = item;
 
     return(
         <ListItem onMouseOver={() => setIsHover(true)} onMouseOut={() => setIsHover(false)}>
             <LinkWrapper to={`/item/${id}`} onFocus={() => setIsHover(true)} onBlur={() => setIsHover(false)}>
-                <Badge mssg={isVeggie && 'Veggie'} $color='accent'>
                 <ItemImg src={image} alt={title} isGarnishShown={isHover} $size='5.5rem'/>
-                </Badge>
-
                 <ItemText>
                     <h4>{title}</h4>
                     <b>${price}</b>
+                    {isVeggie && <Badge>Veggie</Badge>}
                 </ItemText>
             </LinkWrapper>
-
             <FavToggle id={id}/>
         </ListItem>
     );

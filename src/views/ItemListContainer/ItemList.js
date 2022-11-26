@@ -5,7 +5,7 @@ import { Item } from "./Item";
 const ListContainer = styled(FlexContainer)`
     width: 100%;
     gap: var(--space-sm);
-    margin-bottom: calc(var(--space-lg) * 3);
+    margin-bottom: var(--space-lg);
 
     &:last-of-type {
         margin-bottom: 0;
