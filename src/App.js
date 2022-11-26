@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GlobalStyle } from './GlobalStyle/GlobalStyle';
-import { Footer, NavBar } from './layout';
+import { Footer, Header } from './layout';
 import { ItemListContainer, ItemDetail, Cart, Login, NotFound } from './views';
 import { CartProvider, ItemsProvider } from './context';
 
@@ -10,7 +10,7 @@ const App = () => {
             <GlobalStyle/>
             <CartProvider>
                 <ItemsProvider>
-                    <NavBar/>
+                    <Header/>
                     <main>
                         <Routes>
                             <Route exact path='/' element={<ItemListContainer/>}/>

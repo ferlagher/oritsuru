@@ -4,37 +4,40 @@ import { CartContext } from "../../context";
 import { FlexContainer, EmptyState, Button, PlusIcon } from "../../components";
 import { CartItem } from "./CartItem";
 
+const Section = styled.section`
+    ${({$small}) => $small && `
+        position: sticky;
+        top: var(--space-lg);
+    `}
+`;
+
 const Container = styled(FlexContainer)`
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     gap: var(--space-sm);
 
-    &.small {
-        position: sticky;
-        top: var(--space-lg);
+    ${({$small}) => $small && `
         font-size: 0.5rem;
 
         img, button, a {
             display: none;
         }
-    }
+    `}
 `;
 
 const EmptyCart = styled(FlexContainer)`
     flex-direction: column;
     height: 100%;
-    
-    &.small {
-        position: sticky;
-        top: var(--space-lg);
+
+    ${({$small}) => $small && `
         font-size: 0.5rem;
         height: initial;
 
         a, h3 {
             display: none;
         }
-    }
+    `}
 `;
 
 const List = styled(FlexContainer).attrs({
@@ -43,7 +46,7 @@ const List = styled(FlexContainer).attrs({
     flex-direction: column;
     flex: auto;
     width: 100%;
-    border-bottom: 0.2em solid var(--color-background-dark);
+    border-bottom: var(--border) var(--color-background-dark);
     `;
 
 const TotalContainer = styled(FlexContainer)`
@@ -67,15 +70,15 @@ export const Cart = ({$small = false}) => {
     const listItems = cartList.map(item => <CartItem key={item.id} item={item}/>);
 
     return(
-        <section>{
+        <Section $small={$small}>{
             listItems.length === 0 ? 
-            <EmptyCart className={$small ? 'small' : ''}>
+            <EmptyCart $small={$small}>
                 <EmptyState view='cart'>
                     <Button to='/'>Ver menú</Button>
                 </EmptyState>
             </EmptyCart>
             :
-            <Container className={$small ? 'small' : ''}>
+            <Container $small={$small}>
                 <h3>Carrito:</h3>
                 <List>
                     {listItems}
@@ -89,6 +92,6 @@ export const Cart = ({$small = false}) => {
                     <Button to='/checkout'>Confirmar pedido</Button>
                 </ButtonsContainer>
             </Container>
-        }</section>
+        }</Section>
     )
 };

@@ -22,7 +22,7 @@ background-image:
         linear-gradient(90deg, ${color} 0.1em, transparent 0.1em);
     background-size: 1.5rem 1.5rem;
     background-origin: border-box;
-    border: 0.1em solid ${color};
+    border: var(--border) ${color};
 `;
 
 export const textOutline = (color, is3D = false) => `

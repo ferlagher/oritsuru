@@ -4,9 +4,10 @@ import { useFavToggle } from "./useFavToggle";
 
 const StyledToggle = styled(Toggle)`
     svg {
-        fill: transparent;
+        fill: var(--color-background);
         stroke: var(--color-secondary);
         stroke-width: 2rem;
+        margin: 4px;
     }
     
     &:hover svg, input:focus-visible + svg {

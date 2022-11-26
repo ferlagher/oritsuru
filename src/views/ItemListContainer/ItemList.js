@@ -4,7 +4,7 @@ import { Item } from "./Item";
 
 const ListContainer = styled(FlexContainer)`
     width: 100%;
-    gap: var(--space-lg);
+    gap: var(--space-sm);
     margin-bottom: calc(var(--space-lg) * 3);
 
     &:last-of-type {
@@ -40,8 +40,8 @@ const TitleContainer = styled(FlexContainer)`
     @media (orientation: landscape) {
         flex-direction: column;
         gap: 0;
-        border: 0.2em solid var(--color-secondary);
-        border-radius: 2px;
+        border: var(--border) var(--color-secondary);
+        border-radius: var(--border-radius);
         width: 3em;
         
         h3 {
@@ -51,7 +51,7 @@ const TitleContainer = styled(FlexContainer)`
             background-color: var(--color-secondary);
             width: 100%;
             padding: 0.35em;
-            border: 1px solid var(--color-background);
+            border: 0.05rem solid var(--color-background);
             border-radius: 1px;
         }
 
@@ -64,14 +64,12 @@ const TitleContainer = styled(FlexContainer)`
     }
 `;
 
-const List = styled(FlexContainer).attrs({
-    as: 'ul',
-})`
-    justify-content: flex-start;
-    flex-wrap: wrap;
+const List = styled.ul`
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(14rem, auto));
     position: relative;
     width: 100%;
-    gap: var(--space-lg);
+    gap: var(--space-sm);
     list-style: none;
     z-index: 1;
 `;

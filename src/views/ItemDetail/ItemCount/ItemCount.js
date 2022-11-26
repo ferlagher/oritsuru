@@ -11,7 +11,7 @@ const Input = styled.input`
     background-color: var(--color-background);
     width: 3rem;
     text-align: center;
-    border: 0.1em solid var(--color-background-dark);
+    border: var(--border) var(--color-background-dark);
     box-shadow: 0 0.1em 0 var(--color-background-dark);
     
     &:focus {
@@ -29,18 +29,18 @@ const Span = styled.span`
     width: fit-content;
     margin-bottom: 0.5em;
     background-color: var(--color-background);
-    border-radius: 2px;
+    border-radius: var(--border-radius);
 `
 
 export const ItemCount = ({stock, inCart, onAdd}) => {
     const [count, increase, decrease, handleChange] = useItemCount(stock);
 
     return(
-        <FlexContainer direction='column' align='stretch'>
+        <FlexContainer $direction='column' $align='stretch'>
             <Span>Disponible: {stock}</Span>
             <Span>En carrito: {inCart}</Span>
-            <FlexContainer justify='space-between' gap='var(--space-sm)'>
-                <FlexContainer align='stretch'>
+            <FlexContainer $justify='space-between' $gap='var(--space-sm)'>
+                <FlexContainer $align='stretch'>
                     <Button $border onClick={decrease} disabled={count <= 0} aria-label='Más'>
                         <MinusIcon/>
                     </Button>

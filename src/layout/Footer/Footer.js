@@ -8,7 +8,7 @@ const Container = styled(FlexContainer)`
     width: 100%;
     position: relative;
     padding: 0 var(--space-lg);
-    margin-top: calc(var(--space-factor) * 100vw);
+    margin-top: calc(var(--skew-margin-factor) * 100vw);
     overflow-y: clip;
 
     &::before {
@@ -20,7 +20,7 @@ const Container = styled(FlexContainer)`
         height: 100%;
         transform: skewY(var(--skew-deg)) translate(-50%);
         background-color: var(--color-secondary);
-        border-top: 0.15rem dotted var(--color-secondary-dark);
+        border-top: var(--border) var(--color-secondary-dark);
         ${halftoneBkgd('var(--color-secondary-dark)')}
         z-index: 0;
     }

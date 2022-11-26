@@ -7,6 +7,7 @@ import cheems from '../../assets/cheems.png';
 const VIEWS = {
     filters: {title: 'Sin coincidencias', message: 'Tamtos filtros me dan amsiedad.', img: cheems},
     cart: {title: 'Tu carrito está vacío', message: 'Elige una categoría o vuelve al menú para seguir comprando.', img: shopping},
+    dbError: {title: 'No hay datos disponibles', message: 'Yo había ponido mi base de datos aquí.', img: ponido},
     default: {title: '404 Not Found', message: 'Yo había ponido mi web aquí.', img: ponido},
 }
 
@@ -37,7 +38,7 @@ const TextContainer = styled(FlexContainer)`
     h2 {
         color: var(--color-background);
         background-color: var(--color-secondary);
-        border-radius: 2px;
+        border-radius: var(--border-radius);
         padding: 0.2em;
         transform: skewY(var(--skew-deg));
         margin-bottom: 0.25em;
@@ -52,7 +53,7 @@ export const EmptyState = ({view = 'default', children}) => {
     const {title, message, img} = VIEWS[view];
     const flexDir = view === 'cart' ? 'row-reverse' : 'row';
     return(
-        <Container direction={flexDir}>
+        <Container $direction={flexDir}>
             <TextContainer>
                 <h2>{title}</h2>
                 <h3>{message}</h3>

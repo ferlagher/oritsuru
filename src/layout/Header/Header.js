@@ -1,12 +1,13 @@
 import { useContext } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { FlexContainer, Logo, UserIcon } from '../../components';
+import { FlexContainer, UserIcon } from '../../components';
 import { CartContext, ItemsContext } from '../../context';
-import { textOutline } from '../../utils';
+import { Logo } from './Logo';
 import { CartWidget } from './CartWidget';
+import { NavBar } from './NavBar';
 
-const Header = styled(FlexContainer).attrs({
+const Container = styled(FlexContainer).attrs({
     as: 'header',
 })`
     flex-direction: column;
@@ -14,15 +15,15 @@ const Header = styled(FlexContainer).attrs({
     width: 100%;
     font-size: 1.1rem;
     padding: 0 var(--space-lg);
-    margin-bottom: calc(var(--space-factor) * 100vw);
+    margin-bottom: calc(var(--skew-margin-factor) * 100vw);
 
     &::before {
         content: '';
         position: absolute;
         left: 50%;
-        bottom: calc(var(--space-factor) * 100vw);
+        bottom: calc(var(--skew-margin-factor) * 100vw);
         width: 100%;
-        height: calc(100% + var(--space-factor) * 100vw);
+        height: calc(100% + var(--skew-margin-factor) * 100vw);
         transform: skewY(var(--skew-deg)) translate(-50%);
         background-color: var(--color-secondary);
         background-image: 
@@ -31,11 +32,11 @@ const Header = styled(FlexContainer).attrs({
             radial-gradient(var(--color-secondary-dark) 28%, transparent 28%);
         background-position: 50% 0%, 0px 0px, 3px 3px;
         background-size: 100% 200%, 6px 6px, 6px 6px;
-        border-bottom: 0.15rem dotted var(--color-secondary-dark);
+        border-bottom: var(--border) var(--color-secondary-dark);
     }
     `;
 
-const HeaderContent = styled(FlexContainer)`
+const Wrapper = styled(FlexContainer)`
     justify-content: space-between;
     align-items: stretch;
     position: relative;
@@ -52,13 +53,13 @@ const HeaderContent = styled(FlexContainer)`
         font-size: 0.7em;
         background-color: var(--color-background);
         padding: 0.1em;
-        border-radius: 2px;
+        border-radius: var(--border-radius);
         transform: skewY(var(--skew-deg));
         margin-bottom: 0.4em;
     }
 
-    & > *:last-child { // margin between HeaderContent and Nav
-        margin-bottom: calc(var(--space-factor) * min(100vw, var(--max-width)) * 2);
+    & > *:last-child { // margin between Wrapper and Nav
+        margin-bottom: calc(var(--skew-margin-factor) * min(100vw, var(--max-width)) * 2);
     }
     `;
 
@@ -82,58 +83,14 @@ const IconsContainer = styled(FlexContainer)`
     }
 `;
 
-const Nav = styled(FlexContainer).attrs({
-    as: 'nav',
-})`
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    position: relative;
-    width: 100%;
-    max-width: var(--max-width);
-    gap: 0.2rem;
-    transform: skewY(var(--skew-deg));
-    margin-top: calc(var(--space-factor) * -100vw);
-    transition: all 0.2s ease-in-out;
-    z-index: 11;
-    `;
-
-const StyledNavLink = styled(NavLink)`
-    font-size: 0.7em;
-    font-weight: 700;
-    text-align: center;
-    text-transform: uppercase;
-    color: var(--color-primary);
-    ${textOutline('var(--color-background)')}
-    background-color: var(--color-background);
-    border: 0.2em solid var(--color-secondary);
-    outline: 0.2em solid var(--color-background);
-    padding: 0.35em 0.1em;
-    border-radius: 1px;
-    flex: 1;
-    transition-property: border, padding;
-    transition-duration: 0.1s;
-    transition-timing-function: ease-in-out;
-    
-    &:hover, &:focus-visible {
-        border-width: 0.3em;
-        padding: 0.25em 0;
-    }
-    
-    &.active {
-        border-color: var(--color-primary);
-    }
-`;
-
-export const NavBar = () => {
+export const Header = () => {
     const { categories } = useContext(ItemsContext);
     const itemsInCart = useContext(CartContext).cartList.length;
-    const navLinks = categories.map(ctgy => <StyledNavLink to={`/category/${ctgy.name}`} activeclassname='active' key={ctgy.id}>{ctgy.name}</StyledNavLink>);
-    
+
     return(
-        <Header>
-            <HeaderContent>
-                <FlexContainer direction='column' justify='space-between' align='flex-start'>
+        <Container>
+            <Wrapper>
+                <FlexContainer $direction='column' $justify='space-between' $align='flex-start'>
                     <Link to='/'><Logo/></Link>
                     <h1>Sushi delivery & take away</h1>
                 </FlexContainer>
@@ -141,10 +98,8 @@ export const NavBar = () => {
                     <Link to='/login'><UserIcon/></Link>
                     <CartWidget itemsInCart={itemsInCart}/>
                 </IconsContainer>
-            </HeaderContent>
-            <Nav>
-                {navLinks}
-            </Nav>
-        </Header>
+            </Wrapper>
+            <NavBar categories={categories}/>
+        </Container>
     );
 };

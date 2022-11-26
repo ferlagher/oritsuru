@@ -1,10 +1,10 @@
 // Values are [hue, saturation(%), lightness(%)]
 // Hue is a degree on the color wheel. 0 is red, 120 is green, 240 is blue.
 const COLORS = {
-    primary: [25, 95, 50],
+    primary: [25, 85, 50],
     secondary: [249, 30, 26],
-    accent: [118, 90, 35],
-    background: [25, 40, 87],
+    accent: [118, 80, 35],
+    background: [25, 35, 87],
 };
 
 const createTheme = (colors) => {

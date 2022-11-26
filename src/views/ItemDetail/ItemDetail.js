@@ -15,7 +15,7 @@ const ItemContainer = styled(FlexContainer)`
     gap: var(--space-lg);
     padding: var(--space-lg);
     transform: skewY(var(--skew-deg));
-    margin-bottom: calc(var(--space-factor) * 100vw);
+    margin-bottom: calc(var(--skew-margin-factor) * 100vw);
     
     & > div {
         transform: skewY(calc(var(--skew-deg) * -1));
@@ -25,6 +25,14 @@ const ItemContainer = styled(FlexContainer)`
 const ImgContainer = styled(FlexContainer)`
     position: relative;
     margin-top: var(--space-lg);
+
+    & > div {
+        filter:
+        drop-shadow(0.4rem 0.4rem 0 var(--color-background))
+        drop-shadow(0.4rem -0.4rem 0 var(--color-background))
+        drop-shadow(-0.4rem 0.4rem 0 var(--color-background))
+        drop-shadow(-0.4rem -0.4rem 0 var(--color-background));
+    }
 
     &:has(.show)::before {
         content: '';
@@ -61,7 +69,7 @@ const DetailsContainer = styled(FlexContainer)`
         font-size: 1.1rem;
         max-width: 20rem;
         background-color: var(--color-background);
-        border-radius: 2px;
+        border-radius: var(--border-radius);
     }
     
     b {
@@ -84,7 +92,7 @@ export const ItemDetail = () => {
                     <ItemImg src={item.image} alt={item.title} isGarnishShown={true} $size='75vmin'/>
                 </ImgContainer>
                 <DetailsContainer>
-                    <FlexContainer gap='var(--space-sm)'>
+                    <FlexContainer $gap='var(--space-sm)'>
                         <h3>{item.title}</h3>
                         <FavToggle id={item.id}/>
                     </FlexContainer>

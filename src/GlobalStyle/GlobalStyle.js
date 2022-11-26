@@ -9,16 +9,19 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: 300;
         font-size: clamp(1rem, 3.5vw, 1.2rem);
         color: var(--color-secondary);
-        scroll-behavior: smooth;
-        scroll-padding-top: 4rem;
 
         ${theme}
 
         --skew-deg: -2deg;
-        --space-factor: 0.01746038474; // tan(2deg) / 2
+        --skew-margin-factor: 0.01746038474; // tan(2deg) / 2
+        
         --space-sm: clamp(8px, 2.5vw, 16px);
         --space-lg: clamp(16px, 3vw, 32px);
+        
         --max-width: 1200px;
+
+        --border: 0.15rem solid;
+        --border-radius: 2px;
     }
 
     * {
@@ -34,12 +37,12 @@ export const GlobalStyle = createGlobalStyle`
                 background-color: var(--color-background);
                 ${halftoneBkgd('var(--color-secondary-transparent)')}
                 box-shadow: inset 0.1em 0.1em 0 var(--color-secondary);
-                border: 2px solid var(--color-secondary);
+                border: var(--border) var(--color-secondary);
             }
 
             &-thumb {
                 background-color: var(--color-primary);
-                border-radius: 2px;
+                border-radius: var(--border-radius);
                 box-shadow:
                 -0.1em -0.1em 0 var(--color-primary),
                 inset -0.1em -0.1em 0 var(--color-secondary);
@@ -73,7 +76,7 @@ export const GlobalStyle = createGlobalStyle`
     section {
         flex: auto;
         flex-basis: 80%;
-        margin-top: calc(var(--space-factor) * 100vw);
+        margin-top: calc(var(--skew-margin-factor) * 100vw);
         margin-bottom: var(--space-lg);
     }
     

@@ -3,9 +3,8 @@ import styled from "styled-components";
 const BadgeContainer = styled.div`
     position: relative;
     display: inline-flex;
-    `;
 
-const BadgeNumber = styled.div`
+    span {
     position: absolute;
     top: 0;
     right: 0;
@@ -15,18 +14,20 @@ const BadgeNumber = styled.div`
     text-align: center;
     min-width: 1.2em;
     color: var(--color-background-light);
-    background-color: var(--color-primary);
-    border-radius: 2px;
-    border: 0.1em solid var(--color-primary);
+    background-color: var(--color-${({$color}) => $color});
+    border-radius: var(--border-radius);
+    border: var(--border) var(--color-${({$color}) => $color});
     box-shadow: var(--shadow-sm);
     transform: skewY(var(--skew-deg));
-`
+    }
+`;
 
-export const Badge = ({num, children}) => {
+export const Badge = ({num, mssg, $color = 'primary', children}) => {
     return(
-        <BadgeContainer>
+        <BadgeContainer $color={$color}>
             {children}
-            {num > 0 && <BadgeNumber>{num > 99 ? '99+' : num}</BadgeNumber>}
+            {num > 0 && <span>{num > 99 ? '99+' : num}</span>}
+            {mssg && <span>{mssg}</span>}
         </BadgeContainer>
     );
 };

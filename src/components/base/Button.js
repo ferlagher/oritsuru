@@ -10,8 +10,8 @@ export const Button = styled(Link).attrs(({onClick}) => ({
     line-height: 1em;
     color: var(--color-${({$border}) => $border ? 'primary': 'background-light'});
     background-color: var(--color-${({$border}) => $border ? 'background' : 'primary'});
-    border: 0.15em solid var(--color-primary);
-    border-radius: 2px;
+    border: var(--border) var(--color-primary);
+    border-radius: var(--border-radius);
     box-shadow: 
         0 0 0 var(--color-primary-dark),
         0.15em 0.15em 0 var(--color-background-dark);
@@ -20,6 +20,7 @@ export const Button = styled(Link).attrs(({onClick}) => ({
     align-items: center;
     gap: 0.5em;
     padding: 0.3em;
+    transform: skewY(var(--skew-deg));
     cursor: pointer;
     transition: 0.2s ease-in-out;
 

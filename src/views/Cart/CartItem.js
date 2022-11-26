@@ -26,12 +26,12 @@ export const CartItem = ({item}) => {
     const {removeItem} = useContext(CartContext);
     return(
         <ListItem>
-            <FlexContainer gap='var(--space-sm)'>
+            <FlexContainer $gap='var(--space-sm)'>
                 <img src={item.image} alt={item.title}/>
                 <h4>{item.title}</h4>
             </FlexContainer>
 
-            <FlexContainer gap='var(--space-sm)'>
+            <FlexContainer $gap='var(--space-sm)'>
                 <span>
                     {`$${item.price} × ${item.quantity} = `}
                     <b>${item.price * item.quantity}</b>

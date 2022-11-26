@@ -27,14 +27,22 @@ export const ItemsProvider = ({children}) => {
                 setIsLoading(false);
             });
     }, []);
+
+    const getFilteredItems = query => {
+        setIsLoading(true);
+        getCollection('items', query)
+        .then(items => {
+                setFilteredItems(items);
+                setIsLoading(false)
+            });
+    }
     
     const values = {
         allItems,
         filteredItems,
         isLoading,
         categories,
-        setFilteredItems,
-        setIsLoading,
+        getFilteredItems,
     };
 
     return(

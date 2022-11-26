@@ -16,8 +16,8 @@ const ToggleButton = styled(Toggle)`
     font-weight: 500;
     color: var(--color-primary);
     padding: 0.1em;
-    border: 0.15em solid var(--color-secondary);
-    border-radius: 2px;
+    border: var(--border) var(--color-secondary);
+    border-radius: var(--border-radius);
     
     &:has(input:checked) {
         color: var(--color-background);
@@ -45,7 +45,7 @@ export const ItemListContainer = () => {
     return(<>
         <section>
             <Container>
-                <FlexContainer justify='flex-start' gap='var(--space-sm)'>
+                <FlexContainer $justify='flex-start' $gap='var(--space-sm)'>
                     <ToggleButton onToggle={setIsFilteringFav} disabled={isLoading}><HeartIcon/>Favoritos</ToggleButton>
                     <ToggleButton onToggle={setIsFilteringVeggie} disabled={isLoading}><LeafIcon/>Veggie</ToggleButton>
                 </FlexContainer>

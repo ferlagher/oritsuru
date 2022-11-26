@@ -1,10 +1,15 @@
-import { collection, getDocs, query } from 'firebase/firestore/lite';
+import { collection, getDocs, query, where } from 'firebase/firestore/lite';
 import { db } from './firebase';
 
-export const getCollection = async (col, params = null) => {
-    const q = params ?
-        query(collection(db, col), ...params) :
-        collection(db, col);
+export const getCollection = async (col, filters = null) => {
+    let q;
+
+    if (filters) {
+        const fltr = filters.map(filter => where(...filter));
+        q = query(collection(db, col), ...fltr);
+    } else {
+        q = collection(db, col);
+    };
 
     try {
         const snapshot = await getDocs(q);
@@ -17,6 +22,7 @@ export const getCollection = async (col, params = null) => {
         
         return docs;
     } catch (err) {
-        console.error(err);
+        console.error(err.toString());
+        return [];
     };
 };

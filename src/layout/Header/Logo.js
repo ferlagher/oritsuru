@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { textOutline } from '../../utils/mixins';
-import { FlexContainer } from '../base';
+import { FlexContainer } from '../../components';
 
 const LogoContainer = styled(FlexContainer)`
     gap: 0.25rem;

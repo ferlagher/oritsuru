@@ -16,11 +16,7 @@ const showGarnish = () => {
 
 const Container = styled(FlexContainer)`
     position: relative;
-    filter:
-        drop-shadow(0.2rem 0.2rem 0 var(--color-background))
-        drop-shadow(0.2rem -0.2rem 0 var(--color-background))
-        drop-shadow(-0.2rem 0.2rem 0 var(--color-background))
-        drop-shadow(-0.2rem -0.2rem 0 var(--color-background));
+    margin: 5px;
     `;
 
 const Garnish = styled.div`
