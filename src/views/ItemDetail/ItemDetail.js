@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { ItemCount, } from "./ItemCount/ItemCount";
 import { FavToggle, FlexContainer, ItemImg, Loader, EmptyState, Badge } from "../../components";
 import { textOutline, scaleUp } from "../../utils";
 import { Cart } from "../Cart/Cart";
+import { ItemCount, } from "./ItemCount";
 import { useItemDetail } from "./useItemDetail";
 
 const ItemContainer = styled(FlexContainer)`
@@ -25,7 +25,7 @@ const ItemContainer = styled(FlexContainer)`
 
 const ImgContainer = styled(FlexContainer)`
     position: relative;
-    margin-top: var(--space-lg);
+    margin-top: 2rem;
     width: min(40vh, 70vw);
 
     & > div {

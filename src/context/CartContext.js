@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 
 const calcTotal = (arr) => arr.reduce((sum, item) => sum + item.price * item.quantity, 0)
 
@@ -9,13 +9,12 @@ export const CartProvider = ({children}) => {
     const [cartList, setCartList] = useState(storedList);
     const [total, setTotal] = useState(calcTotal(cartList));
 
-
     useEffect(() => {
         localStorage.setItem('cartList', JSON.stringify(cartList));
         setTotal(calcTotal(cartList));
     }, [cartList]);
 
-    const addItem = (item, quantity) => {
+    const addItem = useCallback((item, quantity) => {
         setCartList(prevList => {
             const newList = [...prevList];
             const i = newList.findIndex(obj => obj.id === item.id);
@@ -30,7 +29,7 @@ export const CartProvider = ({children}) => {
             return newList;
         });
         
-    };
+    }, []);
 
     const removeItem = (id) => {
         setCartList(prevList => {

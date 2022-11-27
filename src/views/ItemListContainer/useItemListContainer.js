@@ -19,7 +19,7 @@ export const useItemListContainer = () => {
         
         categoryId && query.push(['categoryId', '==', categoryId]);
         isFilteringVeggie && query.push(['isVeggie', '==', true]);
-        isFilteringFav && favs.length && query.push([documentId(), 'in', favs]);
+        isFilteringFav && favs.current.length && query.push([documentId(), 'in', favs.current]);
         
         query.length && getFilteredItems(query);
 
@@ -40,7 +40,7 @@ export const useItemListContainer = () => {
             return <EmptyState view='dbError'/>;
         }
 
-        if (isFilteringFav && !favs.length) {
+        if (isFilteringFav && !favs.current.length) {
             return <EmptyState view='filters'/>;
         };
 

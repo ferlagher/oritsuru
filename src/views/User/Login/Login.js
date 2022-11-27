@@ -14,12 +14,20 @@ const Form = styled(FlexContainer).attrs({
     $card: true,
 })`
     flex-direction: column;
+    justify-content: space-between;
     align-items: stretch;
+    width: min(20rem, 100%);
+
+    h2 {
+        text-align: center;
+        margin-top: var(--space-lg);
+    }
 `;
 
 const Fieldset = styled(FlexContainer).attrs({
     as: 'fieldset',
 })`
+    flex: 1;
     flex-direction: column;
     gap: var(--space-sm);
     padding: var(--space-lg);
@@ -42,6 +50,7 @@ export const Login = () => {
             <Form onSubmit={onSubmit}>
                 <Tabs name='formType' values={[['login', 'Iniciar Sesión'], ['signup', 'Registrarse']]}
                     initialValue={form} setValue={setForm}/>
+                    <h2>{form === 'login' ? 'Inicar sesión' : 'Registrarse'}</h2>
                 <Fieldset>
                     {form === 'signup' && 
                     <label>

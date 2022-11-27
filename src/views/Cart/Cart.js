@@ -14,13 +14,13 @@ const Section = styled.section`
 const Container = styled(FlexContainer)`
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: stretch;
     gap: var(--space-sm);
 
     ${({$small}) => $small && `
         font-size: 0.5rem;
 
-        img, button, a {
+        img, button, input, a {
             display: none;
         }
     `}
@@ -53,6 +53,7 @@ const TotalContainer = styled(FlexContainer)`
     justify-content: flex-end;
     gap: var(--space-sm);
     width: 100%;
+    font-size: 1.5rem;
 
     button svg {
         transform: rotate(45deg);
@@ -67,11 +68,10 @@ const ButtonsContainer = styled(FlexContainer)`
 
 export const Cart = ({$small = false}) => {
     const {cartList, total, clear} = useContext(CartContext);
-    const listItems = cartList.map(item => <CartItem key={item.id} item={item}/>);
 
     return(
         <Section $small={$small}>{
-            listItems.length === 0 ? 
+            cartList.length === 0 ? 
             <EmptyCart $small={$small}>
                 <EmptyState view='cart'>
                     <Button to='/'>Ver menú</Button>
@@ -81,7 +81,7 @@ export const Cart = ({$small = false}) => {
             <Container $small={$small}>
                 <h3>Carrito:</h3>
                 <List>
-                    {listItems}
+                    {cartList.map(item => <CartItem key={item.id} item={item}/>)}
                 </List>
                 <TotalContainer>
                     <span>Total: <b>${total}</b></span>

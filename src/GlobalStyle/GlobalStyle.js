@@ -15,8 +15,8 @@ export const GlobalStyle = createGlobalStyle`
         --skew-deg: -2deg;
         --skew-margin-factor: 0.01746038474; // tan(2deg) / 2
         
-        --space-sm: clamp(8px, 2.5vw, 16px);
-        --space-lg: clamp(16px, 3vw, 32px);
+        --space-sm: clamp(6px, 2.5vw, 16px);
+        --space-lg: clamp(12px, 3vw, 32px);
         
         --max-width: 1200px;
 

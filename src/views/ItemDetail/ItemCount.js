@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { FlexContainer, Button, Counter } from "../../../components";
+import { FlexContainer, Button, Counter } from "../../components";
 
 const Span = styled.span`
     font-size: 0.9rem;

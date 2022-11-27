@@ -24,12 +24,12 @@ const Input = styled.input`
     }
 `;
 
-export const Counter = ({initial = 0, max, onCount}) => {
+export const Counter = ({initial, max, onCount}) => {
     const [count, increase, decrease, onChange] = useCounter(initial, max, onCount);
 
     return(
-        <FlexContainer $align='stretch'>
-            <Button $border onClick={decrease} disabled={count <= 0} aria-label='Más'>
+        <FlexContainer align='stretch'>
+            <Button $border onClick={decrease} disabled={count <= 1} aria-label='Más'>
                 <MinusIcon/>
             </Button>
             <Input type='text' value={count} disabled={max <= 0} onChange={onChange} aria-label='Cantidad'/>
