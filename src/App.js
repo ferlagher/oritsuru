@@ -1,29 +1,31 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GlobalStyle } from './GlobalStyle/GlobalStyle';
 import { Footer, Header } from './layout';
-import { ItemListContainer, ItemDetail, Cart, Login, NotFound } from './views';
-import { CartProvider, ItemsProvider } from './context';
+import { ItemListContainer, ItemDetail, Cart, User, NotFound } from './views';
+import { CartProvider, ItemsProvider, UserProvider } from './context';
 
 const App = () => {
     return (
         <Router>
             <GlobalStyle/>
-            <CartProvider>
-                <ItemsProvider>
-                    <Header/>
-                    <main>
-                        <Routes>
-                            <Route exact path='/' element={<ItemListContainer/>}/>
-                            <Route exact path='/category/:id' element={<ItemListContainer/>}/>
-                            <Route exact path='/item/:id' element={<ItemDetail/>}/>
-                            <Route exact path='/cart' element={<Cart/>}/>
-                            <Route exact path='/login' element={<Login/>}/>
-                            <Route path='*' element={<NotFound/>}/>
-                        </Routes>
-                    </main>
-                </ItemsProvider>
-                <Footer/>
-            </CartProvider>
+            <UserProvider>
+                <CartProvider>
+                    <ItemsProvider>
+                        <Header/>
+                        <main>
+                            <Routes>
+                                <Route exact path='/' element={<ItemListContainer/>}/>
+                                <Route exact path='/category/:id' element={<ItemListContainer/>}/>
+                                <Route exact path='/item/:id' element={<ItemDetail/>}/>
+                                <Route exact path='/cart' element={<Cart/>}/>
+                                <Route exact path='/user' element={<User/>}/>
+                                <Route path='*' element={<NotFound/>}/>
+                            </Routes>
+                        </main>
+                    </ItemsProvider>
+                    <Footer/>
+                </CartProvider>
+            </UserProvider>
         </Router>
     );
 };

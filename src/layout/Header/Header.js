@@ -95,7 +95,7 @@ export const Header = () => {
                     <h1>Sushi delivery & take away</h1>
                 </FlexContainer>
                 <IconsContainer>
-                    <Link to='/login'><UserIcon/></Link>
+                    <Link to='/user'><UserIcon/></Link>
                     <CartWidget itemsInCart={itemsInCart}/>
                 </IconsContainer>
             </Wrapper>

@@ -21,8 +21,6 @@ export const useItemListContainer = () => {
         isFilteringVeggie && query.push(['isVeggie', '==', true]);
         isFilteringFav && favs.length && query.push([documentId(), 'in', favs]);
         
-        console.log("🚀 ~ file: useItemListContainer.js ~ line 19 ~ useEffect ~ query", query)
-        console.count()
         query.length && getFilteredItems(query);
 
     }, [id, categories, favs, isFilteringFav, isFilteringVeggie, getFilteredItems]);

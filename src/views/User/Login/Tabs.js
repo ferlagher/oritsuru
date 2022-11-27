@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FlexContainer } from "../../components";
+import { FlexContainer } from "../../../components";
 
 const Tab = styled.label`
     font-weight: 500;

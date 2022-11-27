@@ -1,28 +1,21 @@
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from './firebase';
 
-export const getUser = async (email, pass, action) => {
+export const getUser = async (action, email, pass, name) => {
     if (action === 'login') {
         try {
-            const {user} = await signInWithEmailAndPassword(auth, email, pass);
-            const {uid} = user;
-            console.log("🚀 ~ file: authentication.js ~ line 13 ~ token", uid)
-
-            return uid;
+            await signInWithEmailAndPassword(auth, email, pass);
         } catch (err) {
             console.error(err);
+            return err.message;
         };
-    } else if (action === 'register') {
+    } else if (action === 'signup') {
         try {
-            const {user} = await createUserWithEmailAndPassword(auth, email, pass);
-            const uid = user;
-            console.log("🚀 ~ file: authentication.js ~ line 30 ~ token", uid)
-            
-            return uid;
+            await createUserWithEmailAndPassword(auth, email, pass);
+            await updateProfile(auth.currentUser, {displayName: name});
         } catch (err) {
             console.error(err);
+            return err.message;
         };
-    } else {
-        return 'Invalid action';
     };
 };
