@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { Button, FlexContainer, Input } from "../../../components";
 import { Tabs } from "./Tabs";
@@ -22,6 +22,12 @@ const Form = styled(FlexContainer).attrs({
         text-align: center;
         margin-top: var(--space-lg);
     }
+
+    p {
+        font-weight: 500;
+        text-align: center;
+        color: var(--color-primary);
+    }
 `;
 
 const Fieldset = styled(FlexContainer).attrs({
@@ -29,7 +35,7 @@ const Fieldset = styled(FlexContainer).attrs({
 })`
     flex: 1;
     flex-direction: column;
-    gap: var(--space-sm);
+    gap: 0.2em;
     padding: var(--space-lg);
     border: none;
 
@@ -39,38 +45,78 @@ const Fieldset = styled(FlexContainer).attrs({
         align-items: flex-start;
         gap: 0.2em;
     }
+
+    span {
+        font-size: 0.8rem;
+        color: var(--color-primary);
+        height: 1em;
+    }
 `;
 
 export const Login = () => {
-    const [form, setForm] = useState('login');
-    const [onSubmit] = useLogin();
+    const {register, handleSubmit, watch, formState: { errors }} = useForm();
+    const [tab, loginError, setTab, onSubmit] = useLogin();
 
     return(
         <Container>
-            <Form onSubmit={onSubmit}>
-                <Tabs name='formType' values={[['login', 'Iniciar Sesión'], ['signup', 'Registrarse']]}
-                    initialValue={form} setValue={setForm}/>
-                    <h2>{form === 'login' ? 'Inicar sesión' : 'Registrarse'}</h2>
+            <Form onSubmit={handleSubmit(onSubmit)}>
+                <Tabs name='tabs' values={[['login', 'Iniciar Sesión'], ['signup', 'Registrarse']]}
+                    initialValue={tab} setValue={setTab}/>
+                <h2>{tab === 'login' ? 'Inicar sesión' : 'Registrarse'}</h2>
+                <p>{loginError}</p>
                 <Fieldset>
-                    {form === 'signup' && 
+                    {tab === 'signup' && 
                     <label>
                         Nombre
-                        <Input type='text' name='name' required></Input>
+                        <Input type='text' 
+                            {...register('name', {
+                                required: 'Campo requerido.',
+                            })}
+                        />
+                        <span>{errors.name?.message}</span>
                     </label>}
                     <label>
                         E-mail
-                        <Input type='email' name='email' required></Input>
+                        <Input type='email' 
+                            {...register('email', {
+                                required: 'Campo requerido.',
+                                pattern: {
+                                    value: /\b[\w.-]+@[\w.-]+.\w{2,4}\b/,
+                                    message: 'Ingrese un email válido.',
+                                },
+                            })}
+                        />
+                        <span>{errors.email?.message}</span>
                     </label>
                     <label>
                         Contraseña
-                        <Input type='password' name='pass1' required></Input>
+                        <Input type='password'
+                            {...register('pass', {
+                                required: 'Campo requerido.',
+                                minLength: {
+                                    value: 6,
+                                    message: 'Mínimo 6 caracteres.'
+                                },
+                            })}
+                        />
+                        <span>{errors.pass?.message}</span>
                     </label>
-                    {form === 'signup' && 
+                    {tab === 'signup' && 
                     <label>
                         Confirmar contraseña
-                        <Input type='password' name='pass2' required></Input>
+                        <Input type='password'
+                            {...register('confirmPass', {
+                                required: 'Campo requerido.',
+                                validate: pass => {
+                                    if (watch('pass') !== pass) {
+                                        return 'Las contraseñas no coinciden.';
+                                    }
+                                },
+                            })}
+                        />
+                        <span>{errors.confirmPass?.message}</span>
                     </label>}
-                    <Button as='button' type='submit'>{form === 'login' ? 'Inicar sesión' : 'Registrarse'}</Button>
+                    <Button as='button' type='submit'>{tab === 'login' ? 'Inicar sesión' : 'Registrarse'}</Button>
                 </Fieldset>
             </Form>
         </Container>

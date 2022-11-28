@@ -1,28 +1,16 @@
-
-import { redirect } from "react-router-dom";
+import { useState } from "react";
 import { getUser } from "../../../utils/getUser";
 
-
 export const useLogin = () => {
-    const onSubmit = e => {
-        e.preventDefault();
-        const {formType, name, email, pass1, pass2} = e.target.elements;
-
-        if (formType.value === 'login') {
-            getUser('login', email.value, pass1.value)
-                .then(redirect('/'))
-                .catch(err => alert(err));
-            return
-        };
-
-        if (formType.value === 'signup') {
-            const isPassCorrect = pass1.value === pass2.value;
-            isPassCorrect && getUser('signup', email.value, pass1.value, name.value)
-                .then(redirect('/'))
-                .catch(err => alert(err));
-            return
-        };
+    const [tab, setTab] = useState('login');
+    const [loginError, setLoginError] = useState('');
+    
+    const onSubmit = data => {
+        console.log("🚀 ~ file: useLogin.js ~ line 6 ~ useLogin ~ tab", tab)
+        const {name, email, pass1} = data;
+        getUser(tab, email, pass1, name)
+            .then(err => err && setLoginError(err));
     };
 
-    return [onSubmit];
+    return [tab, loginError, setTab, onSubmit];
 };
