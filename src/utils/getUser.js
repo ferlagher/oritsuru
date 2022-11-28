@@ -4,6 +4,7 @@ import { auth } from './firebase';
 const ERRORS = {
     'auth/user-not-found': 'El usuario no existe.',
     'auth/wrong-password': 'Contraseña errónea.',
+    'auth/email-already-in-use': 'Ya existe un usuario asociado a ese email.',
     default: 'Hubo un error.'
 }
 

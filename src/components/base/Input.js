@@ -13,4 +13,13 @@ export const Input = styled.input`
     &:hover, &:focus-visible {
         outline: var(--border) var(--color-primary);
     }
+
+    &:disabled, &:read-only {
+        opacity: 0.6;
+        pointer-events: none;
+    }
+
+    &[size] {
+        width: initial;
+    }
 `;

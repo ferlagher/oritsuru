@@ -21,9 +21,11 @@ const Form = styled(FlexContainer).attrs({
     h2 {
         text-align: center;
         margin-top: var(--space-lg);
+        padding: 0 var(--space-lg);
     }
 
     p {
+        padding: 0 var(--space-lg);
         font-weight: 500;
         text-align: center;
         color: var(--color-primary);
@@ -116,7 +118,7 @@ export const Login = () => {
                         />
                         <span>{errors.confirmPass?.message}</span>
                     </label>}
-                    <Button as='button' type='submit'>{tab === 'login' ? 'Inicar sesión' : 'Registrarse'}</Button>
+                    <Button type='submit'>{tab === 'login' ? 'Inicar sesión' : 'Registrarse'}</Button>
                 </Fieldset>
             </Form>
         </Container>

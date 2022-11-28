@@ -76,8 +76,7 @@ export const GlobalStyle = createGlobalStyle`
     section {
         flex: auto;
         flex-basis: 80%;
-        margin-top: calc(var(--skew-margin-factor) * 100vw);
-        margin-bottom: var(--space-lg);
+        margin: calc(var(--skew-margin-factor) * 100vw) 0;
     }
     
     aside {

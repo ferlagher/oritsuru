@@ -53,7 +53,7 @@ const TotalContainer = styled(FlexContainer)`
     justify-content: flex-end;
     gap: var(--space-sm);
     width: 100%;
-    font-size: 1.5rem;
+    font-size: 1.5em;
 
     button svg {
         transform: rotate(45deg);
@@ -81,7 +81,7 @@ export const Cart = ({$small = false}) => {
             <Container $small={$small}>
                 <h3>Carrito:</h3>
                 <List>
-                    {cartList.map(item => <CartItem key={item.id} item={item}/>)}
+                    {cartList.map(item => <CartItem key={item.id} item={item} $small={$small}/>)}
                 </List>
                 <TotalContainer>
                     <span>Total: <b>${total}</b></span>

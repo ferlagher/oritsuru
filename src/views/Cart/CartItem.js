@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { CartContext } from "../../context";
 import { Button, Counter, FlexContainer, PlusIcon } from "../../components";
 
-const ListItem = styled(FlexContainer).attrs({
+const ListItem = styled(FlexContainer).attrs(({$small}) => ({
     as: 'li',
-    $card: true,
-})`
+    $card: !$small,
+}))`
     justify-content: space-between;
     width: 100%;
     gap: var(--space-sm);
@@ -58,13 +58,13 @@ const ButtonsContainer = styled(FlexContainer)`
 `;
 
 
-export const CartItem = ({item}) => {
+export const CartItem = ({item, $small}) => {
     const {addItem, removeItem} = useContext(CartContext);
     const {id, title, image, price, quantity, stock} = item;
     const onCount = useCallback(count => addItem(item, count), [item, addItem]);
 
     return(
-        <ListItem>
+        <ListItem $small={$small}>
                 <img src={image} alt={title}/>
             <DetailsContainer>
                 <TextContainer>

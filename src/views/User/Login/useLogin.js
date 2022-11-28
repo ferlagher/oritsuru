@@ -6,9 +6,9 @@ export const useLogin = () => {
     const [loginError, setLoginError] = useState('');
     
     const onSubmit = data => {
-        console.log("🚀 ~ file: useLogin.js ~ line 6 ~ useLogin ~ tab", tab)
-        const {name, email, pass1} = data;
-        getUser(tab, email, pass1, name)
+        const {name, email, pass} = data;
+        
+        getUser(tab, email, pass, name)
             .then(err => err && setLoginError(err));
     };
 

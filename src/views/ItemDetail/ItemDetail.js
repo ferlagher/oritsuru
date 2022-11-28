@@ -88,7 +88,7 @@ const DetailsContainer = styled(FlexContainer).attrs({
 
 export const ItemDetail = () => {
     const [isLoading, item, quantityInCart, addItem] = useItemDetail();
-    const {id, title, description, image, price, stock, isVeggie} = item || {};
+    const {id, title, description, portion, image, price, stock, isVeggie} = item || {};
 
     return(<>
         <section>{
@@ -104,6 +104,7 @@ export const ItemDetail = () => {
                         <FavToggle id={id}/>
                     </FlexContainer>
                     <p>{description}</p>
+                    <p>Porción: {portion + (portion > 1 ? ' piezas.' : ' pieza.')}</p>
                     <FlexContainer $gap='var(--space-sm)'>
                     <b>${price}</b>
                     {isVeggie && <Badge>Veggie</Badge>}
