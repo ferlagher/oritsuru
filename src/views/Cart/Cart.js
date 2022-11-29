@@ -53,7 +53,7 @@ const TotalContainer = styled(FlexContainer)`
     justify-content: flex-end;
     gap: var(--space-sm);
     width: 100%;
-    font-size: 1.5em;
+    font-size: 1.3em;
 
     button svg {
         transform: rotate(45deg);
