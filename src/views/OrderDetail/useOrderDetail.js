@@ -12,7 +12,7 @@ export const useOrderDetail = () => {
         getDocument('orders', id)
             .then(data => setOrder(data))
             .finally(() => setIsLoading(false));
-    }, []);
+    }, [id]);
 
     return [order, isLoading];
 };
