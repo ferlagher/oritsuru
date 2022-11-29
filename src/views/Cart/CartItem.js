@@ -31,6 +31,14 @@ const ListItem = styled(FlexContainer).attrs(({$small}) => ({
     .close-btn svg {
         transform: rotate(45deg);
     }
+
+    ${({$small}) => $small && `
+        padding: 0;
+
+        h4 {
+            max-width: 80%;
+        }
+    `}
 `;
 
 const DetailsContainer = styled(FlexContainer)`
@@ -39,6 +47,10 @@ const DetailsContainer = styled(FlexContainer)`
     flex-wrap: wrap;
     gap: var(--space-sm);
     justify-content: space-between;
+
+    ${({$small}) => $small && `
+        max-width: 100%;
+    `}
 `;
 
 const TextContainer = styled(FlexContainer)`
@@ -55,6 +67,10 @@ const ButtonsContainer = styled(FlexContainer)`
     max-width: 15rem;
     justify-content: space-between;
     gap: var(--space-sm);
+
+    ${({$small}) => $small && `
+        display: none;
+    `}
 `;
 
 
@@ -66,12 +82,12 @@ export const CartItem = ({item, $small}) => {
     return(
         <ListItem $small={$small}>
                 <img src={image} alt={title}/>
-            <DetailsContainer>
+            <DetailsContainer $small={$small}>
                 <TextContainer>
                     <h4>{title}</h4>
                     <b>${price * quantity}</b>
                 </TextContainer>
-                <ButtonsContainer>
+                <ButtonsContainer $small={$small}>
                     <Button onClick={() => removeItem(id)} $border className="close-btn"><PlusIcon/></Button>
                     <Counter initial={quantity} max={stock} onCount={onCount}/>
                 </ButtonsContainer>

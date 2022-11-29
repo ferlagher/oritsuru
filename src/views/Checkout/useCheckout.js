@@ -6,6 +6,7 @@ export const useCheckout = () => {
     const {cartList, total, clear} = useContext(CartContext);
     const {user, setUserData} = useContext(UserContext);
     const [orderId, setOrderId] = useState('');
+    const [isLoading, setIsLoading] = useState(false)
     
     const payoutInputs = [
         {label: 'Nombre', type: 'text', name: 'name' , inputProps: {defaultValue: user?.displayName, readOnly: !!user}},
@@ -20,13 +21,17 @@ export const useCheckout = () => {
     ]
 
     const onSubmit = data => {
+        setIsLoading(true);
+
         delete data.credit; // Just in case...
         delete data.expiration;
         delete data.cvv;
         
         data.takeAway ? delete data.address : delete data.takeAway; // Delete false or undefined values
-        
-        const order = {products: cartList, total, ...data};
+
+        const subtotal = total;
+        const finalTotal = (data.takeAway || total >= 1000) ? total : total + 150;
+        const order = {products: cartList, subtotal, total: finalTotal, ...data};
         
         data.takeAway && delete data.takeAway; // Only needed for order
 
@@ -34,8 +39,9 @@ export const useCheckout = () => {
             .then((id) => {
                 clear();
                 setOrderId(id);
-            });
+            })
+            .finally(() => setIsLoading(false));
     };
 
-    return {total, payoutInputs, cardInputs, orderId, onSubmit};
+    return {total, payoutInputs, cardInputs, orderId, isLoading, onSubmit};
 };

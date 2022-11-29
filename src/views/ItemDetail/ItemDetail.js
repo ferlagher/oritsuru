@@ -93,7 +93,7 @@ export const ItemDetail = () => {
     return(<>
         <section>{
             isLoading ? <Loader/> :
-            !item ? <EmptyState/> :
+            !item ? <EmptyState view='noItem'/> :
             <ItemContainer>
                 <ImgContainer>
                     <ItemImg src={image} alt={title} isGarnishShown={true}/>

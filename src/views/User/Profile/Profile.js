@@ -86,9 +86,9 @@ export const Profile = () => {
                 <p>Todavía no has realizado ningún pedido.</p> :
                 <ul>
                     {orderList.map(order => (
-                        <li>
+                        <li key={order.id}>
                             <Link to={`/order/${order.id}`}>
-                                <span key={order.id}>{order.date}<b>${order.total}</b></span>
+                                <span>{order.date}<b>${order.total}</b></span>
                             </Link>
                         </li>
                     ))}

@@ -6,9 +6,11 @@ import cheems from '../../assets/cheems.png';
 
 const VIEWS = {
     filters: {title: 'Sin coincidencias', message: 'Tamtos filtros me dan amsiedad.', img: cheems},
+    noItem: {title: 'El producto no existe', message: '¿Dómde está mi sumshi?', img: cheems},
+    noOrder: {title: 'La órden no existe', message: '¿Seguro que pemdiste algo?', img: cheems},
     cart: {title: 'Tu carrito está vacío', message: 'Elige una categoría o vuelve al menú para seguir comprando.', img: shopping},
     dbError: {title: 'No hay datos disponibles', message: 'Yo había ponido mi base de datos aquí.', img: ponido},
-    default: {title: '404 Not Found', message: 'Yo había ponido mi web aquí.', img: ponido},
+    default: {title: '404 Not Found', message: 'Yo había ponido mi sitio web aquí.', img: ponido},
 }
 
 const Container = styled(FlexContainer)`

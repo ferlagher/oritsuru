@@ -8,6 +8,7 @@ const Section = styled.section`
     ${({$small}) => $small && `
         position: sticky;
         top: var(--space-lg);
+        padding: var(--space-sm);
     `}
 `;
 
@@ -18,9 +19,9 @@ const Container = styled(FlexContainer)`
     gap: var(--space-sm);
 
     ${({$small}) => $small && `
-        font-size: 0.5rem;
+        font-size: 0.7rem;
 
-        img, button, input, a {
+        img, button, a {
             display: none;
         }
     `}

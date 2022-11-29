@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FlexContainer, Loader } from "../../components";
+import { EmptyState, FlexContainer, Loader } from "../../components";
 import { OrderItem } from "./OrderItem";
 import { useOrderDetail } from "./useOrderDetail";
 
@@ -23,28 +23,28 @@ const List = styled(FlexContainer).attrs({
     flex-direction: column;
     flex: auto;
     width: 100%;
-    border-bottom: var(--border) var(--color-background-dark);
     `;
 
 const TotalContainer = styled(FlexContainer)`
-    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
     gap: var(--space-sm);
     width: 100%;
-    font-size: 1.3em;
 
-    button svg {
-        transform: rotate(45deg);
+    b {
+        font-size: 1.2em;
     }
 `;
 
 export const OrderDetail = () => {
     const [order, isLoading] = useOrderDetail();
-    const {id, date, total, products} = order;
+    const {id, date, subtotal, total, products} = order;
     
     return(
         <section>{
             isLoading ?
             <Loader/> :
+            !order.id ? <EmptyState view='noOrder'/> :
             <Container>
                 <h2>Orden <span>#{id?.toUpperCase()}</span></h2>
                 <span>Fecha de compra: {date}</span>
@@ -52,6 +52,8 @@ export const OrderDetail = () => {
                     {products?.map(item => <OrderItem key={item.id} item={item}/>)}
                 </List>
                 <TotalContainer>
+                    <span>Subtotal: ${subtotal}</span>
+                    <span>Envío: ${total - subtotal}</span>
                     <span>Total: <b>${total}</b></span>
                 </TotalContainer>
             </Container>

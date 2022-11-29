@@ -25,7 +25,7 @@ const Container = styled(FlexContainer).attrs({
     }
 `;
 
-export const Summary = ({total}) => {
+export const Summary = ({total, takeAway}) => {
     return(
         <Container>
             <h2>Resumen de compra</h2>
@@ -39,11 +39,11 @@ export const Summary = ({total}) => {
             </p>
             <p>
                 Envío
-                <span>{total > 1000 ? 'Gratis' : '$150'}</span>
+                <span>{(takeAway || total >= 1000) ? 'Gratis' : '$150'}</span>
             </p>
             <b>
                 Total
-                <span>${total > 1000 ? total : total + 150}</span>
+                <span>${(takeAway || total >= 1000) ? total : total + 150}</span>
             </b>
         </Container>
     );

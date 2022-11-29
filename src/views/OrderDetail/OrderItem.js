@@ -7,6 +7,7 @@ const ListItem = styled(FlexContainer).attrs({
     justify-content: space-between;
     width: 100%;
     gap: var(--space-sm);
+    border-bottom: var(--border) var(--color-background-dark);
 
     img {
         height: 4rem;

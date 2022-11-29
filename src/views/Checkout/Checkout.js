@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Navigate } from 'react-router-dom';
-import { Button, Checkbox, FlexContainer, Input, mapInputs } from "../../components";
+import { Button, Checkbox, FlexContainer, Input, Loader, mapInputs } from "../../components";
 import styled from "styled-components";
 import { validations } from "../../utils";
 import { useCheckout } from "./useCheckout";
@@ -32,15 +32,17 @@ const Wrapper = styled(FlexContainer)`
 
 export const Checkout = () => {
     const {register, handleSubmit, watch, formState: { errors }} = useForm();
-    const {total, payoutInputs, cardInputs, orderId, onSubmit} = useCheckout();
+    const {total, payoutInputs, cardInputs, orderId, isLoading, onSubmit} = useCheckout();
 
     return(
-        orderId ?
+        <section>{
+        isLoading ?
+        <Loader message='Procesando orden...'/> :
+        orderId ? 
         <Navigate to={`/order/${orderId}`}/> :
-        <section>
             <FlexContainer as='form' onSubmit={handleSubmit(onSubmit)} $gap='var(--space-lg)' $wrap='wrap'>
                 <Wrapper>
-                    <Summary total={total}/>
+                    <Summary total={total} takeAway={watch('takeAway')}/>
                     <FormContainer>
                         <h2>Entrega</h2>
                         <Checkbox label='Retiro en local' name='takeAway' register={register}/>
@@ -60,9 +62,9 @@ export const Checkout = () => {
                     <FlexContainer $gap='var(--space-sm)'>
                         {mapInputs(cardInputs, register, validations, errors)}
                     </FlexContainer>
-                    <Button type='submit'>Finalizar compra</Button>
+                    <Button type='submit' disabled={!total}>Finalizar compra</Button>
                 </FormContainer>
             </FlexContainer>
-        </section>
+        }</section>
     );
 };
