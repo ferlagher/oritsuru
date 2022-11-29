@@ -12,7 +12,7 @@ export const User = () => {
             isLoading ?
             <Loader/> :
             user ?
-            <Profile user={user}/> :
+            <Profile/> :
             <Login/>
         }</section>
     );

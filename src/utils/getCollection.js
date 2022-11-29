@@ -18,11 +18,11 @@ export const getCollection = async (col, filters = null) => {
             return [];
         }
 
-        const docs = snapshot.docs.map(doc => ({id:doc.id, ...doc.data()}));
+        const docs = snapshot.docs.map(doc => ({id: doc.id, ...doc.data()}));
         
         return docs;
     } catch (err) {
-        console.error(err.toString());
+        console.error(err);
         return [];
     };
 };
