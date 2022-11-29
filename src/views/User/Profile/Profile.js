@@ -22,6 +22,11 @@ const Card = styled(FlexContainer).attrs({
     align-items: stretch;
     gap: var(--space-lg);
     padding: var(--space-lg);
+    min-height: 10rem;
+
+    h2 {
+        white-space: nowrap;
+    }
 
     span {
         display: inline-flex;

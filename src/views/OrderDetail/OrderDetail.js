@@ -46,7 +46,7 @@ export const OrderDetail = () => {
             <Loader/> :
             !order.id ? <EmptyState view='noOrder'/> :
             <Container>
-                <h2>Orden <span>#{id?.toUpperCase()}</span></h2>
+                <h2>Tu orden <span>#{id?.toUpperCase()}</span></h2>
                 <span>Fecha de compra: {date}</span>
                 <List>
                     {products?.map(item => <OrderItem key={item.id} item={item}/>)}
