@@ -1,4 +1,4 @@
-import { addDoc, arrayUnion, collection, doc, setDoc, updateDoc } from "firebase/firestore/lite";
+import { addDoc, arrayUnion, collection, doc, getDoc, setDoc, updateDoc } from "firebase/firestore/lite";
 import { db } from "./firebase";
 
 export const placeOrder = async (data, order, uid, setUserData) => {
@@ -12,11 +12,10 @@ export const placeOrder = async (data, order, uid, setUserData) => {
             const userRef = doc(db, 'users', uid);
             const userData = data;
             await setDoc(userRef, userData, {merge: true});
-            const newData = await updateDoc(userRef, {
-                orders: arrayUnion(orderRef),
-            });
+            await updateDoc(userRef, {orders: arrayUnion(orderRef)});
+            const newData = await getDoc(userRef);
 
-            setUserData(newData);
+            setUserData(newData.data());
         };
         
         return orderRef.id;

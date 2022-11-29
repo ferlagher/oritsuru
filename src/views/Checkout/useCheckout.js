@@ -32,7 +32,6 @@ export const useCheckout = () => {
 
         placeOrder(data, order, user?.uid, setUserData)
             .then((id) => {
-                console.log("🚀 ~ file: useCheckout.js ~ line 35 ~ .then ~ id", id)
                 clear();
                 setOrderId(id);
             });

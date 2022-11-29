@@ -33,7 +33,6 @@ const Wrapper = styled(FlexContainer)`
 export const Checkout = () => {
     const {register, handleSubmit, watch, formState: { errors }} = useForm();
     const {total, payoutInputs, cardInputs, orderId, onSubmit} = useCheckout();
-    console.log("🚀 ~ file: Checkout.js ~ line 36 ~ Checkout ~ orderId", orderId)
 
     return(
         orderId ?
