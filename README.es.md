@@ -39,7 +39,7 @@ Si el usuario inició sesión, puede ver en el perfil sus datos y las órdenes p
 
 ## Otras herramientas usadas
 
-- Adobe Photoshop & Illustrator - Logo, ilustraciones e imágenes de productos
+- Adobe Photoshop & Illustrator - Logo, loader, ilustraciones e imágenes de productos
 - [RegExr][regexr] - Herramienta para aprender expresiones regulares
 - [Optimizilla][opti] - Compresor de imágenes online
 

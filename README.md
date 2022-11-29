@@ -39,7 +39,7 @@ Finally, if the user is logged, there is a profile view to check the user data a
 
 ## Other tools used
 
-- Adobe Photoshop & Illustrator - Logo, ilustrations and product images
+- Adobe Photoshop & Illustrator - Logo, loader, ilustrations and product images
 - [RegExr][regexr] - Regular expresions tool
 - [Optimizilla][opti] - Online image compressor
 
