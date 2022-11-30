@@ -1,11 +1,11 @@
-export const useCounter = (max, setCount) => {
+export const useCounter = (count, max, setCount) => {
 
     const increase = () => {
-        setCount(previousValue => Math.min(previousValue + 1, max));
+        setCount(Math.min(count + 1, max));
     };
 
     const decrease = () => {
-        setCount(previousValue => Math.max(previousValue - 1, 1));
+        setCount(Math.max(count - 1, 1));
     };
 
     const onChange = e => {

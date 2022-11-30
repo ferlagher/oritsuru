@@ -89,7 +89,7 @@ const DetailsContainer = styled(FlexContainer).attrs({
 export const ItemDetail = () => {
     const [isLoading, item, quantityInCart, addItem] = useItemDetail();
     const {id, title, description, portion, image, price, stock, isVeggie} = item || {};
-
+    
     return(<>
         <section>{
             isLoading ? <Loader/> :

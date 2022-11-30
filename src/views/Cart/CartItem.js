@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
 import { CartContext } from "../../context";
 import { Button, Counter, FlexContainer, PlusIcon } from "../../components";
@@ -77,11 +77,12 @@ const ButtonsContainer = styled(FlexContainer)`
 export const CartItem = ({item, $small}) => {
     const {addItem, removeItem} = useContext(CartContext);
     const {id, title, image, price, quantity, stock} = item;
-    const [count, setCount] = useState(quantity);
+    const [count, setCount] = useState(quantity || 0);
 
-    useEffect(() => {
-        addItem(item, count - quantity);
-    }, [count, addItem, item, quantity]);
+    const onCount = n => {
+        setCount(n);
+        addItem(item, n - quantity);
+    }
 
     return(
         <ListItem $small={$small}>
@@ -93,7 +94,7 @@ export const CartItem = ({item, $small}) => {
                 </TextContainer>
                 <ButtonsContainer $small={$small}>
                     <Button onClick={() => removeItem(id)} $border className="close-btn"><PlusIcon/></Button>
-                    <Counter count={count} max={stock} setCount={setCount}/>
+                    <Counter count={count} max={stock} setCount={onCount}/>
                 </ButtonsContainer>
             </DetailsContainer>
         </ListItem>
