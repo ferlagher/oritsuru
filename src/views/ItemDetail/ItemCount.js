@@ -11,15 +11,17 @@ const Span = styled.span`
 `
 
 export const ItemCount = ({stock, inCart, onAdd}) => {
-    const [quantity, setQuantity] = useState(inCart);
+    const [quantity, setQuantity] = useState(stock ? 1 : 0);
 
     return(
         <FlexContainer $direction='column' $align='stretch'>
             <Span>Disponible: {stock}</Span>
             <Span>En carrito: {inCart}</Span>
             <FlexContainer $justify='space-between' $gap='var(--space-sm)'>
-                <Counter initial={inCart} max={stock} onCount={setQuantity}/>
-                <Button onClick={() => onAdd(quantity)} disabled={quantity <= 0}>Agregar al carrito</Button>
+                <Counter count={quantity} max={stock - inCart} setCount={setQuantity}/>
+                <Button onClick={() => onAdd(quantity)} disabled={quantity <=0 || stock === inCart}>
+                    Agregar al carrito
+                </Button>
             </FlexContainer>
         </FlexContainer>
     );

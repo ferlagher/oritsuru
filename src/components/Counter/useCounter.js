@@ -1,7 +1,4 @@
-import { useEffect, useState } from "react";
-
-export const useCounter = (initial, max, onCount) => {
-    const [count, setCount] = useState(initial || 1);
+export const useCounter = (max, setCount) => {
 
     const increase = () => {
         setCount(previousValue => Math.min(previousValue + 1, max));
@@ -19,10 +16,5 @@ export const useCounter = (initial, max, onCount) => {
         setCount(newValue || 1);
     };
 
-    useEffect(() => {
-        setCount(previousValue => Math.min(previousValue, max));
-        onCount(count);
-    }, [max, count, onCount]);
-
-    return [count, increase, decrease, onChange];
+    return [increase, decrease, onChange];
 };

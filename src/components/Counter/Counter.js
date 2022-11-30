@@ -24,8 +24,8 @@ const Input = styled.input`
     }
 `;
 
-export const Counter = ({initial, max, onCount}) => {
-    const [count, increase, decrease, onChange] = useCounter(initial, max, onCount);
+export const Counter = ({count, max, setCount}) => {
+    const [increase, decrease, onChange] = useCounter(max, setCount);
 
     return(
         <FlexContainer align='stretch'>

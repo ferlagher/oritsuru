@@ -109,8 +109,7 @@ export const ItemDetail = () => {
                     <b>${price}</b>
                     {isVeggie && <Badge>Veggie</Badge>}
                     </FlexContainer>
-                    <ItemCount stock={stock - quantityInCart} inCart={quantityInCart} 
-                        onAdd={count => addItem(item, count)}/>
+                    <ItemCount stock={stock} inCart={quantityInCart} onAdd={count => addItem(item, count)}/>
                 </DetailsContainer>
             </ItemContainer>
         }</section>

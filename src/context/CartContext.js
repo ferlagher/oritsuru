@@ -20,7 +20,7 @@ export const CartProvider = ({children}) => {
             const i = newList.findIndex(obj => obj.id === item.id);
 
             if (i !== -1) {
-                newList[i].quantity = quantity;
+                newList[i].quantity += quantity;
                 return newList;
             };
             
