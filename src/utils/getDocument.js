@@ -4,7 +4,7 @@ import { db } from './firebase';
 export const getDocument = async (col, id) => {
     try {
         const snap = await getDoc(doc(db, col, id));
-        const data = snap.exists() && {id: snap.id, ...snap.data()};
+        const data = snap?.exists() && {id: snap.id, ...snap.data()};
 
         return data || {};
     } catch (err) {
