@@ -19,11 +19,10 @@ export const UserProvider = ({children}) => {
         });
     }, []);
     
-    const authUser = (action, email, pass, name) => {
+    const authUser = (action, email, pass, name = null) => {
         setIsLoading(true);
         setError('');
         getUser(action, email, pass, name)
-            .then(data => setUserData(data))
             .catch(err => err && setError(err))
             .finally(() => setIsLoading(false));
     }

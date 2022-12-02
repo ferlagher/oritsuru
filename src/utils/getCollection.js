@@ -2,6 +2,10 @@ import { collection, getDocs, query, where } from 'firebase/firestore/lite';
 import { db } from './firebase';
 
 export const getCollection = async (col, filters = null) => {
+    if (!col) {
+        return [];
+    }
+
     let q;
 
     if (filters) {

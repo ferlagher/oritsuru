@@ -1,6 +1,5 @@
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore/lite';
-import { auth, db } from './firebase';
+import { auth } from './firebase';
 
 const ERRORS = {
     'auth/user-not-found': 'El usuario no existe.',
@@ -10,11 +9,13 @@ const ERRORS = {
 }
 
 export const getUser = async (action, email, pass, name) => {
+    if (!email || !pass) {
+        return;
+    }
+
     if (action === 'login') {
         try {
-            const {uid} = await signInWithEmailAndPassword(auth, email, pass);
-            const userData = await getDoc(doc(db, 'users', uid));
-            return userData || {};
+            await signInWithEmailAndPassword(auth, email, pass);
         } catch (err) {
             console.error(err);
             throw ERRORS[err.code] || ERRORS.default;
